@@ -1,0 +1,307 @@
+<div class="view_employee">
+   <div class="view_customer  p-16">
+      <div fxLayout="row wrap" class="">
+         <div fxFlex="100" fxFlex.gt-xs="8" class="pt-8">
+            <img [src]="urlSafe != '' ? urlSafe : 'assets/images/avartar.jpg' " alt="" class="contact_person_detail"
+               style="width: 100px!important; height: 100px!important;">
+         </div>
+         <div fxFlex="100" fxFlex.gt-xs="60" class="pt-8">
+            <h2>{{employeeDetails.firstName}} {{employeeDetails.lastName}} </h2>
+         </div>
+         <div fxFlex="100" fxFlex.gt-xs="20" class="pt-8">
+            <label class="L2" *ngIf="employeeDetails.employeeActiveStatus==1">Active</label>
+            <label class="L1" *ngIf="employeeDetails.employeeActiveStatus==0">InActive</label>
+         </div>
+         <div fxFlex="100" fxFlex.gt-xs="100" class="">
+            <div fxFlex="100" fxFlex.gt-xs="50" class="row">
+               <div fxLayout="row wrap" class="">
+                  <div fxFlex="100" fxFlex.gt-xs="22" class="pt-8">
+                     <label><strong>Gender</strong></label>
+                  </div>
+                  <div fxFlex="100" fxFlex.gt-xs="30" class="pt-8">
+                     <label *ngIf="employeeDetails.gender == 1">Male</label>
+                     <label *ngIf="employeeDetails.gender == 0">Female</label>
+                     <label *ngIf="employeeDetails.gender == 2">Transgender</label>
+                  </div>
+               </div>
+            </div>
+            <div fxFlex="100" fxFlex.gt-xs="50" class="">
+
+               <div fxLayout="row wrap" class="">
+                  <div fxFlex="100" fxFlex.gt-xs="22" class="pt-8">
+                     <label><strong>Mobile</strong></label>
+                  </div>
+                  <div fxFlex="100" fxFlex.gt-xs="78" class="">
+                     <p>{{employeeDetails.mobileNumber}}</p>
+                  </div>
+               </div>
+               <div fxLayout="row wrap" class="">
+                  <div fxFlex="100" fxFlex.gt-xs="22" class="pt-8">
+                     <label><strong>AadharNumber</strong></label>
+                  </div>
+                  <div fxFlex="100" fxFlex.gt-xs="78" class="pt-8">
+                     <label>{{employeeDetails.aadharNumber}}</label>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <mat-tab-group animationDuration="0ms" class="mt-12">
+         <mat-tab label="WorkInfo">
+            <div fxLayout="row wrap" class="row mt-8">
+               <div fxFlex="100" fxFlex.gt-xs="100" class="">
+                  <div fxFlex="100" fxFlex.gt-xs="50" class="row">
+                     <div fxLayout="row wrap" class="">
+                        <div fxFlex="100" fxFlex.gt-xs="22" class="pt-8">
+                           <label><strong>Department</strong></label>
+                        </div>
+                        <div fxFlex="100" fxFlex.gt-xs="78" class="pt-8">
+                           <label>{{employeeDetails.departmentName}}</label>
+                        </div>
+                     </div>
+
+                     <div fxLayout="row wrap" class="">
+                        <div fxFlex="100" fxFlex.gt-xs="22" class="pt-8">
+                           <label><strong>Designation </strong></label>
+                        </div>
+                        <div fxFlex="100" fxFlex.gt-xs="78" class="pt-8">
+                           <label>{{employeeDetails.designation}}</label>
+                        </div>
+                     </div>
+                     <div fxLayout="row wrap" class="">
+                        <div fxFlex="100" fxFlex.gt-xs="22" class="pt-8">
+                           <label><strong>Shift Name </strong></label>
+                        </div>
+                        <div fxFlex="100" fxFlex.gt-xs="78" class="pt-8">
+                           <label>{{employeeDetails.shiftName}}</label>
+                        </div>
+                     </div>
+                     <div fxLayout="row wrap" class="">
+                        <div fxFlex="100" fxFlex.gt-xs="22" class="pt-8">
+                           <label><strong>Date-Of-Joining</strong></label>
+                        </div>
+                        <div fxFlex="100" fxFlex.gt-xs="78" class="pt-8">
+                           <label>{{employeeDetails.dateOfJoining }}</label>
+                        </div>
+                     </div>
+
+                  </div>
+                  <div fxFlex="100" fxFlex.gt-xs="50" class="">
+                     <div fxLayout="row wrap" class="">
+                        <div fxFlex="100" fxFlex.gt-xs="22" class="pt-8">
+                           <label><strong>Experience</strong></label>
+                        </div>
+                        <div fxFlex="100" fxFlex.gt-xs="78" class="pt-8">
+                           <label>{{employeeDetails.experienceYear}} Year {{employeeDetails.experienceMonth}}
+                              Month</label>
+                        </div>
+                     </div>
+                     <div fxLayout="row wrap" class="">
+                        <div fxFlex="100" fxFlex.gt-xs="22" class="pt-8">
+                           <label><strong>Employee Type</strong></label>
+                        </div>
+                        <div fxFlex="100" fxFlex.gt-xs="78" class="pt-8">
+                           <label *ngIf="employeeDetails.employeeType == 1">InStaff</label>
+                           <label *ngIf="employeeDetails.employeeType == 2">OutStaff</label>
+                        </div>
+                     </div>
+                  </div>
+
+               </div>
+
+            </div>
+         </mat-tab>
+         <mat-tab label="PersonalInfo">
+            <div fxLayout="row wrap" class="row mt-8">
+               <div fxFlex="100" fxFlex.gt-xs="100" class="">
+                  <div fxFlex="100" fxFlex.gt-xs="50" class="row">
+                     <div fxLayout="row wrap" class="">
+                        <div fxFlex="100" fxFlex.gt-xs="22" class="pt-8">
+                           <label><strong>Date-Of-Birth</strong></label>
+                        </div>
+                        <div fxFlex="100" fxFlex.gt-xs="30" class="">
+                           <p>{{employeeDetails.dateOfBirth}}</p>
+                        </div>
+                     </div>
+                     <div fxLayout="row wrap" class="">
+                        <div fxFlex="100" fxFlex.gt-xs="22" class="pt-8">
+                           <label><strong>Blood-Group</strong></label>
+                        </div>
+                        <div fxFlex="100" fxFlex.gt-xs="78" class="pt-8">
+                           <label>{{employeeDetails.bloodGroup}}</label>
+                        </div>
+                     </div>
+                     <div fxLayout="row wrap" class="">
+                        <div fxFlex="100" fxFlex.gt-xs="22" class="pt-8">
+                           <label><strong>Nationality</strong></label>
+                        </div>
+                        <div fxFlex="100" fxFlex.gt-xs="78" class="pt-8">
+                           <label>{{employeeDetails.nationality}}</label>
+                        </div>
+                     </div>
+                     <div fxLayout="row wrap" class="">
+                        <div fxFlex="100" fxFlex.gt-xs="22" class="pt-8">
+                           <label><strong>Religion</strong></label>
+                        </div>
+                        <div fxFlex="100" fxFlex.gt-xs="78" class="pt-8">
+                           <label>{{employeeDetails.religion}}</label>
+                        </div>
+                     </div>
+
+                     <h3 class="mt-16 mb-0"><strong><u>Contact-Address</u></strong></h3>
+                     <div fxLayout="row wrap">
+                        <div fxFlex="100" fxFlex.gt-xs="100" class="">
+                           <div fxLayout="row wrap" class="">
+                              <div fxFlex="100" fxFlex.gt-xs="11" class="pt-8">
+                                 <label><strong>Address</strong></label>
+                              </div>
+                              <div fxFlex="100" fxFlex.gt-xs="89" class="pt-8">
+                                 <label>{{employeeDetails.addressLine1}}</label>
+                                 <label>{{employeeDetails.addressLine2}}</label>
+                                 <label>{{employeeDetails.city}} {{employeeDetails.city == ''? '' : '-'}}
+                                    {{employeeDetails.zipcode}}</label>
+                                 <label>{{employeeDetails.state}} {{employeeDetails.state == ''? ' ' : ','}}
+                                    {{employeeDetails.countryName}}</label>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div fxFlex="100" fxFlex.gt-xs="50" class="">
+                     <div fxLayout="row wrap" class="">
+                        <div fxFlex="100" fxFlex.gt-xs="22" class="pt-8">
+                           <label><strong>Qualification</strong></label>
+                        </div>
+                        <div fxFlex="100" fxFlex.gt-xs="78" class="pt-8">
+                           <label>{{employeeDetails.qualification}}</label>
+                        </div>
+                     </div>
+                     <div fxLayout="row wrap" class="">
+                        <div fxFlex="100" fxFlex.gt-xs="22" class="pt-8">
+                           <label><strong>Gender</strong></label>
+                        </div>
+                        <div fxFlex="100" fxFlex.gt-xs="78" class="pt-8">
+                           <label *ngIf="employeeDetails.gender == 1">Male</label>
+                           <label *ngIf="employeeDetails.gender == 0">Female</label>
+                           <label *ngIf="employeeDetails.gender == 2">Transgender</label>
+                        </div>
+                        <div fxFlex="100" fxFlex.gt-xs="22" class="pt-8">
+                           <label><strong>MaritalStatus</strong></label>
+                        </div>
+                        <div fxFlex="100" fxFlex.gt-xs="78" class="pt-8">
+                           <label *ngIf="employeeDetails.maritalStatus == 1">Married</label>
+                           <label *ngIf="employeeDetails.maritalStatus == 2">UnMarried</label>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </mat-tab>
+         <mat-tab label="Uniform Info">
+            <div fxLayout="row wrap" class="row mt-16">
+               <div fxFlex="100" fxFlex.gt-xs="50" class="">
+                  <div fxLayout="row wrap" class="row">
+                     <div fxFlex="100" fxFlex.gt-xs="20" class="label">
+                        <br>
+                        <label><strong>Shirt Size</strong><span class="red_color">*</span></label>
+                     </div>
+                     <div fxFlex="100" fxFlex.gt-xs="76" class="minheight ml-8 mt-28">
+                        <label>{{employeeDetails.shirtSize}}</label>
+                     </div>
+                     <div fxFlex="100" fxFlex.gt-xs="20" class="label">
+                        <br>
+                        <label><strong>Pant Size</strong><span class="red_color">*</span></label>
+                     </div>
+                     <div fxFlex="100" fxFlex.gt-xs="76" class="minheight ml-8 mt-28">
+                        <label>{{employeeDetails.pantSize}}</label>
+                     </div>
+                     <div fxFlex="100" fxFlex.gt-xs="20" class="label">
+                        <br>
+                        <label><strong>Shoe Size</strong><span class="red_color">*</span></label>
+                     </div>
+                     <div fxFlex="100" fxFlex.gt-xs="76" class="minheight ml-8 mt-28">
+                        <label>{{employeeDetails.shoeSize}}</label>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </mat-tab>
+         <mat-tab label="Salary Info">
+            <div fxLayout="row wrap" class="row mt-16">
+               <div fxFlex="100" fxFlex.gt-xs="50" class="">
+                  <div fxLayout="row wrap" class="row">
+                     <div fxFlex="100" fxFlex.gt-xs="20" class="label">
+                        <br>
+                        <label><strong>Account No</strong><span class="red_color">*</span></label>
+                     </div>
+                     <div fxFlex="100" fxFlex.gt-xs="76" class="minheight ml-8 mt-28">
+                        <label>{{employeeDetails.accountNumber}}</label>
+                     </div>
+                     <div fxFlex="100" fxFlex.gt-xs="20" class="label">
+                        <br>
+                        <label><strong>IFSC Code</strong><span class="red_color">*</span></label>
+                     </div>
+                     <div fxFlex="100" fxFlex.gt-xs="76" class="minheight ml-8 mt-28">
+                        <label>{{employeeDetails.ifscCode}}</label>
+                     </div>
+                     <div fxFlex="100" fxFlex.gt-xs="20" class="label">
+                        <br>
+                        <label><strong>EPF No</strong><span class="red_color">*</span></label>
+                     </div>
+                     <div fxFlex="100" fxFlex.gt-xs="76" class="minheight ml-8 mt-28">
+                        <label>{{employeeDetails.epfNo}}</label>
+                     </div>
+                     <div fxFlex="100" fxFlex.gt-xs="20" class="label">
+                        <br>
+                        <label><strong>ESI No</strong><span class="red_color">*</span></label>
+                     </div>
+                     <div fxFlex="100" fxFlex.gt-xs="76" class="minheight ml-8 mt-28">
+                        <label>{{employeeDetails.esiNo}}</label>
+                     </div>
+                  </div>
+               </div>
+               <div fxFlex="100" fxFlex.gt-xs="50" class="">
+                  <div fxLayout="row wrap" class="row">
+                     <div fxFlex="100" fxFlex.gt-xs="20" class="label">
+                        <br>
+                        <label><strong>Nominee Name</strong><span class="red_color">*</span></label>
+                     </div>
+                     <div fxFlex="100" fxFlex.gt-xs="76" class="minheight ml-8 mt-28">
+                        <label>{{employeeDetails.nomineeName}}</label>
+                     </div>
+
+                     <div fxFlex="100" fxFlex.gt-xs="20" class="label">
+                        <br>
+                        <label><strong>Salary-Type</strong><span class="red_color">*</span></label>
+                     </div>
+                     <div fxFlex="100" fxFlex.gt-xs="76" class="">
+                        <label>{{employeeDetails.salaryType}}</label>
+                     </div>
+                     <div fxFlex="100" fxFlex.gt-xs="20" class="label">
+                        <br>
+                        <label><strong>Salary</strong><span class="red_color">*</span></label>
+                     </div>
+                     <div fxFlex="100" fxFlex.gt-xs="76" class="minheight ml-8 mt-28">
+                        <label>{{employeeDetails.salary}}</label>
+                     </div>
+                     <div fxFlex="100" fxFlex.gt-xs="20" class="label">
+                        <br>
+                        <label><strong>ESI Salary</strong><span class="red_color">*</span></label>
+                     </div>
+                     <div fxFlex="100" fxFlex.gt-xs="76" class="minheight ml-8 mt-28">
+                        <label>{{employeeDetails.esiSalary}}</label>
+                     </div>
+                     <div fxFlex="100" fxFlex.gt-xs="20" class="label">
+                        <br>
+                        <label><strong>EPF Salary</strong><span class="red_color">*</span></label>
+                     </div>
+                     <div fxFlex="100" fxFlex.gt-xs="76" class="minheight ml-8 mt-28">
+                        <label>{{employeeDetails.epfSalary}}</label>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </mat-tab>
+      </mat-tab-group>
+   </div>
+</div>

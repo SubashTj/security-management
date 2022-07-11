@@ -1,0 +1,89 @@
+<div class="create_employee">
+    <mat-card class="p-0 pagewrap">
+      <mat-card-title class="">
+        <div class="card-title-text">TimeLine Tracking</div>
+        <mat-divider></mat-divider>
+      </mat-card-title>
+      <mat-card-content class="">
+        <div fxLayout="row wrap" >
+            <div fxFlex="100" fxFlex.gt-xs="10" class="">
+                <br>
+              <label><strong>Employee Code</strong> <span class="red_color">*</span></label>
+            </div>
+            <div fxFlex="100" fxFlex.gt-xs="20" class="">
+              <mat-form-field appearance="outline" class="full-width">
+                <input class="" matInput name="employeeId"  [(ngModel)]="employeeId"
+                  placeholder="" value="">
+              </mat-form-field>
+          </div>
+          <br>
+          <div fxFlex="100" fxFlex.gt-xs="10" class="">
+            <button mat-raised-button color="primary" [disabled]="employeeId == ''"
+              (click)="getEmployeeByEmpCode(employeeId)" class="btn-primary-bg">Search</button>
+          </div>
+        </div>
+        <div fxLayout="row wrap" class="mt-12" *ngIf="ShowFields">
+          <div fxFlex="100" fxFlex.gt-xs="10" class="">
+            <br>
+          <label><strong>Date</strong> <span class="red_color">*</span></label>
+        </div>
+          <div fxFlex="100" fxFlex.gt-xs="14" class="">
+   
+            <mat-form-field appearance="outline" class="mt-4">
+              <input matInput type="date" [(ngModel)]="choosedDate">
+ 
+            </mat-form-field>
+            </div>
+            <div fxFlex="100" fxFlex.gt-xs="10" class="">
+            <button mat-raised-button color="primary" 
+            (click)="getTimeLineTracking()" class="btn-primary-bg">Search</button>
+   
+            </div>
+            </div>
+            <!-- <div class="tracking-timeline-block">
+              <mgl-timeline class="mt-12" *ngIf="timelineDatas && timelineDatas?.length != 0">
+                <mgl-timeline-entry *ngFor="let tLine of timelineDatas">
+                  <mgl-timeline-entry-header class="">
+                    <div class="header-block display-flex">
+                      <span class="mb-0 mt-4 category-positionname">
+                        {{tLine?.layoutCategoryName}} - {{tLine?.layoutPositionName}}
+                      </span>
+  
+                    <span
+                        class="float-right text-muted pt-2">{{tLine?.inTimestamp ? (tLine?.inTimestamp) : (tLine?.inTimestamp)}}
+                        -
+                        {{tLine?.outTimestamp ? (tLine?.outTimestamp) : (tLine?.outTimestamp) }}</span>
+  
+                    </div>
+                    <div class="mb-0 mt-4 text-right"><span class="text-muted"
+                        >{{tLine?.timeDifference}}</span>
+                    </div>
+                  </mgl-timeline-entry-header>
+                  <mgl-timeline-entry-dot></mgl-timeline-entry-dot>
+                  <mgl-timeline-entry-side class="alternate">
+                    <span class="material-icons font-white lg-brown">
+                      directions_walk
+                    </span>
+                  </mgl-timeline-entry-side> 
+                </mgl-timeline-entry>
+              </mgl-timeline>
+              <div class="text-center" *ngIf="timelineDatas?.length == 0 || timelineDatas == null">
+                <h6>No tracking data found</h6>
+              </div>
+            </div> -->
+            <div class="timeline">
+              <div *ngFor='let entry of timelineDatas;let i = index'>
+                <div class="container" [ngClass]="{ left: i%2!==0, right:i%2==0}">
+                  <div class="content">
+                    <h2>{{entry.layoutCategoryName }}</h2>
+                    <h2>{{entry.layoutPositionName}}</h2>
+                    <p>{{entry.inTimestamp | date: 'dd MMM  yyyy , HH:mm:ss a'}}</p>
+                    <p>{{entry.outTimestamp | date: 'dd MMM  yyyy , HH:mm:ss a'}}</p>
+                    <p>{{entry.duration}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </mat-card-content>
+          </mat-card>
+          </div>

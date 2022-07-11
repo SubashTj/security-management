@@ -1,0 +1,65 @@
+
+ <div class="form_bg">
+    <mat-card class="p-0">
+       <mat-card-title class="">
+          <div class="card-title-text">Create New Holiday </div>
+          <mat-divider></mat-divider>
+       </mat-card-title>
+       <mat-card-content>
+          <form [formGroup]="basicForm" >
+             <div fxLayout="row wrap" class="mt-16">
+                <div fxFlex="100" fxFlex.gt-xs="100" class="">
+                   <mat-form-field appearance="outline" class="full-width">
+                     <mat-label> Title Name<span class="red_color">*</span></mat-label>
+                      <input matInput class="batch-name" name="title" formControlName="title" placeholder="Title"
+                         value="">
+                 
+                   </mat-form-field>
+                </div>
+             </div>
+             <div fxLayout="row wrap" class="mt-0">
+                <div fxFlex="100" fxFlex.gt-xs="100" class="pr-8">
+                   <mat-form-field appearance="outline">
+                     <mat-label> From Date <span class="red_color">*</span></mat-label>
+                      <input matInput  [matDatepicker]="picker1"   formControlName="fromDate" placeholder="From Date">
+                      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                      <mat-datepicker #picker1></mat-datepicker>
+                
+                   </mat-form-field>
+                </div>
+                <div fxFlex="100" fxFlex.gt-xs="100" class="">
+                   <mat-form-field appearance="outline">
+                     <mat-label> To Date <span class="red_color">*</span></mat-label>
+                      <input matInput [matDatepicker]="picker2" formControlName="toDate" 
+                         placeholder="To Date">
+                      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                      <mat-datepicker #picker2></mat-datepicker>
+                
+                   </mat-form-field>
+                </div>
+             </div>
+             <div fxLayout="row wrap" class="row">
+                <div fxFlex="100" fxFlex.gt-xs="100" class="">
+                   <mat-form-field appearance="outline" class="full-width">
+                     <mat-label>Description <span class="red_color">*</span></mat-label>
+                      <textarea matInput formControlName="description" placeholder=""></textarea>
+                   </mat-form-field>
+                </div>
+             </div>
+          </form>
+          <mat-card-footer class="pt-0">
+            <button 
+               mat-raised-button 
+               color="primary" class="btn-primary-bg mr-12"
+            (click)="save()">Save</button>
+            <button 
+               mat-raised-button 
+               color="primary" class="btn-primary-bg mr-12"
+        (click)=" discard()">Close</button>
+      
+         </mat-card-footer>
+       </mat-card-content>
+    </mat-card>
+ </div>
+
+

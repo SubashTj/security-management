@@ -1,0 +1,94 @@
+<mat-card class="p-0">
+    <mat-card-title class="">
+        <div class="card-title-text">Update Layout Position</div>
+        <mat-divider></mat-divider>
+    </mat-card-title>
+    <mat-card-content>
+        <form [formGroup]="layoutForm" class="category">
+            <div fxLayout="row wrap" class="mt-24">
+                <div fxFlex="100" fxFlex.gt-xs="100" class="pr-1">
+                    <div class="pb-1">
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Layout Position Id<span class="red_color">*</span></mat-label>
+                            <input matInput name="positionId" formControlName="positionId"
+                                placeholder="positionId" value="" readonly>
+                            <mat-error
+                                *ngIf="layoutForm.controls['positionId'].hasError('required') 
+                                && layoutForm.controls['positionId'].touched 
+                                || layoutForm.controls['positionId'].hasError('pattern') 
+                                && layoutForm.controls['positionId'].touched"
+                                class="form-error-msg">Position Name Required
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    </div>
+                    <div fxFlex="100" fxFlex.gt-xs="100" class="pr-1">
+                    <div class="pb-1">
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Layout Position Name<span class="red_color">*</span></mat-label>
+                            <input matInput name="layoutPositionName" formControlName="layoutPositionName"
+                                placeholder="layoutPositionName" value="">
+                            <mat-error
+                                *ngIf="layoutForm.controls['layoutPositionName'].hasError('required') 
+                                && layoutForm.controls['layoutPositionName'].touched 
+                                || layoutForm.controls['layoutPositionName'].hasError('pattern') 
+                                && layoutForm.controls['layoutPositionName'].touched"
+                                class="form-error-msg">Position Name Required
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    </div>
+                    <div fxFlex="100" fxFlex.gt-xs="100" class="pr-1">
+                    <div class="pb-1">
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Layout Position Short Name<span class="red_color">*</span></mat-label>
+                            <input matInput name="positionShortName" formControlName="positionShortName"
+                                placeholder="positionShortName" value="">
+                            <mat-error
+                                *ngIf="layoutForm.controls['positionShortName'].hasError('required') 
+                                && layoutForm.controls['positionShortName'].touched 
+                                || layoutForm.controls['positionShortName'].hasError('pattern') 
+                                && layoutForm.controls['positionShortName'].touched"
+                                class="form-error-msg">Short Name Required
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    </div>
+                    <div fxFlex="100" fxFlex.gt-xs="100" class="pr-1">
+                    <div class="pb-1">
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Select Layout-Category<span class="red_color">*</span></mat-label>
+                           <mat-select formControlName="layoutId">
+                              <mat-option *ngFor="let position of dataSource" [value]="position.layoutId">
+                                 {{position.layoutCategoryName}}
+                              </mat-option>
+                           </mat-select>
+                           <mat-error
+                              *ngIf="layoutForm.controls['layoutId'].hasError('required') 
+                              && layoutForm.controls['layoutId'].touched"
+                              class="form-error-msg">Please choose department
+                           </mat-error>
+                        </mat-form-field>
+                     </div>
+                </div>
+            </div>
+            <mat-card-footer class="pt-0">
+             <button 
+                mat-raised-button 
+                color="primary" class="btn-primary-bg mr-12"
+             (click)=" Update(layoutForm.value)">Save</button>
+             <button 
+                mat-raised-button 
+                color="primary" class="btn-primary-bg mr-12"
+         (click)=" discard()">Close</button>
+       
+          </mat-card-footer>
+        </form>
+    </mat-card-content>
+ </mat-card>
+ 
+
+
+
+
+

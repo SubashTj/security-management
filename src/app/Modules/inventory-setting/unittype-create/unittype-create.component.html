@@ -1,0 +1,43 @@
+<div class="create_employee">
+    <mat-card class="p-0 pagewrap">
+             <mat-card-title class="">
+                <div class="card-title-text">Create New Unit-Type </div>
+                <mat-divider></mat-divider>
+             </mat-card-title>
+             <mat-card-content class="mb-0">
+                <form [formGroup]="inventoryForm" class="inventory">
+                   <div fxLayout="row wrap" class="mt-24">
+                      <div fxFlex="100" fxFlex.gt-xs="100" class="pr-1">
+                         <div class="pb-1">
+                            <mat-form-field class="full-width" appearance="outline">
+                               <mat-label> Select Unit-Type <span class="red_color">*</span></mat-label>
+                               <input class="f24"
+                                  matInput
+                                  name="unitTypeName"
+                                  [(ngModel)]="inventory.unitTypeName"
+                                  formControlName="unitTypeName"
+                                  placeholder="UnitType-Name"
+                                  value="">
+                                  <mat-error
+                                  *ngIf="inventoryForm.controls['unitTypeName'].hasError('required') && inventoryForm.controls['unitTypeName'].touched || inventoryForm.controls['unitTypeName'].hasError('pattern') && inventoryForm.controls['unitTypeName'].touched" 
+                                  >Unit-Type-Name Required</mat-error>
+                            </mat-form-field>
+                         </div>
+                      </div>
+                   </div>
+                </form>
+                <mat-card-footer class="pt-0">
+                   <button 
+                      mat-raised-button 
+                      color="primary" class="btn-primary-bg mr-12"
+                   (click)=" save('')">Save</button>
+                   <button 
+                      mat-raised-button 
+                      color="primary" class="btn-primary-bg mr-12"
+               (click)=" discard()">Close</button>
+             
+                </mat-card-footer>
+             </mat-card-content>
+        
+          </mat-card>
+          </div>

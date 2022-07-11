@@ -1,0 +1,86 @@
+<mat-card class="p-0">
+    <mat-card-title class="">
+        <div class="card-title-text">Create New Payment-Remainder</div>
+        <mat-divider></mat-divider>
+    </mat-card-title>
+    <mat-card-content>
+        <form [formGroup]="paymentForm" class="position">
+            <div fxLayout="row wrap" class="mt-24">
+                <div fxFlex="100" fxFlex.gt-xs="100" class="pr-1">
+                    <div class="pb-1">
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Payment Name<span class="red_color">*</span></mat-label>
+                            <input matInput name="paymentName" formControlName="paymentName" placeholder="Payment Name"
+                                value="">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div fxFlex="100" fxFlex.gt-xs="100" class="pr-1">
+                    <div class="pb-1">
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Payment From<span class="red_color">*</span></mat-label>
+                            <input matInput name="paymentFrom" formControlName="paymentFrom"
+                                placeholder="Payment From" value="">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div fxFlex="100" fxFlex.gt-xs="100" class="pr-1">
+                    <div class="pb-1">
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Payment To<span class="red_color">*</span></mat-label>
+                            <input matInput name="paymentFrom" formControlName="paymentTo"
+                                placeholder="Payment To" value="">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div fxFlex="100" fxFlex.gt-xs="100" class="pr-1">
+                    <div class="pb-1">
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Amount<span class="red_color">*</span></mat-label>
+                            <input matInput name="paymentTo" formControlName="paymentAmount"
+                                placeholder="Amount" value="">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div fxFlex="100" fxFlex.gt-xs="100" class="pr-1">
+                    <div class="pb-1">
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Start-Date<span class="red_color">*</span></mat-label>
+                            <input matInput type="date" name="paymentStartDate" formControlName="paymentStartDate"
+                                placeholder="Start-Date" value="">
+                            <mat-error *ngIf="paymentForm.controls['paymentStartDate'].hasError('required') 
+                                 && paymentForm.controls['paymentStartDate'].touched 
+                                 || paymentForm.controls['paymentStartDate'].hasError('pattern') 
+                                 && paymentForm.controls['paymentStartDate'].touched" class="form-error-msg">Start-Date
+                                Required
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div fxFlex="100" fxFlex.gt-xs="100" class="pr-1">
+                    <div class="pb-1">
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>End-Date<span class="red_color">*</span></mat-label>
+                            <input matInput type="date" name="paymentEndDate" formControlName="paymentEndDate" placeholder="End-Date"
+                                value="">
+                            <mat-error *ngIf="paymentForm.controls['paymentEndDate'].hasError('required') 
+                                 && paymentForm.controls['paymentEndDate'].touched 
+                                 || paymentForm.controls['paymentEndDate'].hasError('pattern') 
+                                 && paymentForm.controls['paymentEndDate'].touched" class="form-error-msg">End-Date
+                                Required
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+            <mat-card-footer class="pt-0">
+                <button mat-raised-button color="primary" class="btn-primary-bg mr-12"
+                    (click)="save(paymentForm.value)">Save</button>
+
+                <button mat-raised-button color="primary" class="btn-primary-bg mr-12"
+                    (click)=" discard()">Close</button>
+
+            </mat-card-footer>
+        </form>
+    </mat-card-content>
+</mat-card>

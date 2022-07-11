@@ -1,0 +1,271 @@
+<div class="create_employee">
+    <mat-card class="p-0 pagewrap">
+        <mat-card-title class="">
+            <div class="card-title-text">Update Purchase Details</div>
+            <mat-divider></mat-divider>
+        </mat-card-title>
+        <mat-card-content>
+            <form [formGroup]="purchaseForm">
+                <div fxLayout="row wrap" class="row ">
+                    <div fxFlex="100" fxFlex.gt-xs="35" class="fullwidth mt-0">
+                        <mat-form-field class="full-width" appearance="outline">
+                            <input matInput class="f24" formControlName="receiptNumber" placeholder="Receipt Number">
+                        </mat-form-field>
+                        <br>
+                        <br>
+                        <mat-form-field appearance="outline">
+                            <input matInput formControlName="receiptDate" type="date">
+                        </mat-form-field>
+                    </div>
+                    <div fxFlex="100" fxFlex.gt-xs="5">
+                    </div>
+                    <div fxFlex="100" fxFlex.gt-xs="60" class="preview_image mt-8">
+                        <div fxLayout="row wrap" class="row ">
+                            <div fxFlex="100" fxFlex.gt-xs="20" class="pr-1">
+                                <div class="pb-1">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label> Select Vendor </mat-label>
+                                        <mat-select matNativeControl formControlName="vendorId">
+                                            <mat-option *ngFor="let type of vendor" [value]="type.vendorId"
+                                                (onSelectionChange)="onItemSelect($event,type)">
+                                                {{type.vendorName}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div fxFlex="100" fxFlex.gt-xs="20" class="pr-1">
+                                <div class="pb-1">
+                                    <mat-form-field class="full-width" appearance="outline">
+                                        <input matInput class="f24" value="{{ vendorone?.vendorName }}"
+                                            placeholder="Vendor Name" disabled>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div fxFlex="100" fxFlex.gt-xs="20" class="pr-1">
+                                <div class="pb-1">
+                                    <mat-form-field class="full-width" appearance="outline">
+                                        <input matInput class="f24" value="{{ vendorone?.vendorGst }}"
+                                            placeholder="Vendor Gst" disabled>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div fxFlex="100" fxFlex.gt-xs="20" class="pr-1">
+                                <div class="pb-1">
+                                    <mat-form-field class="full-width" appearance="outline">
+                                        <input matInput class="f24" value="{{ vendorone?.vendorContactNumber }}"
+                                            placeholder="Contact Number" disabled>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div fxFlex="100" fxFlex.gt-xs="20" class="pr-1">
+                                <div class="pb-1">
+                                    <mat-form-field class="full-width" appearance="outline">
+                                        <input matInput class="f24" value="{{ vendorone?.vendorEmail }}"
+                                            placeholder="Vendor Email" disabled>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div fxFlex="100" fxFlex.gt-xs="50" class="pr-1">
+                                <div class="pb-1">
+                                    <mat-form-field class="full-width" appearance="outline">
+                                        <input matInput class="f24" value="{{ vendorone?.vendorAddress }}"
+                                            placeholder="Vendor Address" disabled>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div fxFlex="100" fxFlex.gt-xs="100" class="fullwidth mt-0">
+                        <div class="card">
+                            <div class="card-header">
+                                <h2>Purchase Item Details</h2>
+                            </div>
+                            <div class="card-body">
+                                <div formArrayName="items">
+                                    <div class="row"
+                                        *ngFor="let items of purchaseForm.get('items')['controls']; let i = index"
+                                        [formGroupName]="i">
+                                        <div fxFlex="100" fxFlex.gt-xs="9" class="fullwidth mt-0">
+                                            <mat-form-field class="col-4" appearance="outline">
+                                                <mat-label>Item Code</mat-label>
+                                                <input matInput formControlName="stockItemCode" placeholder="Item Code">
+                                            </mat-form-field>
+                                        </div>
+                                        <div fxFlex="100" fxFlex.gt-xs="9" class="fullwidth mt-0">
+                                            <mat-form-field class="col-4" appearance="outline">
+                                                <mat-label>Select Unit</mat-label>
+                                                <mat-select matNativeControl name="unitTypeId" placeholder="Unit"
+                                                    formControlName="unitTypeId">
+                                                    <mat-option value="" selected></mat-option>
+                                                    <mat-option *ngFor="let type of unit" [value]="type.unitTypeId">
+                                                        {{type.unitTypeName}}
+                                                    </mat-option>
+                                                </mat-select>
+                                            </mat-form-field>
+
+                                        </div>
+                                        <div fxFlex="100" fxFlex.gt-xs="9" class="fullwidth mt-0">
+                                            <mat-form-field class="col-4" appearance="outline">
+                                                <mat-label>Quantity</mat-label>
+                                                <input matInput type="number" #first name="valuea"
+                                                    formControlName="quantity" placeholder="Quantity">
+                                            </mat-form-field>
+                                        </div>
+                                        <div fxFlex="100" fxFlex.gt-xs="9" class="fullwidth mt-0">
+                                            <mat-form-field class="col-4" appearance="outline">
+                                                <mat-label>Base Rate</mat-label>
+                                                <input matInput #second name="valueb" formControlName="baseRate"
+                                                    placeholder="Base Rate">
+                                            </mat-form-field>
+                                        </div>
+                                        <div fxFlex="100" fxFlex.gt-xs="9" class="fullwidth mt-0">
+                                            <mat-form-field class="col-4" appearance="outline">
+                                                <mat-label>Base Amount</mat-label>
+                                                <input matInput #third [value]="(+first.value * +second.value)"
+                                                    name="valuec" value="" formControlName="baseAmount"
+                                                    placeholder="Base Amount" disabled>
+                                            </mat-form-field>
+                                        </div>
+                                        <div fxFlex="100" fxFlex.gt-xs="9" class="fullwidth mt-0">
+                                            <mat-form-field class="col-4" appearance="outline">
+                                                <mat-label>Discount %</mat-label>
+                                                <input matInput #forth name="valued"
+                                                    formControlName="discountPercentage" placeholder="Discount">
+                                            </mat-form-field>
+                                        </div>
+                                        <div fxFlex="100" fxFlex.gt-xs="9" class="fullwidth mt-0">
+                                            <mat-form-field class="col-4" appearance="outline">
+                                                <mat-label>Discounted Amount</mat-label>
+                                                <input matInput #sixth [value]="(+third.value/100*(100-+forth.value))"
+                                                    name="subvalue" value="" formControlName="discountedAmount"
+                                                    placeholder="Discounted Amount" disabled>
+                                            </mat-form-field>
+                                        </div>
+                                        <div fxFlex="100" fxFlex.gt-xs="9" class="fullwidth mt-0">
+                                            <mat-form-field class="col-4" appearance="outline">
+                                                <mat-label>Tax %</mat-label>
+                                                <input matInput #seventh name="valued" formControlName="taxPercentage"
+                                                    placeholder="Tax">
+                                            </mat-form-field>
+                                        </div>
+                                        <div fxFlex="100" fxFlex.gt-xs="9" class="fullwidth mt-0">
+                                            <mat-form-field class="col-4" appearance="outline">
+                                                <mat-label>Tax Amount</mat-label>
+                                                <input matInput #seventh [value]="(+second.value/100*(+seventh.value))"
+                                                    formControlName="taxAmount" placeholder="Tax Amount">
+                                            </mat-form-field>
+                                        </div>
+                                        <div fxFlex="100" fxFlex.gt-xs="9" class="fullwidth mt-0">
+                                            <mat-form-field class="col-4" appearance="outline">
+                                                <mat-label>Net Amount</mat-label>
+                                                <input matInput formControlName="netAmount" placeholder="Net Amount"
+                                                    #nineth [value]="(+sixth.value + +seventh.value)" name="addvalue"
+                                                    value="" disabled>
+                                            </mat-form-field>
+                                        </div>
+                                        <div fxFlex="100" fxFlex.gt-xs="9" class="fullwidth mt-0">
+                                            <mat-form-field class="col-4" appearance="outline">
+                                                <mat-label>Description</mat-label>
+                                                <input matInput formControlName="purchaseItemDescription"
+                                                    placeholder="Description">
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="col-3">
+                                            <button class="float-left" mat-icon-button color="primary"
+                                                aria-label="Remove/clear" (click)="removeOrClearItem(i)"
+                                                matTooltip="Remove">
+                                                <mat-icon>highlight_off</mat-icon>
+                                            </button>
+                                            <button class="float-left" mat-icon-button color="primary" aria-label="Add"
+                                                (click)="addItemFormGroup()" matTooltip="Add">
+                                                <mat-icon>add_circle_outline</mat-icon>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div fxFlex="100" fxFlex.gt-xs="100" class="fullwidth mt-0">
+                        <div class="card">
+                            <div class="card-header">
+                                <h2>Payment Details</h2>
+                            </div>
+                            <div class="card-body">
+                                <div formArrayName="payment">
+                                    <div class="row"
+                                        *ngFor="let payment of purchaseForm.get('payment')['controls']; let i = index"
+                                        [formGroupName]="i">
+                                        <div fxFlex="100" fxFlex.gt-xs="30" class="fullwidth mt-0">
+                                            <mat-form-field class="col-4" appearance="outline">
+                                                <mat-label>Amount</mat-label>
+                                                <input matInput formControlName="amount" placeholder="Amount">
+                                            </mat-form-field>
+                                        </div>
+                                        <div fxFlex="100" fxFlex.gt-xs="30" class="fullwidth mt-0">
+                                            <mat-form-field class="col-4" appearance="outline">
+                                                <mat-label>Payment Date</mat-label>
+                                                <input matInput type="date" formControlName="paymentDate"
+                                                    placeholder="Payment Date">
+                                            </mat-form-field>
+                                        </div>
+                                        <div fxFlex="100" fxFlex.gt-xs="30" class="fullwidth mt-0">
+                                            <mat-form-field class="col-4" appearance="outline">
+                                                <mat-label>Payment Mode</mat-label>
+                                                <input matInput formControlName="paymentMode"
+                                                    placeholder="Payment Mode">
+                                            </mat-form-field>
+                                        </div>
+                                        <div fxFlex="100" fxFlex.gt-xs="20" class="fullwidth mt-0">
+                                            <mat-form-field class="col-4" appearance="outline">
+                                                <mat-label>Reference Number</mat-label>
+                                                <input matInput formControlName="referenceNumber"
+                                                    placeholder="Reference Number">
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="col-3">
+                                            <button class="float-left" mat-icon-button color="primary"
+                                                aria-label="Remove/clear" (click)="removeOrClearPayment(i)"
+                                                matTooltip="Remove">
+                                                <mat-icon>highlight_off</mat-icon>
+                                            </button>
+                                            <button class="float-left" mat-icon-button color="primary" aria-label="Add"
+                                                (click)="addPaymentFormGroup()" matTooltip="Add">
+                                                <mat-icon>add_circle_outline</mat-icon>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div fxFlex="100" fxFlex.gt-xs="50" class="fullwidth mt-0">
+                            <mat-form-field class="full-width" appearance="outline"
+                                style="margin-top: 5%; margin-left: 2%;">
+                                <input matInput class="f24" placeholder="Total Amount" formControlName="totalAmount">
+                            </mat-form-field>
+                            <br>
+                            <br>
+                            <mat-form-field class="full-width" appearance="outline" style=" margin-left: 2%;">
+                                <input matInput class="f24" placeholder="Paid Amount" formControlName="paidAmount">
+                            </mat-form-field>
+                            <br>
+                            <br>
+                            <mat-form-field class="full-width" appearance="outline" style=" margin-left: 2%;">
+                                <input matInput class="f24" placeholder="Balance Amount"
+                                    formControlName="balanceAmount">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <mat-card-footer class="pt-3">
+                    <button mat-raised-button color="primary" class="btn-primary-bg mr-12"
+                        (click)="update(purchaseForm.value)">Update</button>
+                </mat-card-footer>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>

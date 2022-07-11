@@ -1,0 +1,387 @@
+h1{
+    font-family: Urbanist ExtraBold;
+   font-size:42px;
+
+  }
+  .signin_btn {
+      background-color:  #3F51B5!important;
+      width: 65%!important;
+      height: 40px;
+      font-family:Urbanist Bold;
+      font-size: 17px;
+      color:whitesmoke;
+      border-radius: 0.5em !important;
+  }
+  
+  .example-full-width{
+    font-family:Urbanist Bold ;
+    font-size: 18px;
+  width: 65%!important; 
+  color: black;
+  }
+  
+    
+  .mat-card.p-0 .mat-card-title .mat-divider {
+      margin-left: 0;
+      margin-right: 0;
+      border-top-color: rgba(0, 0, 0, 0.04);
+    }
+  
+    .mat-card .mat-card-title .mat-divider, .mat-divider.full-width {
+      margin-left: -24px;
+      margin-right: -24px;
+    }
+    
+    
+  .forgot_pass {
+      position: relative;
+      color: #F37474;
+      cursor: pointer;
+      font-size: 15px;
+      font-family: Urbanist Medium;
+  }
+  
+  
+  
+  .otp_btn {
+      width: 100%!important;
+      background-color: #D00928!important;
+      border-radius: 0.5em;
+  }
+  
+  .back_btn {
+    background-color:   #FE4340!important;
+    width: 65%!important;
+    height: 40px;
+    font-family:Urbanist Bold;
+    font-size: 17px;
+    color:whitesmoke;
+    border-radius: 0.5em !important;
+}
+  .form-holder{
+      box-shadow:none !important;
+  }
+  
+  .mt-48{
+      margin-top:0px !important;
+  }
+  .mb-48{
+    margin-left:110px;
+   
+  }
+  .section-left-content img {
+      margin-top:90px !important;
+      width: 898px;
+      height: 730px;
+  }
+  
+  .float-right {
+      float: right;
+  }
+  
+  .form-error-msg {
+      color: #f44336;
+      display: block;
+      padding: 0px 0!important;
+  }
+  .password{
+      color: black;
+  }
+  h1{
+      color: black;
+  }
+  mat-card{
+      height: 500px;
+      width: 600px;
+  }
+  mat-divider {
+      width: 100%;
+  }
+  
+  @media only screen and (min-width:1536px) {
+      .section-left img {
+          width: 920px;
+          height: 660px;
+      }
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  .page-wrap {
+    display: flex;
+    align-items: center;
+    padding: 40px 1rem;
+    height: 100%;
+  }
+  .session-progress {
+    position: relative;
+    bottom: -4px;
+    z-index: 9999;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+  }
+  .session-form-hold {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  .session-form-hold > .mat-card {
+    margin: 0;    
+  }
+  .session-lockscreen {
+    max-width: 320px;
+  }
+  .lockscreen-user {
+    text-align: center;
+    margin-bottom: 1rem;
+    display: flow-root;
+    overflow: hidden;
+  }
+  .lockscreen-face {
+    max-width: 72px;
+    max-height: 72px;
+    border-radius: 50%;
+    margin-bottom: .5rem;
+  }
+  
+  
+  
+  
+  
+  .seciton-left {
+    color: white;
+    position: fixed;
+  
+    // left: 100Px;
+    top: 0%;
+    bottom: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 80vh;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      margin: auto;
+      // background: rgba($color: #000000, $alpha: 0.65);
+      z-index: -1;
+    }
+  }
+  
+  .form-holder {
+    background: white;
+    padding: 16px;
+    position: fixed;
+    right: 0;
+    top: 50px;
+    bottom: 0;
+    min-width: 40%;
+  
+    @media only screen and (max-width: 700px) {
+      width: 100%;
+      .example-full-width{
+        font-family:Urbanist Bold ;
+        font-size: 18px;
+      width: 85%!important; 
+      }
+      .signin_btn {
+        background-color:  #3F51B5!important;
+        width: 85%!important; 
+        height: 40px;
+        font-family:Urbanist Bold;
+        font-size: 17px;
+        color:whitesmoke;
+  
+    }
+    .back_btn {
+      background-color:   #FE4340!important;
+      width: 85%!important;
+      height: 40px;
+      font-family:Urbanist Bold;
+      font-size: 17px;
+      color:whitesmoke;
+      border-radius: 0.5em !important;
+  }
+  .verify_btn {
+    width: 80px !important;
+    padding: 0px 0px;
+    line-height: 25px;
+    border-radius: 0.5em !important;
+    position: relative;
+    bottom: 74px;
+    left: 65%;
+    color: #ffffff;
+    background-color: #3F51B5;
+  }
+  
+    }
+  }
+  
+  .signup-form {
+    padding: 20px 20px  20px;
+  }
+  
+  
+  
+  
+  
+  
+  
+  .signup3-wrap {
+    width: 100%;
+    height: 100vh;
+    // background: url('assets/images/trianglify-1.png');
+    z-index: -1;
+  }
+  
+  .signup3-form-holder {
+    position: absolute;
+    width: 380px;
+    height: 100vh;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background: #ffffff;
+    @media only screen and (max-width: 600px) {
+      width: 100%;
+    }
+  }
+  
+  .signup3-form {
+    padding: 20px 20px 70px 20px;
+  }
+  
+  .signup3-header {
+    text-align: center;
+    padding-bottom: 30px;
+  }
+  
+  
+  .signup4-container {
+      border-radius: 12px;
+      position: relative;
+      overflow: hidden;
+  }
+  
+  .signup4-header {
+      position: relative;
+      color: white;
+      padding: 35px;
+  
+      & > div {
+          z-index: 2;
+      }
+  }
+  
+  .signup4-header::before{
+      // background-color: rgba(3, 143, 222, 0.7);
+      content: '';
+      top: 0;
+      left: 0;
+      display: block;
+      height: 100%;
+      position: absolute;
+      width: 100%;
+    }
+  
+  .signup4-small-image {
+      height: 24px;
+  }
+  .signup4-form {
+      padding: 35px;
+  }
+  
+  .signup4-button {
+      text-align: center;
+      .mat-raised-button {
+          border-radius: 18px;
+      }
+  }
+  // same as _signup-4.scss
+
+
+  input {
+    color: black !important;
+  }
+  .verify_btn {
+    width: 80px !important;
+    padding: 0px 0px;
+    line-height: 25px;
+    border-radius: 0.5em !important;
+    position: relative;
+    bottom: 74px;
+    left: 51%;
+    color: #ffffff;
+    background-color: #3F51B5;
+  }
+  
+
+  
+  button span {
+    color: white !important;
+  }
+  span.mat-button-wrapper {
+    font-size: 13px !important;
+    color: white !important;
+  }
+  .section-left img {
+    width: 60%;
+    height: 730px;
+  }
+  .form-error-msg {
+    color: #f44336;
+    display: block;
+    padding: 0px 0 !important;
+  }
+  .otp {
+    margin-top: -12px;
+    margin-bottom: 16px;
+  }
+  button.signin_btn.mat-raised-button.mat-button-base {
+    color: white !important;
+  }
+  
+  .form-holder {
+    box-shadow: none !important;
+  }
+  
+  .mt-48 {
+    margin-top: 0px !important;
+  }
+  h1 {
+    color: black;
+  }
+  

@@ -1,0 +1,88 @@
+<!-- <div fxLayout="row wrap" class="mt-16">
+    <div fxFlex="100" fxFlex.gt-xs="100">
+        <div fxFlex="100" fxFlex.gt-xs="95" class="mt-0 mb-4">
+        </div>
+        <div fxFlex="100" fxFlex.gt-xs="5" class="mt-0 mb-4">
+            <button mat-stroked-button class="mt-8 ml-12" color="primary" printTitle="PETAL AUTOMATIONS"
+                printSectionId="print-section" [useExistingCss]="true" ngxPrint> Print</button>
+        </div>
+    </div>
+</div> -->
+<div class="" id="print-section">
+    <mat-card class="p-0">
+        <mat-card-title class="">
+            <div fxLayout="row wrap">
+                <div fxFlex="100" fxFlex.gt-xs="100">
+                    <div class="card-title-text">Employee-Assign</div>
+                </div>
+            </div>
+            <mat-divider></mat-divider>
+        </mat-card-title>
+        <mat-card-content>
+            <form [formGroup]="basicForm">
+                <div fxLayout="row wrap" class="mt-12">
+                    <div fxFlex="100" fxFlex.gt-xs="25" class="mt-12 mr-16">
+                        <div class="pb-1">
+                            <mat-form-field class="full-width" appearance="outline">
+                                <mat-label> Select District <span class="red_color">*</span></mat-label>
+                                <mat-select formControlName="branchDistrictId"  (selectionChange)="onItemSelect($event)">
+                                    <mat-option *ngFor="let client of district" [value]="client.districtId">
+                                        {{client.districtName}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div fxFlex="100" fxFlex.gt-xs="25" class="mt-12 mr-16">
+                        <div class="pb-1">
+                            <mat-form-field class="full-width" appearance="outline">
+                                <mat-label> Select Branch <span class="red_color">*</span></mat-label>
+                                <mat-select formControlName="branchId">
+                                    <mat-option *ngFor="let client of branch" [value]="client.branchId">
+                                        {{client.branchName}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div fxFlex="100" fxFlex.gt-xs="25" class="mt-12 mr-16">
+                        <button mat-stroked-button color="primary" type="submit" (click)="Daily()"
+                            class="space">Report</button>
+                    </div>
+                </div>
+                <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8 emp-tabel">
+                    <ng-container matColumnDef="employeeId">
+                        <th mat-header-cell *matHeaderCellDef class="text-center"> Employee ID
+                        </th>
+                        <td mat-cell *matCellDef="let element" class="text-center"> {{element.employeeId}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="employeeName">
+                        <th mat-header-cell *matHeaderCellDef class="text-center"> Employee Name
+                        </th>
+                        <td mat-cell *matCellDef="let element" class="text-center"> {{element.employeeName}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="clientName">
+                        <th mat-header-cell *matHeaderCellDef class="text-center"> Branch Name
+                        </th>
+                        <td mat-cell *matCellDef="let element" class="text-center"> {{element.branchName}} </td>
+                    </ng-container>
+
+
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+                <ng-container *ngIf="dataSource.data.length === 0  ">
+                    <p class="text-center"> <b>No Data Found...</b> </p>
+                </ng-container>
+                <mat-paginator class="paginator" [length]="paginationDTO.totalSize" [pageSize]="paginationDTO.limit"
+                    [pageIndex]="paginationDTO.offset" [pageSizeOptions]="pageSizeOptions"
+                    (page)="onPaginateChange($event)">
+                </mat-paginator>
+            </form>
+        </mat-card-content>
+        <mat-spinner *ngIf="resourcesLoaded"></mat-spinner>
+    </mat-card>
+</div>

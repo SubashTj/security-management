@@ -1,0 +1,134 @@
+<div class="create_employee">
+    <mat-card class="p-0 pagewrap">
+        <mat-card-title class="">
+            <div class="card-title-text">Create Quotation</div>
+            <mat-divider></mat-divider>
+        </mat-card-title>
+        <mat-card-content>
+            <form [formGroup]="quotationForm">
+                <div fxLayout="row wrap" class="row ">
+                    <div fxFlex="100" fxFlex.gt-xs="35" class="fullwidth mt-0">
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Quotation Name<span class="red_color">*</span></mat-label>
+                            <input matInput name="quotationName" id="quotationName" formControlName="quotationName"
+                                placeholder="Quotation Name" value="">
+                        </mat-form-field>
+                        <br>
+                        <br>
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Client Name<span class="red_color">*</span></mat-label>
+                            <input matInput name="clientName" id="clientName" formControlName="clientName"
+                                placeholder="CLient Name" value="">
+                        </mat-form-field>
+                        <br>
+                        <br>
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Address<span class="red_color">*</span></mat-label>
+                            <input matInput name="address" name="address" id="address" formControlName="address"
+                                placeholder="Address" value="">
+                        </mat-form-field>
+                    </div>
+                    <div fxFlex="100" fxFlex.gt-xs="5">
+                    </div>
+                    <div fxFlex="100" fxFlex.gt-xs="35" class="fullwidth mt-0">
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Phone Number<span class="red_color">*</span></mat-label>
+                            <input matInput name="phoneNo" name="contactNo" id="contactNo" formControlName="contactNo"
+                                placeholder="Phone Number" value="">
+                        </mat-form-field>
+                        <br>
+                        <br>
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>EmailId<span class="red_color">*</span></mat-label>
+                            <input matInput name="email" id="email" formControlName="email" placeholder="email"
+                                value="">
+                        </mat-form-field>
+                    </div>
+                    <div fxFlex="100" fxFlex.gt-xs="100" class="fullwidth mt-0">
+                        <div class="card" style="margin-top:3%">
+                            <div class="card-header">
+                                <h2>Employee Details</h2>
+                            </div>
+                            <div class="card-body">
+                                <div formArrayName="items">
+                                    <div class="row"
+                                        *ngFor="let items of quotationForm.get('items')['controls']; let i = index"
+                                        [formGroupName]="i">
+                                        <div fxFlex="100" fxFlex.gt-xs="19.5" class="fullwidth mt-0">
+                                            <mat-form-field class="col-4" appearance="outline">
+                                                <mat-label>Designation</mat-label>
+                                                <mat-select matNativeControl name="designation" id="designation"
+                                                    formControlName="designation" placeholder="designation">
+                                                    <mat-option *ngFor="let type of designation; let i = index"
+                                                        [value]="type.designation">
+                                                        {{type.designation}}
+                                                    </mat-option>
+                                                </mat-select>
+                                            </mat-form-field>
+                                        </div>
+                                        <div fxFlex="100" fxFlex.gt-xs="19.5" class="fullwidth mt-0">
+                                            <mat-form-field class="col-4" appearance="outline">
+                                                <mat-label>No Of Employees</mat-label>
+                                                <input matInput type="number" name="noOfEmployees"
+                                                    formControlName="noOfEmployees" id="noOfEmployees"
+                                                    placeholder="noOfEmployees">
+                                            </mat-form-field>
+                                        </div>
+                                        <div fxFlex="100" fxFlex.gt-xs="19.5" class="fullwidth mt-0">
+                                            <mat-form-field class="col-4" appearance="outline">
+                                                <mat-label>Unit Price (Per Day)</mat-label>
+                                                <input matInput #first name="valuea" name="unitsPerDay" type="number"
+                                                    formControlName="unitsPerDay" placeholder="unitsPerDay">
+                                            </mat-form-field>
+                                        </div>
+                                        <div fxFlex="100" fxFlex.gt-xs="19.5" class="fullwidth mt-0">
+                                            <mat-form-field class="col-4" appearance="outline">
+                                                <mat-label>Working Duration</mat-label>
+                                                <input matInput #second name="valueb" name="workingDuration"
+                                                    formControlName="workingDuration" type="number"
+                                                    placeholder="workingDuration">
+                                            </mat-form-field>
+                                        </div>
+                                        <div fxFlex="100" fxFlex.gt-xs="19.5" class="fullwidth mt-0">
+                                            <mat-form-field class="col-4" appearance="outline">
+                                                <mat-label>Net Amount</mat-label>
+                                                <input matInput #third [value]="(first.value * second.value)"
+                                                    name="amount" formControlName="amount" placeholder="amount"
+                                                    readonly>
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="col-3">
+                                            <button class="float-left" mat-icon-button color="primary"
+                                                aria-label="Remove/clear" (click)="removeOrClearItem(i)"
+                                                matTooltip="Remove">
+                                                <mat-icon>highlight_off</mat-icon>
+                                            </button>
+                                            <button class="float-left" mat-icon-button color="primary" aria-label="Add"
+                                                (click)="addItemFormGroup()" matTooltip="Add">
+                                                <mat-icon>add_circle_outline</mat-icon>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div fxFlex="100" fxFlex.gt-xs="100" class="fullwidth mt-0">
+                        <div style="margin-top:2%">
+                            <button mat-raised-button type="button" class="btn-primary-bg mr-12"
+                                (click)="quotationForm.valid ? generatePDF('download',quotationForm.value) : ''">Download
+                                Quotation</button>
+                            <button mat-raised-button type="submit" class="btn-primary-bg mr-12"
+                                (click)="quotationForm.valid ? generatePDF('open',quotationForm.value) : ''">Open
+                                Quotation</button>
+                            <button mat-raised-button type="button" class="btn-primary-bg mr-12"
+                                (click)="quotationForm.valid ? generatePDF('print',quotationForm.value) : ''">Print
+                                Quotation</button>
+                        </div>
+
+                    </div>
+                </div>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>

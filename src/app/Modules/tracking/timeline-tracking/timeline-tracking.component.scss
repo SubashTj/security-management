@@ -1,0 +1,757 @@
+// .pagewrap{
+//     margin-top: 90px;
+//   }
+.department .mat-form-field-appearance-fill .mat-form-field-subscript-wrapper {
+  padding: 0 0px;
+}
+.mat-form-field {
+  width:50%;
+}
+
+.btn-primary-bg {
+  line-height: 22px !important;
+  padding: 0 15px !important;
+  min-width: 55px !important;
+  margin-left: 12px !important;
+}
+.btn-primary-bg {
+  background:  #4d5ad1 !important;
+  color: #fff !important;
+  // border-radius: 0.7em !important;
+  border: 1px solid  #4d5ad1 !important;
+  font-family:Urbanist Medium;
+}
+
+.primary-txt-color {
+  color: #4d5ad1  !important;
+}
+@media (max-width: 505px) {
+  mat-card-footer.mat-card-footer .btn-primary-bg {
+    line-height: 18px !important;
+    padding: 0 9px !important;
+    min-width: 51px !important;
+  }
+
+  mat-card-footer.mat-card-footer span.mat-button-wrapper {
+    font-size: 10px !important;
+  }
+
+  .mat-dialog-container {
+    padding: 0px !important;
+  }
+}
+// .create_employee{
+//   margin-top: 70px;
+// }
+.searc-icon {
+  position: absolute;
+  top: 112px;
+  right: 27px;
+  font-size: 18px;
+}
+
+.mr-10{
+margin-right:10px;
+
+}
+
+.mt-10{
+margin-top:10px;
+}
+
+.ml-10{
+margin-left:10px;
+
+}
+
+
+.emp-code{
+margin-top:-14px;
+}
+
+table {
+width: 100%;
+}
+
+.ml-0{
+margin-left: 0px !important;
+}
+
+.mt-minus-15{
+margin-top:-15px;
+}
+
+.dateshow  .mat-form-field{
+  display: block !important;
+}
+
+/* mat-form-field{
+  margin-bottom: -15px;
+} */
+
+.mat-tab {
+  font-size: 14px;
+  text-transform: uppercase;
+}
+.f24{
+font-size:24px;
+}
+
+.date-month-block mat-form-field{
+display:block !important;
+}
+
+.danger-txt-color{
+color:red;
+}
+
+
+.text-right{
+text-align:right;
+}
+
+.checkbox-field th{
+  width: 6%;
+  text-align: center;
+}
+
+
+image-cropper {
+  width: 120px;
+  height: 113px;
+}
+.preview_image{
+  /* border: 1px solid #80808073;  */
+  /* max-width:100px!important; */
+  height:100px;
+    margin: 0 auto;
+}
+@media(max-width:414px){
+  .create_employee.ng-tns-c375-2 {
+      width: 414px;
+  }
+  .fullwidth{
+      flex-direction:column!important;
+  }
+}
+@media(max-width:375px){
+  .create_employee.ng-tns-c376-2 {
+      width: 375px!important;
+  }
+}
+@media(max-width:360px){
+  .create_employee.ng-tns-c376-2 {
+      width: 360px!important;
+  }
+}
+.hide_btn{
+  background:white!important;
+  color:black!important;
+}
+.generate_btn{
+  background: #01A39D!important;
+  line-height:25px;
+  padding:0 16px;
+  color: white!important;
+}
+table mat-form-field.mat-form-field {
+  width: 98%!important;
+}
+@media(max-width:320px){
+  .create_employee.ng-tns-c376-2 {
+      width: 320px!important;
+  }
+}
+
+.f11{
+font-size:11px;
+}
+
+.table-container span{
+    font-size: 12px;
+}
+
+.f15{
+font-size:15px;
+}
+
+
+.create_employee mat-icon{
+      font-size: 14px !important; 
+      height: 18px;
+      vertical-align: text-top;
+}
+
+.create_employee .browse-block label{
+  font-size: 12px;
+  margin-right: 5px;
+}
+
+
+
+
+
+
+td.mat-cell {
+  /* padding-top: 12px; */
+  padding-bottom: 12px;
+  /* padding-right: 4px; */
+}
+td.mat-cell, th.mat-header-cell {
+  border-bottom: 1px solid #80808042;
+  border-collapse:collapse;
+}
+
+table.mat-table {
+  border-spacing: 0;
+}
+.btn-primary-bg {
+  line-height: 22px !important;
+  padding: 0 15px !important;
+  min-width: 55px !important;
+  height: 30px;
+  margin-left: 12px !important;
+}
+.btn-primary-bg {
+  background:  #4d5ad1 !important;
+  color: #fff !important;
+  border: 1px solid  #4d5ad1 !important;
+  font-family:Urbanist Medium;
+}
+.mr-8{margin-left:30px;}
+button{
+  margin-top: 5px;
+  margin-left: 10px;
+
+}
+.searc-icon {
+  position: absolute;
+  top: 112px;
+  right: 27px;
+  font-size: 18px;
+}
+
+.mr-10{
+margin-right:10px;
+
+}
+
+.mt-10{
+margin-top:10px;
+}
+
+.ml-10{
+margin-left:10px;
+
+margin-top:-14px;
+}
+
+table {
+width: 100%;
+}
+
+.ml-0{
+margin-left: 0px !important;
+}
+
+.mt-minus-15{
+margin-top:-15px;
+}
+
+.dateshow  .mat-form-field{
+  display: block !important;
+}
+
+  .mat-form-field {
+      width:80%;
+  }
+
+.mat-tab {
+  font-size: 14px;
+  text-transform: uppercase;
+}
+.f24{
+font-size:24px;
+}
+
+.date-month-block mat-form-field{
+display:block !important;
+}
+
+.danger-txt-color{
+color:red;
+}
+
+.assign-btn{
+background: #019fa2 !important;
+color: #fff !important;
+border-radius: 0px !important;
+border: 1px solid #019FA2 !important;
+line-height: 17px !important;
+padding: 0 10px !important;
+}
+
+.text-right{
+text-align:right;
+}
+
+.checkbox-field th{
+  width: 6%;
+  text-align: center;
+}
+
+
+image-cropper {
+  width: 120px;
+  height: 113px;
+}
+.preview_image{
+  /* border: 1px solid #80808073;  */
+  /* max-width:100px!important; */
+  height:100px;
+    margin: 0 auto;
+}
+@media(max-width:414px){
+  .create_employee.ng-tns-c375-2 {
+      width: 414px;
+  }
+  .fullwidth{
+      flex-direction:column!important;
+  }
+}
+@media(max-width:375px){
+  .create_employee.ng-tns-c376-2 {
+      width: 375px!important;
+  }
+}
+@media(max-width:360px){
+  .create_employee.ng-tns-c376-2 {
+      width: 360px!important;
+  }
+}
+.hide_btn{
+  background:white!important;
+  color:black!important;
+}
+.generate_btn{
+  background: #01A39D!important;
+  line-height:25px;
+  padding:0 16px;
+  color: white!important;
+}
+table mat-form-field.mat-form-field {
+  width: 98%!important;
+}
+@media(max-width:320px){
+  .create_employee.ng-tns-c376-2 {
+      width: 320px!important;
+  }
+}
+
+.f11{
+font-size:11px;
+}
+
+.table-container span{
+    font-size: 12px;
+}
+
+.f15{
+font-size:15px;
+}
+.main-footer {
+  padding: 0 .667rem;
+  min-height: 64px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.create_employee mat-icon{
+      font-size: 14px !important; 
+      height: 18px;
+      vertical-align: text-top;
+}
+
+.create_employee .browse-block label{
+  font-size: 12px;
+  margin-right: 5px;
+}
+
+.mat-card {
+  margin: .5rem;
+  overflow: hidden;
+
+  &.rounded-circle {
+    border-radius: 200px !important;
+  }
+}
+.mat-card.default {
+  padding: 0;
+}
+.mat-card.default .mat-card-title {
+  padding-top: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  line-height: 1;
+  font-weight: 400;
+}
+.mat-card.default>:first-child {
+  border-radius: 2px 2px 0 0;
+}
+.mat-card.default .mat-card-subtitle:first-child {
+  padding-top: 1rem;
+}
+.mat-card.default .mat-card-subtitle {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  line-height: 1;
+}
+.mat-card.default .mat-card-content {
+  padding: 1rem;
+  margin-bottom: 0;
+  position: relative;
+}
+.mat-card.default .mat-card-actions,
+.mat-card.default .mat-card-actions:last-child {
+  padding: .5rem;
+  margin: 0;
+}
+.mat-card.default>:last-child {
+  border-radius: 0 0 2px 2px;
+}
+.create_student .transport mat-form-field {
+  max-width: 100% !important;
+}
+.mat-card .mat-card-title .mat-divider, .mat-divider.full-width {
+  margin-left: -24px;
+  margin-right: -24px;
+}
+.mat-card.p-0 .mat-card-title .mat-divider {
+  border-top-color: rgba(0, 0, 0, 0.35) !important;
+}
+.mat-card.p-0 .mat-card-title .card-title-text {
+  padding: 1rem 1.5rem;
+  font-family:Urbanist Bold;
+}
+.mat-card.p-0 .mat-card-title .card-title-text .card-control {
+  height: 24px;
+  width: 24px;
+  line-height: 24px;
+}
+.mat-card.p-0 .mat-card-title .card-title-text .mat-card-subtitle {
+  margin: 0;
+}
+.mat-card.p-0 .mat-card-title .mat-divider {
+  margin-left: 0;
+  margin-right: 0;
+  border-top-color: rgba(0, 0, 0, 0.04);
+}
+.mat-card.p-0 .mat-card-image {
+  margin: 0 0 1rem !important;
+}
+.mat-card.p-0 .mat-card-content {
+  padding:  0 1.5rem 1.5rem;
+}
+
+td.mat-cell {
+  /* padding-top: 12px; */
+  padding-bottom: 12px;
+  /* padding-right: 4px; */
+}
+td.mat-cell, th.mat-header-cell {
+  border-bottom: 1px solid #80808042;
+  border-collapse:collapse;
+}
+
+table.mat-table {
+  border-spacing: 0;
+}
+.text-right {
+  text-align: right;
+}
+.text-muted {
+  color: rgba(0, 0, 0, .54) !important;
+}
+.text-muted-white {
+  color: rgba(255, 255, 255, .54) !important;
+}
+
+$spaces: (
+  0: 0px,
+  4: 4px,
+  8: 8px,
+  12: 12px,
+  16: 16px,
+  24: 24px,
+  28: 28px,
+  32: 32px,
+  36: 36px,
+  40: 40px,
+  44: 44px,
+  48: 48px
+);
+
+@each $name, $value in $spaces {
+  .m-#{$name} {
+      margin: $value !important;
+  }
+  .mt-#{$name} {
+    margin-top: $value !important;
+  }
+  .mr-#{$name} {
+    margin-right: $value !important;
+  }
+  .mb-#{$name} {
+    margin-bottom: $value !important;
+  }
+  .ml-#{$name} {
+    margin-left: $value !important;
+  }
+  .mx-#{$name} {
+    margin-left: $value !important;
+    margin-right: $value !important;
+  }
+  .my-#{$name} {
+    margin-top: $value !important;
+    margin-bottom: $value !important;
+  }
+
+  .p-#{$name} {
+    padding: $value !important;
+  }
+  .pt-#{$name} {
+    padding-top: $value !important;
+  }
+  .pr-#{$name} {
+    padding-right: $value !important;
+  }
+  .pb-#{$name} {
+    padding-bottom: $value !important;
+  }
+  .pl-#{$name} {
+    padding-left: $value !important;
+  }
+  .px-#{$name} {
+    padding-left: $value !important;
+    padding-right: $value !important;
+  }
+  .py-#{$name} {
+    padding-top: $value !important;
+    padding-bottom: $value !important;
+  }
+}
+
+.m-auto {
+  margin: auto !important;
+}
+.mx-auto {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+.my-auto {
+  margin-top: auto !important;
+  margin-bottom: auto !important;
+}
+
+// Old Spacing classes
+
+.m-1 {
+  margin: 1rem !important;
+}
+.mt-1 {
+  margin-top: 1rem !important;
+}
+.mt-05 {
+  margin-top: .5rem !important;
+}
+.mt-0 {
+  margin-top: 0 !important;
+}
+.mr-1 {
+  margin-right: 1rem !important;
+}
+.mr-05 {
+  margin-right: .5rem !important;
+}
+.mr-0 {
+  margin-right: 0 !important;
+}
+.mb-1 {
+  margin-bottom: 1rem !important;
+}
+.mb-0 {
+  margin-bottom: 0 !important;
+}
+.mb-05 {
+  margin-bottom: .5rem !important;
+}
+.ml-1 {
+  margin-left: 1rem !important;
+}
+.ml-05 {
+  margin-left: .5rem !important;
+}
+.ml-0 {
+  margin-left: 0 !important;
+}
+
+.m-033 {
+  margin: .333333rem !important;
+}
+.m-333 {
+  margin: .333333rem !important;
+}
+.margin-333 {
+  margin: .333333rem !important;
+}
+
+
+.pt-1 {
+  padding-top: 1rem !important;
+}
+.pt-0 {
+  padding-top: 0 !important;
+}
+.pt-05 {
+  padding-top: .5rem !important;
+}
+.pr-1 {
+  padding-right: 1rem !important;
+}
+.pr-0 {
+  padding-right: 0 !important;
+}
+.pr-05 {
+  padding-right: .5rem !important;
+}
+.pb-1 {
+  padding-bottom: 1rem !important;
+}
+.pb-0 {
+  padding-bottom: 0 !important;
+}
+.pb-05 {
+  padding-bottom: .5rem !important;
+}
+.pl-1 {
+  padding-left: 1rem !important;
+}
+.pl-0 {
+  padding-left: 0 !important;
+}
+.pl-05 {
+  padding-left: .5rem !important;
+}
+.p-0 {
+  padding: 0 !important;
+}
+.p-1 {
+  padding: 1rem !important;
+}
+.p-05 {
+  padding: .5rem !important;
+}
+
+
+[dir=rtl] {
+  .pr-1 {
+    padding-left: 1rem;
+    padding-right: 0 !important;
+  }
+  .mr-1 {
+    margin-right: 0 !important;
+    margin-left: 1rem;
+  }
+}
+//timeline
+/* The actual timeline (the vertical ruler) */
+.timeline {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* The actual timeline (the vertical ruler) */
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  background-color: black;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -3px;
+}
+.container {
+  padding: 10px 40px;
+  position: relative;
+  background-color: inherit;
+  width: 35%;
+}
+
+/* The circles on the timeline */
+.container::after {
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  right: -17px;
+  background-color: black;
+  border: 4px solid #ff9f55;
+  top: 15px;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+/* Place the container to the left */
+.left {
+  left:15%;
+}
+
+/* Place the container to the right */
+.right {
+  left: 50%;
+}
+
+/* Add arrows to the left container (pointing right) */
+.left::before {
+  content: ' ';
+  height: 0;
+  position: absolute;
+  top: 22px;
+  width: 0;
+  z-index: 1;
+  right: 30px;
+  border: medium solid black;
+  border-width: 10px 0 10px 10px;
+  border-color: transparent transparent transparent black;
+}
+
+/* Add arrows to the right container (pointing left) */
+.right::before {
+  content: ' ';
+  height: 0;
+  position: absolute;
+  top: 22px;
+  width: 0;
+  z-index: 1;
+  left: 30px;
+  border: medium solid black;
+  border-width: 10px 10px 10px 0;
+  border-color: transparent black transparent transparent;
+}
+
+/* Fix the circle for containers on the right side */
+.right::after {
+  left: -16px;
+}
+
+/* The actual content */
+.content {
+  padding: 20px 30px;
+  color: #fff;
+  background-color: black;
+  position: relative;
+  border-radius: 6px;
+}

@@ -1,0 +1,141 @@
+<mat-card class="p-0">
+    <mat-card-title class="">
+        <div class="card-title-text">Create Expense</div>
+        <mat-divider></mat-divider>
+    </mat-card-title>
+    <mat-card-content>
+        <form [formGroup]="salaryForm" class="position">
+            <div fxLayout="row wrap" class="mt-24">
+                <div fxFlex="100" fxFlex.gt-xs="100" class="pr-1">
+
+                    <div class="pb-1">
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Select District</mat-label>
+                            <mat-select formControlName="districtId">
+                                <mat-option *ngFor="let branch of branches" [value]="branch.districtId">
+                                    {{branch.districtName }}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div fxFlex="100" fxFlex.gt-xs="100" class="pr-1">
+
+                    <div class="pb-1">
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label> Select Expense Title <span class="red_color">*</span></mat-label>
+                            <mat-select formControlName="expenseTypeId">
+                                <mat-option *ngFor="let position of expensetype" [value]="position.expenseTypeId">
+                                    {{position.expenseName}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="salaryForm.controls['expenseTypeId'].hasError('required') 
+                             && salaryForm.controls['expenseTypeId'].touched" class="form-error-msg">Please Choose
+                                Expense Title
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div fxFlex="100" fxFlex.gt-xs="100" class="pr-1">
+                    <div class="pb-1">
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label> Select Transaction Type <span class="red_color">*</span></mat-label>
+                            <mat-select formControlName="transactionTypeId">
+                                <mat-option *ngFor="let position of transactiontype" [value]="position.transactionTypeId">
+                                    {{position.type}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="salaryForm.controls['transactionTypeId'].hasError('required') 
+                             && salaryForm.controls['transactionTypeId'].touched" class="form-error-msg">Please Choose
+                                Transaction Type
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div fxFlex="100" fxFlex.gt-xs="100" class="pr-1">
+                    <div class="pb-1">
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label> Select Sender Account <span class="red_color">*</span></mat-label>
+                            <mat-select formControlName="senderAccountId">
+                                <mat-option *ngFor="let position of sender" [value]="position.accountId">
+                                    {{position.accountHolderName}} - {{position.accountNo}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="salaryForm.controls['senderAccountId'].hasError('required') 
+                             && salaryForm.controls['senderAccountId'].touched" class="form-error-msg">Please Choose
+                                Sender Account
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div fxFlex="100" fxFlex.gt-xs="100" class="pr-1">
+                    <div class="pb-1">
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label> Select Reciver Account <span class="red_color">*</span></mat-label>
+                            <mat-select formControlName="receiverAccountId">
+                                <mat-option *ngFor="let position of receiver" [value]="position.accountId">
+                                    {{position.accountHolderName}} - {{position.accountNo}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="salaryForm.controls['receiverAccountId'].hasError('required') 
+                             && salaryForm.controls['receiverAccountId'].touched" class="form-error-msg">Please Choose Reciver
+                                Account
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div fxFlex="100" fxFlex.gt-xs="100" class="pr-1">
+                    <div class="pb-1">
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Date<span class="red_color">*</span></mat-label>
+                            <input matInput type="date" name="date" formControlName="date" placeholder="Date" value="">
+                            <mat-error *ngIf="salaryForm.controls['date'].hasError('required') 
+                                && salaryForm.controls['date'].touched 
+                                || salaryForm.controls['date'].hasError('pattern') 
+                                && salaryForm.controls['date'].touched" class="form-error-msg">Account-No
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div fxFlex="100" fxFlex.gt-xs="100" class="pr-1">
+                    <div class="pb-1">
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Amount<span class="red_color">*</span></mat-label>
+                            <input matInput name="amount" formControlName="amount" placeholder="Amount" value="">
+                            <mat-error *ngIf="salaryForm.controls['amount'].hasError('required') 
+                                && salaryForm.controls['amount'].touched 
+                                || salaryForm.controls['amount'].hasError('pattern') 
+                                && salaryForm.controls['amount'].touched" class="form-error-msg"> Enter Amount
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div fxFlex="100" fxFlex.gt-xs="100" class="pr-1">
+                    <div class="pb-1">
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label> Description <span class="red_color">*</span></mat-label>
+                            <input matInput name="expenseDescription" formControlName="expenseDescription"
+                                placeholder="Description" value="">
+                            <mat-error *ngIf="salaryForm.controls['expenseDescription'].hasError('required') 
+                        && salaryForm.controls['expenseDescription'].touched 
+                        || salaryForm.controls['expenseDescription'].hasError('pattern') 
+                        && salaryForm.controls['expenseDescription'].touched" class="form-error-msg">Total Description
+                                Required
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+            </div>
+            <mat-card-footer class="pt-0">
+                <button mat-raised-button color="primary" class="btn-primary-bg mr-12"
+                    (click)="save(salaryForm.value)">Save</button>
+
+                <button mat-raised-button color="primary" class="btn-primary-bg mr-12"
+                    (click)=" discard()">Close</button>
+
+            </mat-card-footer>
+        </form>
+    </mat-card-content>
+</mat-card>
