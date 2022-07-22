@@ -1,0 +1,118 @@
+<div fxLayout="row wrap" class="mt-16">
+  <div fxFlex="100" fxFlex.gt-xs="100">
+    <div fxFlex="100" fxFlex.gt-xs="95" class="mt-0 mb-4">
+    </div>
+    <div fxFlex="100" fxFlex.gt-xs="5" class="mt-0 mb-4">
+      <button mat-stroked-button class="mt-8 ml-12" color="primary" printTitle="PETAL AUTOMATIONS"
+        printSectionId="print-section" [useExistingCss]="true" ngxPrint> Print</button>
+    </div>
+  </div>
+</div>
+<div class="" id="print-section">
+  <mat-card class="p-0">
+    <mat-card-title class="">
+      <div fxLayout="row wrap">
+        <div fxFlex="100" fxFlex.gt-xs="100">
+          <div class="card-title-text">Restricted Area - Employee</div>
+        </div>
+      </div>
+      <mat-divider></mat-divider>
+    </mat-card-title>
+    <mat-card-content>
+      <mat-radio-group name="isVisible" [(ngModel)]="isVisible">
+        <mat-radio-button (change)="setType($event)" value="Daily">Daily</mat-radio-button>
+      </mat-radio-group>
+      <form [formGroup]="basicForm">
+
+
+        <div *ngIf="selectedValue === 'Daily'">
+          <mat-card>
+            <div fxLayout="row wrap" class="mt-12">
+              <div fxFlex="100" fxFlex.gt-xs="25" class="mt-12 mr-16">
+                <mat-form-field class="margin">
+                  <mat-label>Employee Code<span class="red_color">*</span></mat-label>
+                  <input matInput name="employeeId" formControlName="employeeId">
+                </mat-form-field>
+              </div>
+
+              <div fxFlex="100" fxFlex.gt-xs="25" class="mt-12 mr-16">
+                <mat-form-field class="margin">
+                  <mat-label>Date<span class="red_color">*</span></mat-label>
+                  <input matInput name="thisDate" [matDatepicker]="picker2" formControlName="thisDate">
+                  <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                  <mat-datepicker #picker2></mat-datepicker>
+                </mat-form-field>
+              </div>
+              <div fxFlex="100" fxFlex.gt-xs="25" class="mt-12 mr-16">
+                <button mat-stroked-button color="primary" type="submit" (click)="Daily()" class="space">Report</button>
+              </div>
+            </div>
+          </mat-card>
+
+          <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8 emp-tabel" *ngIf="show">
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef class="text-center"> Name
+              </th>
+              <td mat-cell *matCellDef="let element" class="text-center"> {{element.name}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="departmentName">
+              <th mat-header-cell *matHeaderCellDef class="text-center"> DepartmentName
+              </th>
+              <td mat-cell *matCellDef="let element" class="text-center"> {{element.departmentName}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="speciality">
+              <th mat-header-cell *matHeaderCellDef class="text-center"> Speciality
+              </th>
+              <td mat-cell *matCellDef="let element" class="text-center"> {{element.speciality}} </td>
+            </ng-container>
+            <ng-container matColumnDef="employeeId">
+              <th mat-header-cell *matHeaderCellDef class="text-center"> employeeId </th>
+              <td mat-cell *matCellDef="let element" class="text-center"> {{element.employeeId}} </td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="mac">
+              <th mat-header-cell *matHeaderCellDef class="text-center"> Mac </th>
+              <td mat-cell *matCellDef="let element" class="text-center"> {{element.mac}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="topic">
+              <th mat-header-cell *matHeaderCellDef class="text-center"> Topic </th>
+              <td mat-cell *matCellDef="let element" class="text-center"> {{element.topic}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="thisDate">
+              <th mat-header-cell *matHeaderCellDef class="text-center"> ThisDate </th>
+              <td mat-cell *matCellDef="let element" class="text-center"> {{element.thisDate}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="inTimestamp">
+              <th mat-header-cell *matHeaderCellDef class="text-center"> InTime </th>
+              <td mat-cell *matCellDef="let element" class="text-center"> {{element.inTimestamp}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="outTimestamp">
+              <th mat-header-cell *matHeaderCellDef class="text-center"> OutTime </th>
+              <td mat-cell *matCellDef="let element" class="text-center"> {{element.outTimestamp}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="difference">
+              <th mat-header-cell *matHeaderCellDef class="text-center"> Difference </th>
+              <td mat-cell *matCellDef="let element" class="text-center"> {{element.difference}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+        </div>
+        <ng-container *ngIf="dataSource.data.length === 0  ">
+          <p class="text-center"> <b>No Data Found...</b> </p>
+        </ng-container>
+
+      </form>
+    </mat-card-content>
+    <mat-spinner *ngIf="resourcesLoaded"></mat-spinner>
+  </mat-card>
+</div>

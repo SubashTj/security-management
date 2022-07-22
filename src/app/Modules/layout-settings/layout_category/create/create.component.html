@@ -1,0 +1,33 @@
+<mat-card class="p-0">
+    <mat-card-title class="">
+        <div class="card-title-text">Create Designation </div>
+        <mat-divider></mat-divider>
+    </mat-card-title>
+    <mat-card-content>
+        <form [formGroup]="layoutForm" class="category">
+            <div fxLayout="row wrap" class="mt-24">
+                <div fxFlex="100" fxFlex.gt-xs="100" class="pr-1">
+                    <div class="pb-1">
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label> Layout Category Name<span class="red_color">*</span></mat-label>
+                            <input matInput name="layoutCategoryName" formControlName="layoutCategoryName" value="">
+                            <mat-error *ngIf="layoutForm.controls['layoutCategoryName'].hasError('required') 
+                                && layoutForm.controls['layoutCategoryName'].touched 
+                                || layoutForm.controls['layoutCategoryName'].hasError('pattern') 
+                                && layoutForm.controls['layoutCategoryName'].touched" class="form-error-msg">Category
+                                Name Required
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+            <mat-card-footer class="pt-0">
+                <button mat-raised-button color="primary" class="btn-primary-bg mr-12"
+                    (click)=" save(layoutForm.value)">Save</button>
+                <button mat-raised-button color="primary" class="btn-primary-bg mr-12"
+                    (click)=" discard()">Close</button>
+
+            </mat-card-footer>
+        </form>
+    </mat-card-content>
+</mat-card>

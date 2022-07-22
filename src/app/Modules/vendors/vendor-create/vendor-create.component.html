@@ -1,0 +1,174 @@
+<mat-card>
+    <mat-card-title class="">
+        <div class="card-title-text">Create New Vendor</div>
+        <mat-divider></mat-divider>
+    </mat-card-title>
+    <mat-card-content class=" pb-8">
+        <form [formGroup]="vendorForm" class="vehicletype">
+            <div fxLayout="row wrap" class="mt-24">
+                <div fxFlex="100" fxFlex.gt-xs="40" class="pr-1">
+                    <div class="pb-1">
+                        <mat-form-field class="full-width" appearance="outline">
+                            <input class="f24" matInput name="vendorName" [(ngModel)]="item.vendorName"
+                                formControlName="vendorName" placeholder="Vendor Name" value="{{item.vendorName}}">
+                            <mat-error
+                                *ngIf="vendorForm.controls['vendorName'].hasError('required') && vendorForm.controls['vendorName'].touched || vendorForm.controls['vendorName'].hasError('pattern') && vendorForm.controls['vendorName'].touched"
+                                class="form-error-msg">
+                                Vendor Name Is Required
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div fxFlex="100" fxFlex.gt-xs="40" class="pr-1">
+                    <div class="pb-1">
+                        <mat-form-field class="full-width" appearance="outline">
+                            <input class="f24" matInput name="vendorGst" [(ngModel)]="item.vendorGst"
+                                formControlName="vendorGst" placeholder="GST" value="{{item.vendorGst}}">
+                            <mat-error
+                                *ngIf="vendorForm.controls['vendorGst'].hasError('required') && vendorForm.controls['vendorGst'].touched || vendorForm.controls['vendorGst'].hasError('pattern') && vendorForm.controls['vendorGst'].touched"
+                                class="form-error-msg">
+                                GST is Required
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div fxFlex="100" fxFlex.gt-xs="40" class="pr-1">
+                    <div class="pb-1">
+                        <mat-form-field class="full-width" appearance="outline">
+                            <input class="f24" matInput name="vendorContactNumber"
+                                [(ngModel)]="item.vendorContactNumber" formControlName="vendorContactNumber"
+                                placeholder="Contact Number" value="{{item.vendorContactNumber}}">
+                            <mat-error
+                                *ngIf="vendorForm.controls['vendorContactNumber'].hasError('required') && vendorForm.controls['vendorContactNumber'].touched || vendorForm.controls['vendorContactNumber'].hasError('pattern') && vendorForm.controls['vendorContactNumber'].touched"
+                                class="form-error-msg">
+                                Contact Number Is Required
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div fxFlex="100" fxFlex.gt-xs="40" class="pr-1">
+                    <div class="pb-1">
+                        <mat-form-field class="full-width" appearance="outline">
+                            <input class="f24" matInput name="vendorEmail" [(ngModel)]="item.vendorEmail"
+                                formControlName="vendorEmail" placeholder="Email" value="{{item.vendorEmail}}">
+                            <mat-error
+                                *ngIf="vendorForm.controls['vendorEmail'].hasError('required') && vendorForm.controls['vendorEmail'].touched || vendorForm.controls['vendorEmail'].hasError('pattern') && vendorForm.controls['vendorEmail'].touched"
+                                class="form-error-msg">
+                                Email Is Required
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div fxFlex="100" fxFlex.gt-xs="60" class="pr-1">
+                    <div class="pb-1">
+                        <mat-form-field class="full-width" appearance="outline">
+                            <input class="f24" matInput name="vendorAddress" [(ngModel)]="item.vendorAddress"
+                                formControlName="vendorAddress" placeholder="Address" value="{{item.vendorAddress}}">
+                            <mat-error
+                                *ngIf="vendorForm.controls['vendorAddress'].hasError('required') && vendorForm.controls['vendorAddress'].touched || vendorForm.controls['vendorAddress'].hasError('pattern') && vendorForm.controls['vendorAddress'].touched"
+                                class="form-error-msg">
+                                Address Is Required
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+            <h3><strong>Bank Account Details</strong></h3>
+            <div fxLayout="row wrap" class="mt-24">
+
+
+                <div fxFlex="100" fxFlex.gt-xs="40" class="pr-1">
+                    <div class="pb-1">
+                        <mat-form-field class="full-width" appearance="outline">
+                            <input class="f24" matInput name="bankName" [(ngModel)]="item.bankName"
+                                formControlName="bankName" placeholder="Bank Name" value="{{item.bankName}}">
+                            <mat-error
+                                *ngIf="vendorForm.controls['bankName'].hasError('required') && vendorForm.controls['bankName'].touched || vendorForm.controls['bankName'].hasError('pattern') && vendorForm.controls['bankName'].touched"
+                                class="form-error-msg">
+                                Bank Name Is Required
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div fxFlex="100" fxFlex.gt-xs="40" class="pr-1">
+                    <div class="pb-1">
+                        <mat-form-field class="full-width" appearance="outline">
+                            <input class="f24" matInput name="bankBranchName" [(ngModel)]="item.bankBranchName"
+                                formControlName="bankBranchName" placeholder="Branch Name"
+                                value="{{item.bankBranchName}}">
+                            <mat-error
+                                *ngIf="vendorForm.controls['bankBranchName'].hasError('required') && vendorForm.controls['bankBranchName'].touched || vendorForm.controls['bankBranchName'].hasError('pattern') && vendorForm.controls['bankBranchName'].touched"
+                                class="form-error-msg">
+                                Branch Name Is Required
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div fxFlex="100" fxFlex.gt-xs="40" class="pr-1">
+                    <div class="pb-1">
+                        <mat-form-field class="full-width" appearance="outline">
+                            <input class="f24" matInput name="accountHolderName" [(ngModel)]="item.accountHolderName"
+                                formControlName="accountHolderName" placeholder="Holder Name"
+                                value="{{item.accountHolderName}}">
+                            <mat-error
+                                *ngIf="vendorForm.controls['accountHolderName'].hasError('required') && vendorForm.controls['accountHolderName'].touched || vendorForm.controls['accountHolderName'].hasError('pattern') && vendorForm.controls['accountHolderName'].touched"
+                                class="form-error-msg">
+                                Holder Name Is Required
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div fxFlex="100" fxFlex.gt-xs="40" class="pr-1">
+                    <div class="pb-1">
+                        <mat-form-field class="full-width" appearance="outline">
+                            <input class="f24" matInput name="accountNumber" [(ngModel)]="item.accountNumber"
+                                formControlName="accountNumber" placeholder="A\C Number" value="{{item.accountNumber}}">
+                            <mat-error
+                                *ngIf="vendorForm.controls['accountNumber'].hasError('required') && vendorForm.controls['accountNumber'].touched || vendorForm.controls['accountNumber'].hasError('pattern') && vendorForm.controls['accountNumber'].touched"
+                                class="form-error-msg">
+                                Account Number Is Required
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div fxFlex="100" fxFlex.gt-xs="40" class="pr-1">
+                    <div class="pb-1">
+                        <mat-form-field class="full-width" appearance="outline">
+                            <input class="f24" matInput name="branchIfscCode" [(ngModel)]="item.branchIfscCode"
+                                formControlName="branchIfscCode" placeholder="IFSC Code"
+                                value="{{item.branchIfscCode}}">
+                            <mat-error
+                                *ngIf="vendorForm.controls['branchIfscCode'].hasError('required') && vendorForm.controls['branchIfscCode'].touched || vendorForm.controls['branchIfscCode'].hasError('pattern') && vendorForm.controls['branchIfscCode'].touched"
+                                class="form-error-msg">
+                                Description Is Required
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div fxFlex="100" fxFlex.gt-xs="40" class="pr-1">
+                    <div class="pb-1">
+                        <mat-form-field class="full-width" appearance="outline">
+                            <input class="f24" matInput name="branchAddress" [(ngModel)]="item.branchAddress"
+                                formControlName="branchAddress" placeholder="Branch Address"
+                                value="{{item.branchAddress}}">
+                            <mat-error
+                                *ngIf="vendorForm.controls['branchAddress'].hasError('required') && vendorForm.controls['branchAddress'].touched || vendorForm.controls['branchAddress'].hasError('pattern') && vendorForm.controls['branchAddress'].touched"
+                                class="form-error-msg">
+                                Address Is Required
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+
+            <mat-card-footer class="pt-4">
+                <button mat-raised-button color="primary" class="btn-primary-bg mr-12"
+                    (click)="save(vendorForm.value)">Save</button>
+
+                <a (click)="discard()" class="pl-8 primary-txt-color">Discard</a>
+            </mat-card-footer>
+        </form>
+    </mat-card-content>
+</mat-card>

@@ -3,7 +3,21 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  liveTrackingUrl: "https://employee-tracking.petalpurple.in/livetracking/",
+  locationTrackingUrl: "https://employee-tracking.petalpurple.in/locationtracking/",
+  infrastructureUrl: "https://employee-tracking.petalpurple.in/infrastructure/",
+  //  apiUrl:"http://192.168.1.17:8080/employee/",
+  apiUrl: "http://192.168.1.6:8016/paramount/",
+  // apiUrl: "https://phs.petalyellow.com:8016/paramount/",
+  mqttConfig: {
+    hostname: "device.petalpurple.com",
+    port: 8083,
+    path: "/mqtt",
+    protocol: "ws",
+    username: "PetalSchWssUser",
+    password: "PetalSchwSS@20#19!"
+  },
 };
 
 /*

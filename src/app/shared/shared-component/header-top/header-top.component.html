@@ -1,0 +1,77 @@
+<div class="header-topnav mat-elevation-z2" *ngIf="navService.visible">
+  <div style="margin-left: 5px;margin-right: 10px;">
+    <div class="topnav">
+      <!-- App Logo -->
+      <div class="topbar-branding">
+        <img src="assets/images/PHS 2.png" alt="logo" class="app-logo">
+      </div>
+
+      <ul class="menu" *ngIf="!layoutConf.isMobile">
+        <li *ngFor="let item of menuItems; let i = index;">
+          <div *ngIf="item.type !== 'separator'" routerLinkActive="open">
+            <a style="font-weight: 500;" class="firstmenu" matRipple routerLink="/{{item.state}}"
+              *ngIf="item.type === 'link'">
+              <mat-icon>{{item.icon}}</mat-icon>
+              {{item.name}}
+            </a>
+            <div *ngIf="item.type === 'dropDown'">
+              <label matRipple for="drop-{{i}}" class="toggle">
+                <mat-icon>{{item.icon}}</mat-icon> {{item.name }}
+              </label>
+              <a matRipple style="font-weight: 500;">
+                <mat-icon>{{item.icon}}</mat-icon> {{item.name}}
+              </a>
+              <input type="checkbox" id="drop-{{i}}" />
+              <ul class="first_sub_menu">
+                <li *ngFor="let itemLvL2 of item.sub; let j = index;" routerLinkActive="open">
+                  <a matRipple routerLink="{{item.state ? '/'+item.state : ''}}/{{itemLvL2.state}}"
+                    *ngIf="itemLvL2.type !== 'dropDown'">
+                    <mat-icon *ngIf="itemLvL2.icon">{{itemLvL2.icon}}</mat-icon>
+                    {{itemLvL2.name }}
+                  </a>
+
+                  <div *ngIf="itemLvL2.type === 'dropDown'">
+                    <label matRipple for="drop-{{i}}{{j}}" class="toggle">{{itemLvL2.name }}</label>
+                    <a matRipple>
+                      <mat-icon *ngIf="itemLvL2.icon">{{itemLvL2.icon}}</mat-icon> {{itemLvL2.name }}
+                    </a>
+                    <input type="checkbox" id="drop-{{i}}{{j}}" />
+                    <!-- Level 3 -->
+                    <ul class="sec_sub_menu">
+                      <li *ngFor="let itemLvL3 of itemLvL2.sub" routerLinkActive="open">
+                        <a matRipple
+                          routerLink="{{item.state ? '/'+item.state : ''}}{{itemLvL2.state ? '/'+itemLvL2.state : ''}}/{{itemLvL3.state}}">
+                          <mat-icon *ngIf="itemLvL3.icon">{{itemLvL3.icon}}</mat-icon>
+                          {{itemLvL3.name }}
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <span fxFlex></span>
+      <button mat-icon-button [matMenuTriggerFor]="accountMenu" class="topbar-button-right mr-1 img-button">
+        <mat-icon class="icon">account_circle</mat-icon>
+      </button>
+      <mat-menu #accountMenu="matMenu">
+        <ng-container>
+          <button mat-menu-item (click)="forgot()">
+            <mat-icon>lock</mat-icon>
+            <span>Change Password</span>
+          </button>
+          <button mat-menu-item (click)="Signout(portalType)">
+            <mat-icon>exit_to_app</mat-icon>
+            <span>Sign out</span>
+          </button>
+        </ng-container>
+      </mat-menu>
+      <button mat-icon-button class="mr-1" (click)="sidenav.toggle();">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>

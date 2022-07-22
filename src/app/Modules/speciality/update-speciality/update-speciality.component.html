@@ -1,0 +1,61 @@
+<mat-card class="p-0">
+   <mat-card-title class="">
+      <div class="card-title-text">Update Speciality</div>
+      <mat-divider></mat-divider>
+   </mat-card-title>
+   <mat-card-content class="mb-0">
+      <form [formGroup]="shiftForm" class="department">
+         <div fxLayout="row wrap" class="mt-24">
+
+            <div fxFlex="100" fxFlex.gt-xs="100" class="pr-1">
+               <div class="pb-1">
+                  <mat-form-field class="full-width" appearance="outline">
+                     <mat-label> speciality Id <span class="red_color">*</span></mat-label>
+                     <input matInput name="specialityId" formControlName="specialityId" placeholder="Speciality Name"
+                        value="" readonly>
+                     <mat-error *ngIf="shiftForm.controls['specialityId'].hasError('required') 
+                          && shiftForm.controls['specialityId'].touched || shiftForm.controls['specialityId'].hasError('pattern') 
+                          && shiftForm.controls['specialityId'].touched">Please provide
+                        speciality name</mat-error>
+                  </mat-form-field>
+               </div>
+            </div>
+            <div fxFlex="100" fxFlex.gt-xs="100" class="pr-1">
+               <div class="pb-1">
+                  <mat-form-field class="full-width" appearance="outline">
+                     <mat-label> speciality Name <span class="red_color">*</span></mat-label>
+                     <input matInput name="speciality" formControlName="speciality" placeholder="Speciality Name"
+                        value="">
+                     <mat-error *ngIf="shiftForm.controls['speciality'].hasError('required') 
+                          && shiftForm.controls['speciality'].touched || shiftForm.controls['speciality'].hasError('pattern') 
+                          && shiftForm.controls['speciality'].touched">Please provide
+                        speciality name</mat-error>
+                  </mat-form-field>
+               </div>
+            </div>
+            <div fxFlex="100" fxFlex.gt-xs="100" class="pr-1">
+               <div class="pb-1">
+                  <mat-form-field class="full-width" appearance="outline">
+                     <mat-label> Select Department<span class="red_color">*</span></mat-label>
+                     <mat-select formControlName="departmentId">
+                        <mat-option *ngFor="let position of department" [value]="position.departmentId">
+                           {{position.departmentName}}
+                        </mat-option>
+                     </mat-select>
+                     <mat-error *ngIf="shiftForm.controls['departmentId'].hasError('required') 
+                         && shiftForm.controls['departmentId'].touched">Please select the department
+                     </mat-error>
+                  </mat-form-field>
+               </div>
+            </div>
+         </div>
+      </form>
+      <mat-card-footer class="pt-0">
+         <button mat-raised-button color="primary" class="btn-primary-bg mr-12"
+            (click)=" Update(shiftForm.value)">Save</button>
+         <button mat-raised-button color="primary" class="btn-primary-bg mr-12" (click)=" discard()">Close</button>
+
+      </mat-card-footer>
+   </mat-card-content>
+
+</mat-card>

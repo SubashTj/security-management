@@ -1,0 +1,174 @@
+<br>
+<mat-radio-group name="isVisible" [(ngModel)]="isVisible">
+    <mat-radio-button (change)="setType($event)" value="Individual">Individual</mat-radio-button>
+    <mat-radio-button (change)="setType($event)" value="Monthly">Monthly</mat-radio-button>
+</mat-radio-group>
+<br>
+<br>
+<form [formGroup]="basicForm">
+    <div fxLayout="row wrap" class="pagewrap" *ngIf="selectedValue === 'Monthly'">
+
+        <div fxFlex="100" fxFlex.gt-xs="15" class="mt-16 mr-12">
+            <mat-form-field appearance="outline">
+                <mat-label>Select Branch<span class="red_color">*</span></mat-label>
+                <mat-select formControlName="districtId">
+                    <mat-option value='ALL'>ALL</mat-option>
+                    <mat-option *ngFor="let bran of branchs" [value]="bran.districtId">
+                        {{bran.districtName }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div fxFlex="100" fxFlex.gt-xs="15" class="mt-16 mr-12">
+            <mat-form-field appearance="outline">
+                <mat-label>Select Month<span class="red_color">*</span></mat-label>
+                <mat-select formControlName="month">
+                    <mat-option *ngFor="let month of months" [value]="month.month">
+                        {{ month.monthName}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div fxFlex="100" fxFlex.gt-xs="15" class="mt-16 mr-12">
+            <mat-form-field appearance="outline">
+                <mat-label>Select Year<span class="red_color">*</span></mat-label>
+                <mat-select formControlName="year">
+                    <mat-option *ngFor="let y of years" [value]="y.year">
+                        {{ y.year}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div fxFlex="100" fxFlex.gt-xs="10" class="mt-12">
+            <button mat-raised-button color="primary" class="btn-primary-bg"
+                (click)="Monthly(basicForm.value)">Search</button>
+        </div>
+        <br>
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+            <ng-container matColumnDef="employeeId">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-center"> Employee Id </th>
+                <td mat-cell *matCellDef="let element" class="text-center"> {{element.employeeId}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="employeeName">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-center"> Employee Name </th>
+                <td mat-cell *matCellDef="let element" class="text-center"> {{element.employeeName}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="finalSalary">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-center">Final Salary </th>
+                <td mat-cell *matCellDef="let element" class="text-center"> {{element.finalSalary}} </td>
+            </ng-container>
+            <ng-container matColumnDef="presentCount">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-center"> Present Count </th>
+                <td mat-cell *matCellDef="let element" class="text-center"> {{element.presentCount}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="employeePF">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-center"> Employee PF </th>
+                <td mat-cell *matCellDef="let element" class="text-center"> {{element.toDate}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="employeeESI">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-center"> Employee ESI </th>
+                <td mat-cell *matCellDef="let element" class="text-center"> {{element.toDate}} </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)">
+            </tr>
+        </table>
+
+        <br>
+        <ng-container *ngIf="dataSource.filteredData.length === 0 || dataSource.data.length === 0  ">
+            <p class="text-center"> <b>No Data Found...</b> </p>
+        </ng-container>
+
+    </div>
+</form>
+
+<form [formGroup]="basicForm">
+    <div fxLayout="row wrap" class="pagewrap" *ngIf="selectedValue === 'Individual'">
+
+        <div fxFlex="100" fxFlex.gt-xs="15" class="mt-16 mr-12">
+            <mat-form-field appearance="outline">
+                <mat-label>Select Branch<span class="red_color">*</span></mat-label>
+                <mat-select formControlName="districtId">
+                    <mat-option value='ALL'>ALL</mat-option>
+                    <mat-option *ngFor="let bran of branchs" [value]="bran.districtId">
+                        {{bran.districtName }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div fxFlex="100" fxFlex.gt-xs="15" class="mt-16 mr-12">
+            <mat-form-field appearance="outline">
+                <mat-label>Select Month<span class="red_color">*</span></mat-label>
+                <mat-select formControlName="month">
+                    <mat-option *ngFor="let month of months" [value]="month.month">
+                        {{ month.monthName}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div fxFlex="100" fxFlex.gt-xs="15" class="mt-16 mr-12">
+            <mat-form-field appearance="outline">
+                <mat-label>Select Year<span class="red_color">*</span></mat-label>
+                <mat-select formControlName="year">
+                    <mat-option *ngFor="let y of years" [value]="y.year">
+                        {{ y.year}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div fxFlex="100" fxFlex.gt-xs="15" class="mt-16 mr-12">
+            <mat-form-field appearance="outline">
+                <mat-label>Employee Name<span class="red_color">*</span></mat-label>
+                <mat-select formControlName="employeeId">
+                    <mat-option value='ALL'>ALL</mat-option>
+                    <mat-option *ngFor="let bran of branch" [value]="bran.employeeId">
+                        {{bran.employeeName}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div fxFlex="100" fxFlex.gt-xs="10" class="mt-12">
+            <button mat-raised-button color="primary" class="btn-primary-bg"
+                (click)="Daily(basicForm.value)">Search</button>
+        </div>
+
+        <br>
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 emp-tabel" matSort>
+            <ng-container matColumnDef="employeeId">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-center"> Employee Id </th>
+                <td mat-cell *matCellDef="let element" class="text-center"> {{element.employeeId}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="employeeName">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-center"> Employee Name </th>
+                <td mat-cell *matCellDef="let element" class="text-center"> {{element.employeeName}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="finalSalary">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-center">Final Salary </th>
+                <td mat-cell *matCellDef="let element" class="text-center"> {{element.finalSalary}} </td>
+            </ng-container>
+            <ng-container matColumnDef="presentCount">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-center"> Present Count </th>
+                <td mat-cell *matCellDef="let element" class="text-center"> {{element.presentCount}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="employeePF">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-center"> Employee PF </th>
+                <td mat-cell *matCellDef="let element" class="text-center"> {{element.toDate}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="employeeESI">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-center"> Employee ESI </th>
+                <td mat-cell *matCellDef="let element" class="text-center"> {{element.toDate}} </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)">
+            </tr>
+        </table>
+    </div>
+</form>

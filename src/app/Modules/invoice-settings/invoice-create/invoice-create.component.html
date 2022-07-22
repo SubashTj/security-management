@@ -1,0 +1,112 @@
+<mat-card class="p-0">
+    <mat-card-title class="">
+        <div class="card-title-text">Create Invoice</div>
+        <mat-divider></mat-divider>
+    </mat-card-title>
+    <mat-card-content>
+        <form [formGroup]="salaryForm" class="position">
+            <div fxLayout="row wrap" class="mt-24">
+                <div fxFlex="100" fxFlex.gt-xs="100" class="pr-1">
+                    <div class="pb-1">
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Reference No<span class="red_color">*</span></mat-label>
+                            <input matInput name="ReferenceNumber" formControlName="referenceNumber"
+                                placeholder="ReferenceNumber" value="">
+                            <mat-error *ngIf="salaryForm.controls['referenceNumber'].hasError('required') 
+                                && salaryForm.controls['referenceNumber'].touched 
+                                || salaryForm.controls['referenceNumber'].hasError('pattern') 
+                                && salaryForm.controls['referenceNumber'].touched" class="form-error-msg"> Enter
+                                Reference No
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="pb-1">
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>ESI Percentage<span class="red_color">*</span></mat-label>
+                            <input matInput name="esi" formControlName="esi" placeholder="ESI Percentage" value="">
+                            <mat-error *ngIf="salaryForm.controls['esi'].hasError('required') 
+                                && salaryForm.controls['esi'].touched 
+                                || salaryForm.controls['esi'].hasError('pattern') 
+                                && salaryForm.controls['esi'].touched" class="form-error-msg"> Enter ESI Percentage
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="pb-1">
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>EPF Percentage<span class="red_color">*</span></mat-label>
+                            <input matInput name="epf" formControlName="epf" placeholder="epf" value="">
+                            <mat-error *ngIf="salaryForm.controls['epf'].hasError('required') 
+                                && salaryForm.controls['epf'].touched 
+                                || salaryForm.controls['epf'].hasError('pattern') 
+                                && salaryForm.controls['epf'].touched" class="form-error-msg"> Enter EPF Percentage
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div fxFlex="100" fxFlex.gt-xs="100" class="pr-1">
+                    <div class="pb-1">
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Central GST<span class="red_color">*</span></mat-label>
+                            <input matInput name="cgst" formControlName="cgst" placeholder="Central GST" value="">
+                            <mat-error *ngIf="salaryForm.controls['cgst'].hasError('required') 
+                            && salaryForm.controls['cgst'].touched 
+                            || salaryForm.controls['cgst'].hasError('pattern') 
+                            && salaryForm.controls['cgst'].touched" class="form-error-msg"> Enter Central GST
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div fxFlex="100" fxFlex.gt-xs="100" class="pr-1">
+                    <div class="pb-1">
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>State GST<span class="red_color">*</span></mat-label>
+                            <input matInput name="sgst" formControlName="sgst" placeholder="State GST" value="">
+                            <mat-error *ngIf="salaryForm.controls['sgst'].hasError('required') 
+                            && salaryForm.controls['sgst'].touched 
+                            || salaryForm.controls['sgst'].hasError('pattern') 
+                            && salaryForm.controls['sgst'].touched" class="form-error-msg"> Enter State GST
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div fxFlex="100" fxFlex.gt-xs="100" class="pr-1">
+                    <div class="pb-1">
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label> Mode <span class="red_color">*</span></mat-label>
+                            <input matInput name="mode" formControlName="mode" placeholder="Mode" value="">
+                            <mat-error *ngIf="salaryForm.controls['mode'].hasError('required') 
+                        && salaryForm.controls['mode'].touched 
+                        || salaryForm.controls['mode'].hasError('pattern') 
+                        && salaryForm.controls['mode'].touched" class="form-error-msg">Total Description
+                                Required
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div fxFlex="100" fxFlex.gt-xs="100" class="pr-1">
+                    <div class="pb-1">
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label> Bank GST <span class="red_color">*</span></mat-label>
+                            <input matInput name="bankGstNo" formControlName="bankGstNo" placeholder="BankGstNo"
+                                value="">
+                            <mat-error *ngIf="salaryForm.controls['bankGstNo'].hasError('required') 
+                        && salaryForm.controls['bankGstNo'].touched 
+                        || salaryForm.controls['bankGstNo'].hasError('pattern') 
+                        && salaryForm.controls['bankGstNo'].touched" class="form-error-msg">Bank GST
+                                Required
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+            <mat-card-footer class="pt-0">
+                <button mat-raised-button color="primary" class="btn-primary-bg mr-12"
+                    (click)="save(salaryForm.value)">Save</button>
+
+                <button mat-raised-button color="primary" class="btn-primary-bg mr-12"
+                    (click)=" discard()">Close</button>
+
+            </mat-card-footer>
+        </form>
+    </mat-card-content>
+</mat-card>

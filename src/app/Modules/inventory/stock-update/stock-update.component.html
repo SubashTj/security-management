@@ -1,0 +1,95 @@
+<mat-card class="p-0">
+   <mat-card-title class="">
+      <div class="card-title-text">Update New Stock </div>
+      <mat-divider></mat-divider>
+   </mat-card-title>
+   <mat-card-content>
+      <form [formGroup]="inventoryForm" class="position">
+         <div fxLayout="row wrap" class="mt-24">
+            <div fxFlex="100" fxFlex.gt-xs="100" class="pr-1">
+               <div class="pb-1">
+                  <mat-form-field class="full-width" appearance="outline">
+                     <mat-label> Select Inventory Type <span class="red_color">*</span></mat-label>
+                     <mat-select formControlName="inventoryTypeId">
+                        <mat-option *ngFor="let type of invenorytype" [value]="type.inventoryTypeId">
+                           {{type.inventoryTypeName}}
+                        </mat-option>
+                     </mat-select>
+                     <mat-error *ngIf="inventoryForm.controls['inventoryTypeId'].hasError('required') 
+                             && inventoryForm.controls['inventoryTypeId'].touched" class="form-error-msg">Please choose
+                        Inventory Type
+                     </mat-error>
+                  </mat-form-field>
+               </div>
+            </div>
+            <div fxFlex="100" fxFlex.gt-xs="100" class="pr-1">
+               <div class="pb-1">
+                  <mat-form-field class="full-width" appearance="outline">
+                     <mat-label>Select Unit Type<span class="red_color">*</span></mat-label>
+                     <mat-select formControlName="unitTypeId">
+                        <mat-option *ngFor="let position of unittype" [value]="position.unitTypeId">
+                           {{position.unitTypeName}}
+                        </mat-option>
+                     </mat-select>
+                     <mat-error *ngIf="inventoryForm.controls['unitTypeId'].hasError('required') 
+                             && inventoryForm.controls['unitTypeId'].touched" class="form-error-msg">Please choose Unit
+                        Type
+                     </mat-error>
+                  </mat-form-field>
+               </div>
+            </div>
+            <div fxFlex="100" fxFlex.gt-xs="100" class="pr-1">
+               <div class="pb-1">
+                  <mat-form-field class="full-width" appearance="outline">
+                     <mat-label> Stock Name <span class="red_color">*</span></mat-label>
+                     <input matInput name="stockItemName" formControlName="stockItemName" placeholder="stockItemName"
+                        value="">
+                     <mat-error *ngIf="inventoryForm.controls['stockItemName'].hasError('required') 
+                                && inventoryForm.controls['stockItemName'].touched 
+                                || inventoryForm.controls['stockItemName'].hasError('pattern') 
+                                && inventoryForm.controls['stockItemName'].touched" class="form-error-msg">Stock Name
+                        Required
+                     </mat-error>
+                  </mat-form-field>
+               </div>
+            </div>
+            <div fxFlex="100" fxFlex.gt-xs="100" class="pr-1">
+               <div class="pb-1">
+                  <mat-form-field class="full-width" appearance="outline">
+                     <mat-label> Stock Code <span class="red_color">*</span></mat-label>
+                     <input matInput name="stockItemCode" formControlName="stockItemCode" placeholder="stockItemName"
+                        value="">
+                     <mat-error *ngIf="inventoryForm.controls['stockItemCode'].hasError('required') 
+                                && inventoryForm.controls['stockItemCode'].touched 
+                                || inventoryForm.controls['stockItemCode'].hasError('pattern') 
+                                && inventoryForm.controls['stockItemCode'].touched" class="form-error-msg"> Stock Code
+                        Required
+                     </mat-error>
+                  </mat-form-field>
+               </div>
+            </div>
+            <div fxFlex="100" fxFlex.gt-xs="100" class="pr-1">
+               <div class="pb-1">
+                  <mat-form-field class="full-width" appearance="outline">
+                     <mat-label>Quantity<span class="red_color">*</span></mat-label>
+                     <input matInput name="quantity" formControlName="quantity" placeholder="quantity" value="">
+                     <mat-error *ngIf="inventoryForm.controls['quantity'].hasError('required') 
+                                && inventoryForm.controls['quantity'].touched 
+                                || inventoryForm.controls['quantity'].hasError('pattern') 
+                                && inventoryForm.controls['quantity'].touched" class="form-error-msg"> Stock Code
+                        Required
+                     </mat-error>
+                  </mat-form-field>
+               </div>
+            </div>
+         </div>
+         <mat-card-footer class="pt-0">
+            <button mat-raised-button color="primary" class="btn-primary-bg mr-12"
+               (click)="Update(inventoryForm.value)">Save</button>
+
+            <button mat-raised-button color="primary" class="btn-primary-bg mr-12" (click)=" discard()">Close</button>
+
+         </mat-card-footer>
+      </form>
+   </mat-card-content>
+</mat-card>

@@ -1,0 +1,12 @@
+@import '~@angular/material/theming';
+@include mat-core();
+
+// Keep atleast one file
+@import "tgss-navy";
+@import "tgss-blue";
+@import "tgss-light-purple";
+@import "tgss-dark-purple";
+@import "tgss-dark-pink";
+
+$background: map-get($tgss-theme, background);
+$foreground: map-get($tgss-theme, foreground);

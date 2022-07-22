@@ -1,0 +1,65 @@
+<div class="create_employee">
+    <mat-card class="p-0 pagewrap">
+        <mat-card-title class="">
+            <div class="card-title-text">Upload Document </div>
+            <mat-divider></mat-divider>
+        </mat-card-title>
+        <mat-card-content class="mb-0">
+            <form [formGroup]="fileForm" class="department">
+                <div fxLayout="row wrap" class="mt-24">
+                    <div fxFlex="100" fxFlex.gt-xs="100" class="pr-1">
+                        <div class="pb-1">
+                            <mat-form-field class="full-width" appearance="outline">
+                                <mat-label> Enter DocumentTitle <span class="red_color">*</span></mat-label>
+                                <input class="f24" matInput name="documentTitle" [(ngModel)]="file.documentTitle"
+                                    formControlName="documentTitle" placeholder="DocumentTitle" value="">
+                                <mat-error
+                                    *ngIf="fileForm.controls['documentTitle'].hasError('required') && fileForm.controls['documentTitle'].touched || fileForm.controls['documentTitle'].hasError('pattern') && fileForm.controls['documentTitle'].touched">
+                                    DocumentTitle Required</mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div fxFlex="100" fxFlex.gt-xs="30" class="">
+                        <input formControlName="file" id="file" type="file" class="form-control"
+                            (change)="onFileChange($event)">
+                        <!-- <button type="button" mat-raised-button class="btn-primary-bg ml-0" (click)="fileInput.click()"
+                            type="button">
+                            <mat-icon class="attachment">attach_file</mat-icon>Upload File
+                        </button> -->
+                        <label class="ml-4 mt-8">{{ control.documentName?.value }}</label>
+                        <button type="button" mat-button
+                            *ngIf="control.documentName?.value || !control.pdfFile?.valid || isAttachmentFileSizeTooHigh"
+                            (click)="clearqualifyDoc('document')" matSuffix mat-icon-button aria-label="Clear">
+                            <mat-icon style="color: red;">close</mat-icon>
+                        </button>
+                    </div>
+                    <div fxFlex="100" fxFlex.gt-xs="40" class="">
+                        <div>
+                            <br>
+                            <br>
+                            <mat-error *ngIf="control.file?.errors?.pattern">
+                                <small> JPG, JPEG, PNG, BMP, PDF are allowed </small>
+                            </mat-error>
+                            <p style="color: red;" *ngIf="isAttachmentFileSizeTooHigh"> File size
+                                should be 2MB maximumn </p>
+                            <span class="f11">Format : JPG, JPEG, PNG, BMP, PDF</span><br>
+                            <span class="f11">File Size : Maximum 2MB</span><br>
+                        </div>
+                    </div>
+                    <div fxFlex="100" fxFlex.gt-xs="15" class="">
+                        <img *ngFor='let url of urls' [src]="url" height="100" weight="100">
+                    </div>
+                </div>
+            </form>
+            <br>
+            <br>
+            <mat-card-footer class="pt-0">
+                <button mat-raised-button color="primary" class="btn-primary-bg mr-12" (click)=" save('')">Save</button>
+                <button mat-raised-button color="primary" class="btn-primary-bg mr-12"
+                    (click)=" discard()">Close</button>
+
+            </mat-card-footer>
+        </mat-card-content>
+
+    </mat-card>
+</div>

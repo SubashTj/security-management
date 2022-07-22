@@ -1,0 +1,80 @@
+<form [formGroup]="getattendanceForm">
+   <div fxLayout="row wrap" class="pagewrap">
+   </div>
+</form>
+<div class="create_btn">
+   <button mat-raised-button color="primary" class="btn-primary-bg" [disabled]="employeelength == 0"
+      (click)="updateAttendence(manualattendanceForm.value.attendence)">Save</button>
+   <button mat-raised-button color="primary" class="btn-primary-bg" (click)="Discard()">Discard</button>
+</div>
+<div class="form_bg">
+   <mat-card class="p-0">
+      <mat-card-title class="">
+         <div class="card-title-text"> Manual Attendance</div>
+         <mat-divider></mat-divider>
+      </mat-card-title>
+      <mat-card-content>
+         <div fxLayout="row wrap" class="mt-12 grade-checkbox">
+            <div fxFlex="100" fxFlex.gt-xs="100" class="">
+               <div class="table_container pb-1">
+                  <div class="">
+                     <form [formGroup]="manualattendanceForm">
+                        <table class="mat-table  employee-table" formArrayName="attendence">
+                           <thead>
+                              <tr class="mat-header-row">
+                                 <th class="mat-header-cell text-center" rowspan="2" style="width:3%;">S.No</th>
+                                 <th class="mat-header-cell text-center" rowspan="2" style="width:5%;">Employee ID</th>
+                                 <th class="mat-header-cell" rowspan="2" style="width:10%;">Employee Name</th>
+                                 <th class="mat-header-cell" rowspan="2" style="width:10%;">Select Date</th>
+                                 <th class="mat-header-cell" rowspan="2" style="width:10%;">Status</th>
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr class="mat-row"
+                                 *ngFor="let attendence of manualattendanceForm.get('attendence')['controls']; let i=index"
+                                 [formGroupName]="i">
+                                 <td class="mat-cell text-center" *ngIf="employeelength != 0"> {{i+1}}
+                                 </td>
+                                 <td class="mat-cell text-center" *ngIf="employeelength != 0">
+                                    {{attendence.controls.employeeId.value}}
+                                    <input formControlName="employeeId" readonly style="display: none;" />
+
+                                 </td>
+                                 <td class="mat-cell text-center" *ngIf="employeelength != 0">
+                                    <label> {{attendence.controls.name.value}}</label>
+                                    <input formControlName="name" readonly style="display: none;" />
+                                 </td>
+                                 <td class="mat-cell text-center pt-8" *ngIf="employeelength != 0">
+                                    <mat-form-field appearance="outline" class="pt-24">
+                                       <mat-label></mat-label>
+                                       <input matInput type="date" name="attenDate" formControlName="attendanceDate"
+                                          placeholder="Attendance Date" value="">
+                                    </mat-form-field>
+                                 </td>
+                                 <td class="mat-cell text-center pt-8" *ngIf="employeelength != 0">
+                                    <mat-form-field appearance="outline" class="pt-24">
+                                       <mat-label></mat-label>
+                                       <mat-select name="status + i" formControlName="attendanceType">
+                                          <mat-option *ngFor="let empstatus of empstatuses"
+                                             [value]="empstatus.attendanceType">
+                                             {{empstatus.view}}
+                                          </mat-option>
+                                       </mat-select>
+                                    </mat-form-field>
+                                 </td>
+                              </tr>
+                              <tr *ngIf="employeelength == 0">
+                                 <td class="text-center" colspan="7"><b>No Data Found...</b></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </form>
+                  </div>
+               </div>
+            </div>
+         </div>
+
+         <!-- -->
+      </mat-card-content>
+   </mat-card>
+</div>

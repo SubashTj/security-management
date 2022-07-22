@@ -1,0 +1,43 @@
+<mat-card class="p-0">
+   <mat-card-title class="">
+      <div class="card-title-text">Update Department </div>
+      <mat-divider></mat-divider>
+   </mat-card-title>
+   <mat-card-content class="mb-0">
+      <form [formGroup]="departmentForm" class="department">
+         <div fxLayout="row wrap" class="mt-24">
+            <div fxFlex="100" fxFlex.gt-xs="100" class="pr-1">
+               <div class="pb-1">
+                  <mat-form-field class="full-width" appearance="outline">
+                     <mat-label> Department Id <span class="red_color">*</span></mat-label>
+                     <input class="f24" matInput name="departmentName" formControlName="departmentId"
+                        placeholder="DepartmentId" value="" readonly>
+                     <mat-error
+                        *ngIf="departmentForm.controls['departmentId'].hasError('required') && departmentForm.controls['departmentId'].touched || departmentForm.controls['departmentId'].hasError('pattern') && departmentForm.controls['departmentName'].touched">
+                        DeparmentName Id Required</mat-error>
+                  </mat-form-field>
+               </div>
+            </div>
+            <div fxFlex="100" fxFlex.gt-xs="100" class="pr-1">
+               <div class="pb-1">
+                  <mat-form-field class="full-width" appearance="outline">
+                     <mat-label> Department Name <span class="red_color">*</span></mat-label>
+                     <input class="f24" matInput name="departmentName" formControlName="departmentName"
+                        placeholder="DeparttmentName" value="" disabled>
+                     <mat-error
+                        *ngIf="departmentForm.controls['departmentName'].hasError('required') && departmentForm.controls['departmentName'].touched || departmentForm.controls['departmentName'].hasError('pattern') && departmentForm.controls['departmentName'].touched">
+                        DeparmentName Required</mat-error>
+                  </mat-form-field>
+               </div>
+            </div>
+         </div>
+      </form>
+      <mat-card-footer class="pt-0">
+         <button mat-raised-button color="primary" class="btn-primary-bg mr-12"
+            (click)=" Update(departmentForm.value)">Save</button>
+         <button mat-raised-button color="primary" class="btn-primary-bg mr-12" (click)=" discard()">Close</button>
+
+      </mat-card-footer>
+   </mat-card-content>
+
+</mat-card>

@@ -1,0 +1,62 @@
+<div class="seciton-left">
+    <div fxLayout="row wrap">
+        <div fxFlex="100" fxFlex.gt-xs="60">
+            <div class="section-left-content">
+                <img src="assets/images/employee tracking re.png" alt="" />
+            </div>
+        </div>
+        <div fxFlex="100" fxFlex.gt-xs="40">
+            <div class="form-holder height-100vh mat-elevation-z4 mt-48">
+                <form [formGroup]="loginForm" class="signup-form" fxLayout="column">
+                    <div class="form-headline text-center mb-48" fxLayout="row wrap">
+                        <img width="200" src="assets/images/logo.png" alt="" />
+                    </div>
+                    <br>
+                    <br>
+                    <div class="form-headline text-center">
+                        <h1 class="font-weight-light ">Login With OTP</h1>
+                    </div>
+                    <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Mobile Number</mat-label>
+                        <input matInput type="text" name="mobile" formControlName="mobileNumber"
+                            placeholder="Mobile Number" minlength=10 maxlength=10 (keydown)="onlyNumber($event)"
+                            [ngClass]="{ 'is-invalid': submitted && loginForm.controls['mobileNumber'].hasError }"
+                            class="form-error-msg" />
+                        <mat-error
+                            *ngIf="loginForm.controls['mobileNumber'].hasError('required') && loginForm.controls['mobileNumber'].touched"
+                            class="form-error-msg">Enter Mobile Number</mat-error>
+                        <mat-error
+                            *ngIf="loginForm.controls['mobileNumber'].hasError('pattern') && loginForm.controls['mobileNumber'].touched"
+                            class="form-error-msg">Enter Valid Mobile Number</mat-error>
+                    </mat-form-field>
+                    <button mat-raised-button color="primary" class="verify_btn" type="button"
+                        [disabled]="loginForm.controls.mobileNumber.invalid " (click)="sendotp()">Get OTP</button>
+                    <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>OTP</mat-label>
+                        <input matInput type="text" name="otp" placeholder="OTP" formControlName="otp" minlength=6
+                            maxlength=6 />
+                        <mat-error
+                            *ngIf="loginForm.controls['otp'].hasError('required') && loginForm.controls['otp'].touched"
+                            class="form-error-msg">Enter OTP</mat-error>
+                        <mat-error
+                            *ngIf="loginForm.controls['otp'].hasError('pattern') && loginForm.controls['otp'].touched"
+                            class="form-error-msg">Enter Valid OTP</mat-error>
+                    </mat-form-field>
+                    <div class="mb-24" fxLayout="row wrap">
+                        <div fxFlex="100" fxFlex.gt-xs="100">
+                            <button mat-raised-button class="signin_btn" (click)="verify()">Login</button>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="mb-24" fxLayout="row wrap">
+                        <div fxFlex="100" fxFlex.gt-xs="100">
+                            <button mat-raised-button class="back_btn" (click)="goto()">
+                                Back To Home
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

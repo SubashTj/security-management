@@ -1,0 +1,40 @@
+.seciton-left {
+  color: white;
+  position: fixed;
+  left: 10;
+  top: 26%;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 80vh;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+
+    z-index: -1;
+  }
+}
+
+.form-holder {
+  background: white;
+  padding: 16px;
+  position: fixed;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  min-width: 40%;
+
+  @media only screen and (max-width: 600px) {
+    width: 100%;
+  }
+}
+
+.signup-form {
+  padding: 20px 20px 70px 20px;
+}

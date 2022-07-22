@@ -1,1 +1,46 @@
 /* You can add global styles to this file, and also import other style files */
+@import "primeicons/primeicons.css";
+@import "primeng/resources/primeng.min.css";
+@import "primeng/resources/themes/nova-dark/theme.css";
+  
+:host ::ng-deep .p-multiselect {
+    min-width: 100rem;
+}
+html, body { height: 100%; }
+
+
+@import "~@ng-select/ng-select/themes/default.theme.css";
+
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+@font-face {
+	font-family: "Urbanist Extra-Bold";
+	font-weight: 600;
+	src: url("assets/font/Urbanist-ExtraBold.ttf");
+  }
+  @font-face {
+	font-family: "Urbanist Bold";
+	font-weight: 600;
+	src: url("assets/font/Urbanist-Bold.otf");
+  }
+  @font-face {
+	font-family: "Urbanist Medium";
+	font-weight: 600;
+	src: url("assets/font/Urbanist-Medium.ttf");
+  }
+  @font-face {
+	font-family: "Montserrat SemiBold";
+	font-weight: 600;
+	src: url("assets/font/Montserrat-SemiBold.ttf");
+  }
+  @font-face {
+	font-family: "Montserrat Medium";
+	font-weight: 600;
+	src: url("assets/font/Montserrat-Medium.ttf");
+  }
+  .timepicker-overlay {
+	z-index: 1100 !important;
+  }
+  
+  .timepicker-backdrop-overlay {
+	z-index: 1100 !important;
+  }

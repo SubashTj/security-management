@@ -1,0 +1,78 @@
+<div fxLayout="row wrap" class="pagewrap">
+   <div fxFlex="100" fxFlex.gt-xs="33">
+      <mat-card class="py-32 cursor-pointer" style="background: #3f51b5;">
+         <mat-icon>supervisor_account</mat-icon>
+         <h2 class="red-500-fg text-right">
+            <!-- <strong>{{950}}</strong> -->
+            <strong>{{employeecount?.totalRecord}}</strong>
+         </h2>
+         <h2 class="red-500-fg  text-right">Employees</h2>
+      </mat-card>
+   </div>
+   <div fxFlex="100" fxFlex.gt-xs="33">
+      <mat-card class="py-32 cursor-pointer" style="background: #3f51b5;">
+         <mat-icon>schedule</mat-icon>
+         <h2 class="purple-400-fg text-right">
+            <!-- <strong>{{400}}</strong> -->
+            <strong>{{datas?.totalRecord}}</strong>
+         </h2>
+         <h2 class="purple-400-fg  text-right"> Total Client</h2>
+      </mat-card>
+   </div>
+   <div fxFlex="100" fxFlex.gt-xs="33">
+      <mat-card class="py-32 cursor-pointer" style="background: #3f51b5;">
+         <mat-icon>schedule</mat-icon>
+         <h2 class="red-500-fg text-right">
+            <strong>{{12.00}} - Hours </strong>
+         </h2>
+         <h2 class="red-500-fg  text-right">Working Hours</h2>
+      </mat-card>
+   </div>
+
+</div>
+<div fxLayout="row wrap" class="pagewrap">
+   <div fxFlex="100" fxFlex.gt-xs="50">
+      <mat-card class="px-0">
+         <h4 class="pl-8 border-left">
+            <strong>Daily Attendance Overview</strong>
+         </h4>
+         <app-line-chart></app-line-chart>
+      </mat-card>
+   </div>
+   <div fxFlex="100" fxFlex.gt-xs="50">
+      <mat-card class="px-0">
+         <h4 class="pl-8 border-left">
+            <strong>Over All Month Attendance</strong>
+         </h4>
+
+         <div id="chart">
+            <apx-chart [series]="chartOptions.series" [labels]="chartOptions.labels"
+               [dataLabels]="chartOptions.dataLabels" [responsive]="chartOptions.responsive"
+               [chart]="chartOptions.chart" [plotOptions]="chartOptions.plotOptions" [legend]="chartOptions.legend"
+               [stroke]="chartOptions.stroke">
+            </apx-chart>
+         </div>
+         <h4 class="purple-400-fg  text-left"><b>Date -</b> {{thisDate}}</h4>
+         <h4 class="purple-400-fg  text-left"><b>Time -</b> {{Time}}</h4>
+      </mat-card>
+   </div>
+</div>
+<div fxLayout="row wrap" class="pagewrap">
+
+   <div fxFlex="100" fxFlex.gt-xs="50">
+      <mat-card class="px-0">
+         <h4 class="pl-8 border-left"><strong>Department-Wise - Attendance</strong></h4>
+         <app-column-chart></app-column-chart>
+      </mat-card>
+   </div>
+   <div fxFlex="100" fxFlex.gt-xs="50">
+      <mat-card class="px-0">
+         <h4 class="pl-8 border-left">
+            <strong>Calender</strong>
+         </h4>
+         <mat-card-content>
+            <full-calendar [options]="calendarOptions"></full-calendar>
+         </mat-card-content>
+      </mat-card>
+   </div>
+</div>

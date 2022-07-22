@@ -1,0 +1,43 @@
+<mat-card class="p-0">
+    <mat-card-title class="">
+        <div class="card-title-text">Update Unit-Type </div>
+        <mat-divider></mat-divider>
+    </mat-card-title>
+    <mat-card-content class="mb-0">
+        <form [formGroup]="inventoryForm" class="inventory">
+            <div fxLayout="row wrap" class="mt-24">
+                <div fxFlex="100" fxFlex.gt-xs="100" class="pr-1">
+                    <div class="pb-1">
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label> UnitType Id <span class="red_color">*</span></mat-label>
+                            <input class="f24" matInput name="unitTypeId" formControlName="unitTypeId"
+                                placeholder="unitTypeId" value="" readonly>
+                            <mat-error
+                                *ngIf="inventoryForm.controls['unitTypeId'].hasError('required') && inventoryForm.controls['unitTypeId'].touched || inventoryForm.controls['unitTypeId'].hasError('pattern') && inventoryForm.controls['unitTypeId'].touched">
+                                UnitType Id Required</mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div fxFlex="100" fxFlex.gt-xs="100" class="pr-1">
+                    <div class="pb-1">
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Unit-Type Name <span class="red_color">*</span></mat-label>
+                            <input class="f24" matInput name="unitTypeName" formControlName="unitTypeName"
+                                placeholder="unitTypeName" value="" disabled>
+                            <mat-error
+                                *ngIf="inventoryForm.controls['unitTypeName'].hasError('required') && inventoryForm.controls['unitTypeName'].touched || inventoryForm.controls['unitTypeName'].hasError('pattern') && inventoryForm.controls['unitTypeName'].touched">
+                                Unit-Type Name Required</mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <mat-card-footer class="pt-0">
+            <button mat-raised-button color="primary" class="btn-primary-bg mr-12"
+                (click)=" Update(inventoryForm.value)">Save</button>
+            <button mat-raised-button color="primary" class="btn-primary-bg mr-12" (click)=" discard()">Close</button>
+
+        </mat-card-footer>
+    </mat-card-content>
+
+</mat-card>

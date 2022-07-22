@@ -1,0 +1,43 @@
+mat-card {
+    width: 40%;
+    margin: 6% auto;
+    box-shadow: 0px -1px 1px -1px rgba(0, 0, 0, 0.2), 0px 2px 3px 1px rgba(0, 0, 0, 0.14), 0px 0px 0px 0px rgba(0, 0, 0, 0.12);
+
+}
+.mat-card-title{
+height: 35px;
+}
+mat-form-field {
+    width: 100%;
+}
+.red_color {
+  color: red;
+  margin-left: 3px;
+}
+.ml-0 {
+    margin-left: 0px !important;
+}
+
+.mt-18 {
+    margin-top: 18px !important;
+}
+.btn-primary-bg {
+  line-height: 22px !important;
+  padding: 0 15px !important;
+  min-width: 55px !important;
+  height: 30px;
+  margin-left: 12px !important;
+}
+.btn-primary-bg {
+  background:    #4d5ad1 !important;
+  color: #fff !important;
+  border-radius: 0.7em !important;
+  border: 1px solid    #4d5ad1!important;
+}
+  
+  .primary-txt-color {
+    color: #4d5ad1  !important;
+  }
+  .card-title-text {
+        font-family:Urbanist Bold;
+      }

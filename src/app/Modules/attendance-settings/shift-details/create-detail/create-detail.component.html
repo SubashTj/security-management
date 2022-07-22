@@ -1,0 +1,66 @@
+<mat-card class="p-0">
+    <mat-card-title class="">
+        <div class="card-title-text">Create Shift Details</div>
+        <mat-divider></mat-divider>
+    </mat-card-title>
+    <mat-card-content>
+        <form [formGroup]="shiftForm" class="category">
+            <div fxLayout="row wrap" class="mt-24">
+                <div fxFlex="100" fxFlex.gt-xs="100" class="pr-1">
+                    <div class="pb-1">
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Shift Name<span class="red_color">*</span></mat-label>
+                            <input matInput name="shiftName" formControlName="shiftName" placeholder="shiftName"
+                                value="">
+                            <mat-error *ngIf="shiftForm.controls['shiftName'].hasError('required') 
+                                && shiftForm.controls['shiftName'].touched 
+                                || shiftForm.controls['shiftName'].hasError('pattern') 
+                                && shiftForm.controls['shiftName'].touched" class="form-error-msg">Category Name
+                                Required
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div fxFlex="100" fxFlex.gt-xs="100" class="pr-1">
+                    <div class="pb-1">
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Start Time<span class="red_color">*</span></mat-label>
+                            <input matInput name="shiftStartTime" [ngxTimepicker]="timePickerFrom1" [format]="24"
+                                readonly formControlName="shiftStartTime" placeholder="shiftStartTime" value="">
+                            <ngx-material-timepicker #timePickerFrom1></ngx-material-timepicker>
+                            <mat-error *ngIf="shiftForm.controls['shiftStartTime'].hasError('required') 
+                                && shiftForm.controls['shiftStartTime'].touched 
+                                || shiftForm.controls['shiftStartTime'].hasError('pattern') 
+                                && shiftForm.controls['shiftStartTime'].touched" class="form-error-msg">Start Time
+                                Required
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div fxFlex="100" fxFlex.gt-xs="100" class="pr-1">
+                    <div class="pb-1">
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>End Time<span class="red_color">*</span></mat-label>
+                            <input matInput name="shiftEndTime" [ngxTimepicker]="timePickerFroms2" [format]="24"
+                                readonly formControlName="shiftEndTime" placeholder="shiftEndTime" value="">
+                            <ngx-material-timepicker #timePickerFroms2></ngx-material-timepicker>
+                            <mat-error *ngIf="shiftForm.controls['shiftEndTime'].hasError('required') 
+                                && shiftForm.controls['shiftEndTime'].touched 
+                                || shiftForm.controls['shiftEndTime'].hasError('pattern') 
+                                && shiftForm.controls['shiftEndTime'].touched" class="form-error-msg">End Time Required
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+        <mat-card-footer class="pt-0">
+            <button mat-raised-button color="primary" class="btn-primary-bg mr-12"
+                (click)=" save(shiftForm.value)">Save</button>
+            <button mat-raised-button color="primary" class="btn-primary-bg mr-12" (click)=" discard()">Close</button>
+
+        </mat-card-footer>
+
+    </mat-card-content>
+</mat-card>

@@ -1,0 +1,58 @@
+
+
+        <mat-card class="p-0">
+            <mat-card-title class="">
+               <div class="card-title-text">Update Transaction-Type </div>
+               <mat-divider></mat-divider>
+            </mat-card-title>
+            <mat-card-content class="mb-0">
+               <form [formGroup]="expenseForm" class="department">
+                  <div fxLayout="row wrap" class="mt-24">
+                     <div fxFlex="100" fxFlex.gt-xs="100" class="pr-1">
+                        <div class="pb-1">
+                            <mat-form-field class="full-width" appearance="outline">
+                              <mat-label> TransactionType Id <span class="red_color">*</span></mat-label>
+                               <input class="f24"
+                                  matInput
+                                  name="id"
+                                  formControlName="id"
+                                  placeholder="Id"
+                                  value="" readonly>
+                                  <mat-error
+                                  *ngIf="expenseForm.controls['id'].hasError('required') && expenseForm.controls['id'].touched || expenseForm.controls['id'].hasError('pattern') && expenseForm.controls['id'].touched" 
+                                  >DeparmentName Id Required</mat-error>
+                            </mat-form-field>
+                         </div>
+                         </div>
+                         <div fxFlex="100" fxFlex.gt-xs="100" class="pr-1">
+                        <div class="pb-1">
+                           <mat-form-field class="full-width" appearance="outline">
+                              <mat-label>  ExpenseType Name <span class="red_color">*</span></mat-label>
+                              <input class="f24"
+                                 matInput
+                                 name="type"
+                                 formControlName="type"
+                                 placeholder="TransactionName"
+                                 value="" disabled>
+                                 <mat-error
+                                 *ngIf="expenseForm.controls['type'].hasError('required') && expenseForm.controls['type'].touched || expenseForm.controls['type'].hasError('pattern') && expenseForm.controls['type'].touched" 
+                                 >TransactionName Required</mat-error>
+                           </mat-form-field>
+                        </div>
+                     </div>
+                  </div>
+               </form>
+               <mat-card-footer class="pt-0">
+                  <button 
+                     mat-raised-button 
+                     color="primary" class="btn-primary-bg mr-12"
+                  (click)=" Update(expenseForm.value)">Save</button>
+                  <button 
+                     mat-raised-button 
+                     color="primary" class="btn-primary-bg mr-12"
+              (click)=" discard()">Close</button>
+            
+               </mat-card-footer>
+            </mat-card-content>
+      
+         </mat-card>

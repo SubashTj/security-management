@@ -1,0 +1,74 @@
+<div class="seciton-left">
+  <div fxLayout="row wrap">
+    <div fxFlex="100" fxFlex.gt-xs="60">
+      <div class="section-left-content">
+        <img src="assets/images/Vector 2.png" alt="" />
+      </div>
+    </div>
+    <div fxFlex="100" fxFlex.gt-xs="40">
+      <div class="form-holder height-100vh mat-elevation-z4 mt-48">
+        <form [formGroup]="signinForm" class="signup-form" fxLayout="column">
+          <div class="form-headline text-center mb-48" fxLayout="row wrap">
+            <img width="200" src="assets/images/logo.png" alt="" />
+          </div>
+          <div class="form-headline text-center">
+            <br>
+            <h1 class="font-weight-light ">Signin To Your Account</h1>
+          </div>
+          <br>
+          <br>
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput type="mail" formControlName="mail" name="mail" placeholder="Email" value="">
+            <mat-error
+              *ngIf="submitted && signinForm.controls['mail'].hasError('required') || signinForm.controls['mail'].hasError('required') && signinForm.controls['mail'].touched"
+              class="form-error-msg">
+              Please enter a valid email address
+            </mat-error>
+            <mat-error
+              *ngIf="submitted && signinForm.controls['mail'].hasError('mail') || signinForm.controls['mail'].hasError('mail') && signinForm.controls['mail'].touched"
+              class="form-error-msg">
+              Email is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <br>
+
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput formControlName="password" type="password" name="password" placeholder="***********"
+              value="">
+            <mat-error
+              *ngIf="submitted && signinForm.controls['password'].hasError('required') || signinForm.controls['password'].hasError('required') && signinForm.controls['password'].touched  "
+              class="form-error-msg">
+              Please enter a valid password
+            </mat-error>
+            <mat-error
+              *ngIf="submitted && signinForm.controls['password'].hasError('password') || signinForm.controls['password'].hasError('password') && signinForm.controls['password'].touched"
+              class="form-error-msg">
+              Password is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <div class="mb-24" fxLayout="row wrap">
+
+            <div fxFlex="100" fxFlex.gt-xs="100">
+              <label class="forgot_pass" type="submit" (keydown.enter)="goto()" [routerLink]="'/forgot-password'">Forgot
+                Password ?</label>
+            </div>
+          </div>
+          <br>
+          <div class="mb-24" fxLayout="row wrap">
+            <div fxFlex="100" fxFlex.gt-xs="100">
+              <button mat-raised-button class="signin_btn" (click)="signin(signinForm.value)">Sigin</button>
+            </div>
+          </div>
+          <br>
+          <div class="mb-24" fxLayout="row wrap">
+            <div fxFlex="100" fxFlex.gt-xs="100" class="forgot_pass">
+              <button mat-raised-button class="back_btn" [routerLink]="'/login-otp'">Login with OTP</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

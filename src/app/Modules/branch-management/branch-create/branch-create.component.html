@@ -1,0 +1,90 @@
+<mat-card class="p-0">
+    <mat-card-title class="">
+        <div class="card-title-text">Create District</div>
+        <mat-divider></mat-divider>
+    </mat-card-title>
+    <mat-card-content>
+        <form [formGroup]="branchForm" class="category">
+            <div fxLayout="row wrap" class="mt-24">
+                <div fxFlex="100" fxFlex.gt-xs="100" class="pr-1">
+                    <div class="pb-1">
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>District Name<span class="red_color">*</span></mat-label>
+                            <input matInput name="districtName" formControlName="districtName"
+                                placeholder="District Name" value="">
+                            <mat-error *ngIf="branchForm.controls['districtName'].hasError('required') 
+                                && branchForm.controls['districtName'].touched 
+                                || branchForm.controls['districtName'].hasError('pattern') 
+                                && branchForm.controls['districtName'].touched" class="form-error-msg">District Name
+                                Required
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div fxFlex="100" fxFlex.gt-xs="100" class="pr-1">
+                    <div class="pb-1">
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Phone Number<span class="red_color">*</span></mat-label>
+                            <input matInput name="phoneNo" formControlName="phoneNo" placeholder="Phone Number"
+                                value="">
+                            <mat-error *ngIf="branchForm.controls['phoneNo'].hasError('required') 
+                                && branchForm.controls['phoneNo'].touched 
+                                || branchForm.controls['phoneNo'].hasError('pattern') 
+                                && branchForm.controls['phoneNo'].touched" class="form-error-msg">Phone Number
+                                Required
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div fxFlex="100" fxFlex.gt-xs="100" class="pr-1">
+                    <div class="pb-1">
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Address<span class="red_color">*</span></mat-label>
+                            <input matInput name="address" formControlName="address" placeholder="Address" value="">
+                            <mat-error *ngIf="branchForm.controls['address'].hasError('required') 
+                                && branchForm.controls['address'].touched 
+                                || branchForm.controls['address'].hasError('pattern') 
+                                && branchForm.controls['address'].touched" class="form-error-msg">Address Required
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div fxFlex="100" fxFlex.gt-xs="100" class="pr-1">
+                    <div class="pb-1">
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>EmailId<span class="red_color">*</span></mat-label>
+                            <input matInput name="emailId" formControlName="emailId" placeholder="emailId" value="">
+                            <mat-error *ngIf="branchForm.controls['emailId'].hasError('required') 
+                                && branchForm.controls['emailId'].touched 
+                                || branchForm.controls['emailId'].hasError('pattern') 
+                                && branchForm.controls['emailId'].touched" class="form-error-msg">emailId Required
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div fxFlex="100" fxFlex.gt-xs="100" class="pr-1">
+                    <div class="pb-1">
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Password<span class="red_color">*</span></mat-label>
+                            <input matInput name="districtPassword" formControlName="districtPassword"
+                                placeholder="Password" value="">
+                            <mat-error *ngIf="branchForm.controls['districtPassword'].hasError('required') 
+                                && branchForm.controls['districtPassword'].touched 
+                                || branchForm.controls['districtPassword'].hasError('pattern') 
+                                && branchForm.controls['districtPassword'].touched" class="form-error-msg">Password
+                                Required
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <mat-card-footer class="pt-0">
+            <button mat-raised-button color="primary" class="btn-primary-bg mr-12"
+                (click)=" save(branchForm.value)">Save</button>
+            <button mat-raised-button color="primary" class="btn-primary-bg mr-12" (click)=" discard()">Close</button>
+
+        </mat-card-footer>
+
+    </mat-card-content>
+</mat-card>

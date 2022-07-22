@@ -1,0 +1,180 @@
+<form [formGroup]="getattendanceForm">
+   <div fxLayout="row wrap" class="pagewrap">
+      <div fxFlex="100" fxFlex.gt-xs="15" class="pr-1">
+         <div class="mt-16 mr-12">
+            <mat-form-field class="full-width" appearance="outline">
+               <mat-label>Select Branch</mat-label>
+               <mat-select formControlName="branchId">
+                  <mat-option value='ALL'>ALL</mat-option>
+                  <mat-option *ngFor="let client of clients" [value]="client.branchId">
+                     {{client.branchName}}
+                  </mat-option>
+               </mat-select>
+            </mat-form-field>
+         </div>
+      </div>
+      <div fxFlex="100" fxFlex.gt-xs="15" class="pr-1">
+         <div class="mt-16 mr-12">
+            <mat-form-field class="full-width" appearance="outline">
+               <mat-label>Select Department</mat-label>
+               <mat-select (selectionChange)="onItemSelect($event)" formControlName="departmentId">
+                  <mat-option value='ALL'>ALL</mat-option>
+                  <mat-option *ngFor="let department of departments" [value]="department.departmentId">
+                     {{department.departmentName}}
+                  </mat-option>
+               </mat-select>
+            </mat-form-field>
+         </div>
+      </div>
+      <div fxFlex="100" fxFlex.gt-xs="15" class="pr-1">
+
+         <div class="mt-16 mr-12">
+            <mat-form-field class="full-width" appearance="outline">
+               <mat-label>Select Designation</mat-label>
+               <mat-select formControlName="designationId">
+                  <mat-option value='ALL'>ALL</mat-option>
+                  <mat-option *ngFor="let desig of designation" [value]="desig.designationId">
+                     {{desig.designation}}
+                  </mat-option>
+               </mat-select>
+            </mat-form-field>
+         </div>
+      </div>
+      <div fxFlex="100" fxFlex.gt-xs="30" class="pr-1">
+         <div class="mt-16 mr-12">
+            <br>
+            <button mat-raised-button class="btn-primary-bg mr-12"
+               (click)="getAttendance(getattendanceForm.value)">Submit</button>
+         </div>
+      </div>
+   </div>
+</form>
+<div class="create_btn">
+   <button mat-raised-button color="primary" class="btn-primary-bg" [disabled]="employeelength == 0"
+      (click)="updateAttendence(manualattendanceForm.value.attendence)">Save</button>
+   <button mat-raised-button color="primary" class="btn-primary-bg" (click)="Discard()">Discard</button>
+</div>
+<div class="form_bg">
+   <mat-card class="p-0">
+      <mat-card-title class="">
+         <div class="card-title-text"> Manual Attendance</div>
+         <mat-divider></mat-divider>
+      </mat-card-title>
+      <mat-card-content>
+         <!--  -->
+         <!-- <div fxLayout="row wrap" class="row mt-24">
+
+            <div fxFlex="100" fxFlex.gt-xs="20" class="">
+               <div fxLayout="row wrap" class="row ">
+                  <div fxFlex="100" fxFlex.gt-xs="20" class="">
+                     <label class="labels"><strong>Date :</strong> </label>
+                  </div>
+                  <div fxFlex="100" fxFlex.gt-xs="25" class="">
+                     <label><strong>{{thisDate}}</strong> </label>
+                  </div>
+               </div>
+            </div>
+
+            <div fxFlex="100" fxFlex.gt-xs="" class="">
+               <div fxLayout="row wrap" class="row ">
+                  <div fxFlex="100" fxFlex.gt-xs="30" class="">
+                     <label class="labels"><strong>Department :</strong> </label>
+                  </div>
+                  <div fxFlex="100" fxFlex.gt-xs="20" class="">
+                     <label><strong>{{departmentName}}</strong> </label>
+                  </div>
+               </div>
+            </div>
+            <div fxFlex="100" fxFlex.gt-xs="" class="">
+               <div fxLayout="row wrap" class="row ">
+                  <div fxFlex="100" fxFlex.gt-xs="30" class="">
+                     <label class="labels"><strong>Designation :</strong> </label>
+                  </div>
+                  <div fxFlex="100" fxFlex.gt-xs="30" class="">
+                     <label><strong>{{designation}}</strong> </label>
+                  </div>
+               </div>
+            </div>
+            <div fxFlex="100" fxFlex.gt-xs="" class="">
+               <div fxLayout="row wrap" class="row ">
+                  <div fxFlex="100" fxFlex.gt-xs="30" class="">
+                     <label class="labels"><strong>Total Employee :</strong> </label>
+                  </div>
+                  <div fxFlex="100" fxFlex.gt-xs="10" class="">
+                     <label><strong>{{count}}</strong> </label>
+                  </div>
+               </div>
+            </div>
+         </div> -->
+
+         <div fxLayout="row wrap" class="mt-12 grade-checkbox">
+            <div fxFlex="100" fxFlex.gt-xs="100" class="">
+               <div class="table_container pb-1">
+                  <div class="">
+                     <form [formGroup]="manualattendanceForm">
+                        <table class="mat-table  employee-table" formArrayName="attendence">
+                           <thead>
+                              <tr class="mat-header-row">
+                                 <th class="mat-header-cell text-center" rowspan="2" style="width:3%;">S.No</th>
+                                 <th class="mat-header-cell text-center" rowspan="2" style="width:5%;">Employee ID</th>
+                                 <th class="mat-header-cell" rowspan="2" style="width:10%;">Employee Name</th>
+                                 <th class="mat-header-cell" rowspan="2" style="width:10%;">Shift Name</th>
+                                 <th class="mat-header-cell" rowspan="2" style="width:10%;">Select Month</th>
+                                 <th class="mat-header-cell" rowspan="2" style="width:10%;">Present Days</th>
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr class="mat-row"
+                                 *ngFor="let attendence of manualattendanceForm.get('attendence')['controls']; let i=index"
+                                 [formGroupName]="i">
+                                 <td class="mat-cell text-center" *ngIf="employeelength != 0"> {{i+1}}
+                                 </td>
+                                 <td class="mat-cell text-center" *ngIf="employeelength != 0">
+                                    {{attendence.controls.employeeId.value}}
+                                    <input formControlName="employeeId" readonly style="display: none;" />
+
+                                 </td>
+                                 <td class="mat-cell text-center" *ngIf="employeelength != 0">
+                                    <label> {{attendence.controls.employeeName.value}}</label>
+                                    <input formControlName="employeeName" readonly style="display: none;" />
+                                 </td>
+                                 <td class="mat-cell text-center" *ngIf="employeelength != 0">
+                                    <label> {{attendence.controls.shiftName.value}}</label>
+                                    <input formControlName="shiftName" readonly style="display: none;" />
+                                 </td>
+                                 <td class="mat-cell text-center pt-8" *ngIf="employeelength != 0">
+                                    <mat-form-field appearance="outline" class="pt-24">
+                                       <mat-label></mat-label>
+                                       <mat-select formControlName="month">
+                                          <mat-option *ngFor="let empstatus of months" [value]="empstatus.month">
+                                             {{empstatus.monthName}}
+                                          </mat-option>
+                                       </mat-select>
+                                    </mat-form-field>
+                                 </td>
+                                 <td class="mat-cell text-center pt-8" *ngIf="employeelength != 0">
+                                    <mat-form-field appearance="outline" class="pt-24">
+                                       <mat-label></mat-label>
+                                       <mat-select name="status + i" formControlName="presentDays">
+                                          <mat-option *ngFor="let empstatus of days" [value]="empstatus.presentDays">
+                                             {{empstatus.day}}
+                                          </mat-option>
+                                       </mat-select>
+                                    </mat-form-field>
+                                 </td>
+                              </tr>
+                              <tr *ngIf="employeelength == 0">
+                                 <td class="text-center" colspan="7"><b>No Data Found...</b></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </form>
+                  </div>
+               </div>
+            </div>
+         </div>
+
+         <!-- -->
+      </mat-card-content>
+   </mat-card>
+</div>

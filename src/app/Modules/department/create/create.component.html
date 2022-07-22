@@ -1,0 +1,32 @@
+<div class="create_employee">
+   <mat-card class="p-0 pagewrap">
+      <mat-card-title class="">
+         <div class="card-title-text">Create New Department </div>
+         <mat-divider></mat-divider>
+      </mat-card-title>
+      <mat-card-content class="mb-0">
+         <form [formGroup]="departmentForm" class="department">
+            <div fxLayout="row wrap" class="mt-24">
+               <div fxFlex="100" fxFlex.gt-xs="100" class="pr-1">
+                  <div class="pb-1">
+                     <mat-form-field class="full-width" appearance="outline">
+                        <mat-label> Select Department <span class="red_color">*</span></mat-label>
+                        <input class="f24" matInput name="departmentName" [(ngModel)]="department.departmentName"
+                           formControlName="departmentName" placeholder="DeparttmentName" value="">
+                        <mat-error
+                           *ngIf="departmentForm.controls['departmentName'].hasError('required') && departmentForm.controls['departmentName'].touched || departmentForm.controls['departmentName'].hasError('pattern') && departmentForm.controls['departmentName'].touched">
+                           DeparmentName Required</mat-error>
+                     </mat-form-field>
+                  </div>
+               </div>
+            </div>
+         </form>
+         <mat-card-footer class="pt-0">
+            <button mat-raised-button color="primary" class="btn-primary-bg mr-12" (click)=" save('')">Save</button>
+            <button mat-raised-button color="primary" class="btn-primary-bg mr-12" (click)=" discard()">Close</button>
+
+         </mat-card-footer>
+      </mat-card-content>
+
+   </mat-card>
+</div>

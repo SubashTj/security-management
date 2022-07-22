@@ -1,0 +1,78 @@
+.mat-form-field {
+    width: 100%;
+}
+
+table .mat-form-field {
+    width: 80%;
+}
+
+.batch-name {
+    font-size: 24px;
+}
+
+mat-checkbox {
+    margin-right: 24px;
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+th {
+    background: #8080804d;
+}
+
+table {
+    width: 100%;
+    line-height: 10px;
+    border-color: #8080804d;
+}
+
+table .mat-form-field {
+    width: 60%;
+    height: 40px;
+    text-align: center !important;
+}
+
+.ml-0 {
+    margin-left: 0px !important;
+}
+
+.delete-icon {
+    border: 1px solid red;
+    border-radius: 50%;
+    background: red;
+    font-size: 13px;
+    line-height: 20px;
+    width: 20px !important;
+    height: 20px !important;
+    color: #fff;
+    text-align: center;
+}
+
+.edit-icon {
+    font-size: 13px;
+    line-height: 20px;
+    width: 20px !important;
+    height: 20px !important;
+    color: #fff;
+    text-align: center;
+    border: 1px solid #00f;
+    border-radius: 50%;
+    background: #00f;
+}
+
+.btn-dis:disabled,
+.btn-dis[disabled] {
+    border: 1px solid #999999 !important;
+    background-color: #cccccc !important;
+    color: #666666 !important;
+}
+
+.mat-table > thead > tr > th {
+    color: black;
+}
+
+.emp_setting > tbody > tr.mat-row {
+    height: 65px !important;
+}

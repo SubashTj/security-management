@@ -1,0 +1,523 @@
+<div class="create_employee">
+    <mat-card class="p-0 pagewrap">
+        <mat-card-title class="">
+            <div class="card-title-text">Create Employee</div>
+            <mat-divider></mat-divider>
+        </mat-card-title>
+        <mat-card-content>
+            <form [formGroup]="employeeForm">
+                <div fxLayout="row wrap" class="row ">
+                    <div fxFlex="100" fxFlex.gt-xs="100" class="fullwidth mt-0">
+                        <div fxFlex="100" fxFlex.gt-xs="38" class="minheight mt-28">
+                            <mat-form-field appearance="outline" class="full-width">
+                                <mat-label>First Name<span class="red_color">*</span></mat-label>
+                                <input class="f24" matInput name="firstName" placeholder="First Name"
+                                    formControlName="firstName" value="">
+
+                            </mat-form-field>
+                        </div>
+                        <div fxFlex="100" fxFlex.gt-xs="38" class="minheight ml-8 mt-28">
+                            <mat-form-field appearance="outline" class="full-width">
+                                <mat-label>Last Name<span class="red_color">*</span></mat-label>
+                                <input class="f24" matInput name="lastName" placeholder="Last Name"
+                                    formControlName="lastName" value="">
+                            </mat-form-field>
+                            <div fxFlex="100" fxFlex.gt-xs="1" class="preview_image mt-8">
+                                <div class="text-center">
+                                    <input type="file" #file style="display: none;" formControlName="userImage"
+                                        (change)="fileChangeEvent($event)" />
+                                    <img [src]="croppedImg" width="100px" height="100px" />
+                                    <a matRipple (click)="clearLogo()" style="color:red"
+                                        *ngIf="croppedImg !== 'assets/images/camera.png'">
+                                        <mat-icon
+                                            [ngStyle]="{'position' : 'relative' , 'bottom' : '90px' ,'left':'-12px'}"
+                                            class="delete-icon text-right">clear</mat-icon>
+                                    </a>
+                                    <div fxLayout="row wrap" class="row browse-block mt-12">
+                                        <div fxFlex="100" fxFlex.gt-xs="100" class="">
+                                            <button mat-raised-button class="btn-primary-bg ml-0" type="button"
+                                                (click)="file.click()">
+                                                <mat-icon class="attachment">attach_file</mat-icon><label>Upload</label>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <mat-tab-group>
+                    <mat-tab label="Work Info">
+                        <div fxLayout="row wrap" class="row mt-8">
+                            <div fxFlex="100" fxFlex.gt-xs="95" class="fullwidth mt-16">
+                                <div fxLayout="row wrap" fxFlex.gt-xs="50" class="row">
+
+                                    <div fxFlex="100" fxFlex.gt-xs="25" class="label">
+                                        <br>
+                                        <label><strong>Department </strong><span class="red_color">*</span></label>
+                                    </div>
+                                    <div fxFlex="100" fxFlex.gt-xs="70" class="">
+                                        <mat-form-field class="full-width" appearance="outline">
+                                            <mat-label>Department</mat-label>
+                                            <mat-select formControlName="departmentId"
+                                                (selectionChange)="onItemSelect($event)">
+                                                <mat-option *ngFor="let position of departments"
+                                                    [value]="position.departmentId">
+                                                    {{position.departmentName}}
+                                                </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                    <div fxFlex="100" fxFlex.gt-xs="25" class="label">
+                                        <br>
+                                        <label><strong>Designation </strong><span class="red_color">*</span></label>
+                                    </div>
+                                    <div fxFlex="100" fxFlex.gt-xs="70" class="">
+                                        <mat-form-field appearance="outline" class="full-width">
+                                            <mat-label>Designation </mat-label>
+                                            <mat-select formControlName="designationId">
+                                                <mat-option *ngFor="let position of designation"
+                                                    [value]="position.designationId">
+                                                    {{position.designation}}
+                                                </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                    <div fxFlex="100" fxFlex.gt-xs="25" class="label">
+                                        <br>
+                                        <label><strong>Shift</strong><span class="red_color">*</span></label>
+                                    </div>
+                                    <div fxFlex="100" fxFlex.gt-xs="70" class="">
+                                        <mat-form-field appearance="outline" class="full-width">
+                                            <mat-label>Select Shift </mat-label>
+                                            <mat-select formControlName="shiftId">
+                                                <mat-option *ngFor="let position of Shift" [value]="position.shiftId">
+                                                    {{position.shiftName}}
+                                                </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                    <div fxFlex="100" fxFlex.gt-xs="25" class="mt-12">
+                                        <br>
+                                        <label><strong>Date Of Joining</strong><span class="red_color">*</span></label>
+                                    </div>
+                                    <div fxFlex="100" fxFlex.gt-xs="70" class="date-month-block">
+                                        <mat-form-field appearance="outline">
+                                            <input matInput formControlName="dateOfJoining" [max]="todayDate"
+                                                type="date">
+                                            <mat-error *ngIf="control.dateOfJoining.errors?.required">
+                                                Date Of Joining is Required
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div fxFlex="100" fxFlex.gt-xs="50" class="">
+                                    <div fxLayout="row wrap" class="row">
+                                        <div fxFlex="100" fxFlex.gt-xs="20" class="label">
+                                            <br>
+                                            <mat-icon> phone</mat-icon>
+                                            <label><strong>Mobile</strong><span class="red_color">*</span></label>
+                                        </div>
+                                        <div fxFlex="100" fxFlex.gt-xs="75" class="">
+                                            <mat-form-field appearance="outline" class="full-width">
+                                                <input class="f24" matInput name="mobileNumber" placeholder="Mobile"
+                                                    formControlName="mobileNumber" value="">
+
+                                            </mat-form-field>
+
+                                        </div>
+                                        <div fxFlex="100" fxFlex.gt-xs="20" class="label">
+                                            <br>
+                                            <label><strong>Aadhar No</strong><span class="red_color">*</span></label>
+
+                                        </div>
+                                        <div fxFlex="100" fxFlex.gt-xs="76" class="minheight ml-8 mt-28">
+
+                                            <mat-form-field appearance="outline" class="full-width">
+                                                <input class="f24" matInput name="Aadhar No" placeholder="Aadhar No"
+                                                    formControlName="aadharNumber" value="">
+                                            </mat-form-field>
+                                        </div>
+
+                                        <div fxLayout="row wrap" fxFlex.gt-xs="100" class="">
+                                            <div fxFlex="100" fxFlex.gt-xs="16.5" class="">
+                                                <br>
+                                                <label><strong>Experience</strong><span
+                                                        class="red_color">*</span></label>
+                                            </div>
+                                            <div fxFlex="100" fxFlex.gt-xs="37" class="mr-8">
+                                                <mat-form-field appearance="outline" class="full-width">
+                                                    <input matInput name="experienceYear"
+                                                        formControlName="experienceYear" placeholder="Year" value="">
+
+                                                </mat-form-field>
+                                            </div>
+                                            <div fxFlex="100" fxFlex.gt-xs="37" class="">
+                                                <mat-form-field appearance="outline" class="full-width">
+                                                    <input matInput name="experienceMonth"
+                                                        formControlName="experienceMonth" placeholder="Month" value="">
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+                                        <div fxFlex="100" fxFlex.gt-xs="16.5" class="label mt-0">
+                                            <br>
+                                            <label><strong>Employee Type</strong><span
+                                                    class="red_color">*</span></label>
+                                        </div>
+                                        <div fxFlex="100" fxFlex.gt-xs="75" class="">
+                                            <br>
+                                            <mat-radio-group class="ml-15" aria-label="Select an option"
+                                                formControlName="employeeType">
+                                                <mat-radio-button class="mr-8" value="1">InStaff</mat-radio-button>
+                                                <mat-radio-button class="mr-8" value="2">OutStaff </mat-radio-button>
+                                            </mat-radio-group>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-tab>
+                    <mat-tab label="Personal Info">
+                        <div fxLayout="row wrap" class="row mt-8">
+                            <div fxFlex="100" fxFlex.gt-xs="95" class="fullwidth mt-16">
+                                <div fxLayout="row wrap" fxFlex.gt-xs="50" class="row">
+                                    <div fxFlex="100" fxFlex.gt-xs="25" class="label">
+                                        <br>
+                                        <label><strong>Blood-Group </strong><span class="red_color">*</span></label>
+                                    </div>
+                                    <div fxFlex="100" fxFlex.gt-xs="70" class="">
+                                        <mat-form-field class="full-width" appearance="outline">
+                                            <mat-label>Blood-Group </mat-label>
+                                            <mat-select formControlName="bloodGroupId">
+                                                <mat-option *ngFor="let group of bloodgroup"
+                                                    [value]="group.bloodGroupId">
+                                                    {{group.bloodGroup}}
+                                                </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                    <div fxFlex="100" fxFlex.gt-xs="25" class="label">
+                                        <br>
+                                        <label><strong>Nationality</strong><span class="red_color">*</span></label>
+                                    </div>
+                                    <div fxFlex="100" fxFlex.gt-xs="70" class="">
+                                        <mat-form-field appearance="outline" class="full-width">
+                                            <mat-label>Nationality</mat-label>
+                                            <mat-select formControlName="nationalityId">
+                                                <mat-option *ngFor="let nation of nationality"
+                                                    [value]="nation.nationalityId">
+                                                    {{nation.nationality}}
+                                                </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                    <div fxFlex="100" fxFlex.gt-xs="25" class="label">
+                                        <br>
+                                        <label><strong>Religion</strong><span class="red_color">*</span></label>
+                                    </div>
+                                    <div fxFlex="100" fxFlex.gt-xs="70" class="">
+                                        <mat-form-field class="full-width" appearance="outline">
+                                            <mat-label>Religion</mat-label>
+                                            <mat-select formControlName="religionId">
+                                                <mat-option *ngFor="let reli of religion" [value]="reli.religionId">
+                                                    {{reli.religion}}
+                                                </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                    <div fxFlex="100" fxFlex.gt-xs="25" class="mt-12">
+                                        <br>
+                                        <label><strong>Qualification </strong><span class="red_color">*</span></label>
+                                    </div>
+                                    <div fxFlex="100" fxFlex.gt-xs="70" class="date-month-block">
+                                        <mat-form-field appearance="outline" class="full-width">
+                                            <mat-label>Qualification</mat-label>
+                                            <mat-select formControlName="qualificationId">
+                                                <mat-option *ngFor="let qualification of qualifications"
+                                                    [value]="qualification.qualificationId">
+                                                    {{qualification.qualification}}
+                                                </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                    <div fxFlex="100" fxFlex.gt-xs="25" class="label mt-12">
+                                        <br>
+                                        <label><strong>Date Of Birth</strong><span class="red_color">*</span></label>
+                                    </div>
+                                    <div fxFlex="100" fxFlex.gt-xs="70" class="date-month-block">
+                                        <mat-form-field appearance="outline">
+                                            <input matInput formControlName="dateOfBirth" [max]="todayDate" type="date">
+                                            <mat-error *ngIf="control.dateOfBirth.errors?.required">
+                                                Date of Birth Required
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div fxFlex="100" fxFlex.gt-xs="50" class="">
+                                    <div fxLayout="row wrap" class="row">
+
+                                        <div fxFlex="100" fxFlex.gt-xs="20" class="label mt-0">
+                                            <br>
+                                            <label><strong>Gender</strong><span class="red_color">*</span></label>
+                                        </div>
+                                        <div fxFlex="100" fxFlex.gt-xs="75" class="">
+                                            <br>
+                                            <mat-radio-group class="ml-15" aria-label="Select an option"
+                                                formControlName="gender">
+                                                <mat-radio-button class="mr-8" value="1">Male</mat-radio-button>
+                                                <mat-radio-button class="mr-8" value="0">Female</mat-radio-button>
+                                                <mat-radio-button class="mr-8" value="2">Transgender </mat-radio-button>
+                                            </mat-radio-group>
+                                        </div>
+
+                                        <div fxFlex="100" fxFlex.gt-xs="20" class="label mt-0">
+
+                                            <br>
+                                            <label><strong>Marital Status</strong><span
+                                                    class="red_color">*</span></label>
+
+                                        </div>
+                                        <div fxFlex="100" fxFlex.gt-xs="75" class="mb-24">
+
+                                            <br>
+                                            <mat-radio-group class="ml-15" aria-label="Select an option"
+                                                formControlName="maritalStatus">
+                                                <mat-radio-button class="mr-8" value="1">
+                                                    Married</mat-radio-button>
+                                                <mat-radio-button class="mr-8" value="2">Unmarried
+                                                </mat-radio-button>
+                                            </mat-radio-group>
+                                        </div>
+
+                                        <div fxLayout="row wrap">
+                                            <div fxFlex="100" fxFlex.gt-xs="100" class="fullwidth">
+                                                <div fxFlex="100" fxFlex.gt-xs="24" class="label">
+                                                    <br>
+                                                    <label><strong>Contact Address</strong><span
+                                                            class="red_color">*</span></label>
+                                                </div>
+                                                <div fxFlex="100" fxFlex.gt-xs="100" class="mt-8">
+                                                    <div fxLayout="row wrap">
+
+                                                        <div fxFlex="100" fxFlex.gt-xs="100" class="">
+                                                            <br>
+                                                            <mat-form-field appearance="outline" class="full-width">
+                                                                <input matInput name="streetnameone"
+                                                                    formControlName="addressLine1" placeholder=line1
+                                                                    value="">
+                                                            </mat-form-field>
+                                                        </div>
+                                                        <div fxFlex="100" fxFlex.gt-xs="100" class="">
+                                                            <mat-form-field appearance="outline" class="full-width">
+                                                                <input matInput name="streetnametwo"
+                                                                    formControlName="addressLine2" placeholder=line2
+                                                                    value="">
+                                                            </mat-form-field>
+                                                        </div>
+                                                        <div fxFlex="100" fxFlex.gt-xs="100" class="fullwidth">
+                                                            <mat-form-field appearance="outline" class="full-width">
+                                                                <mat-label>Country</mat-label>
+                                                                <mat-select formControlName="countryId"
+                                                                    (selectionChange)="selected($event.value)">
+                                                                    <mat-option *ngFor="let c of country"
+                                                                        [value]="c.countryId">
+                                                                        {{ c.countryName }}
+                                                                    </mat-option>
+                                                                </mat-select>
+                                                            </mat-form-field>
+                                                        </div>
+                                                        <div fxFlex="100" fxFlex.gt-xs="30" class="mr-4">
+                                                            <mat-form-field appearance="outline" class="full-width">
+                                                                <mat-label>State</mat-label>
+                                                                <mat-select formControlName="stateId"
+                                                                    (selectionChange)="select($event.value)">
+                                                                    <mat-option *ngFor="let s of state"
+                                                                        [value]="s.stateId">
+                                                                        {{ s.state }}
+                                                                    </mat-option>
+                                                                </mat-select>
+                                                            </mat-form-field>
+                                                        </div>
+                                                        <div fxFlex="100" fxFlex.gt-xs="35" class="mr-4">
+                                                            <mat-form-field appearance="outline" class="full-width">
+                                                                <mat-label>City</mat-label>
+                                                                <mat-select formControlName="cityId">
+                                                                    <mat-option *ngFor="let c of city"
+                                                                        [value]="c.cityId">
+                                                                        {{ c.city }}
+                                                                    </mat-option>
+                                                                </mat-select>
+
+                                                            </mat-form-field>
+                                                        </div>
+                                                        <div fxFlex="100" fxFlex.gt-xs="28" class="mr-4">
+                                                            <mat-form-field appearance="outline" class="full-width">
+                                                                <input matInput type="text" name="zipcode"
+                                                                    formControlName="zipcode" placeholder="ZipCode"
+                                                                    value="">
+                                                            </mat-form-field>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-tab>
+                    <mat-tab label="Uniform Info">
+                        <div fxLayout="row wrap" class="row mt-8">
+                            <div fxFlex="100" fxFlex.gt-xs="95" class="fullwidth mt-16">
+                                <div fxLayout="row wrap" fxFlex.gt-xs="50" class="row">
+                                    <div fxFlex="100" fxFlex.gt-xs="25" class="label mt-12">
+                                        <br>
+                                        <label><strong>Uniform Shirt Size</strong><span
+                                                class="red_color">*</span></label>
+                                    </div>
+                                    <div fxFlex="100" fxFlex.gt-xs="70" class="minheight ml-8 mt-28">
+
+                                        <mat-form-field appearance="outline" class="full-width">
+                                            <input class="f24" matInput name="Shirt Size" placeholder="Shirt Size"
+                                                formControlName="shirtSize" value="">
+                                        </mat-form-field>
+                                    </div>
+                                    <div fxFlex="100" fxFlex.gt-xs="25" class="label mt-12">
+                                        <br>
+                                        <label><strong>Uniform Pant Size</strong><span
+                                                class="red_color">*</span></label>
+                                    </div>
+                                    <div fxFlex="100" fxFlex.gt-xs="70" class="minheight ml-8 mt-28">
+
+                                        <mat-form-field appearance="outline" class="full-width">
+                                            <input class="f24" matInput name="Pant Size" placeholder="Pant Size"
+                                                formControlName="pantSize" value="">
+                                        </mat-form-field>
+                                    </div>
+                                    <div fxFlex="100" fxFlex.gt-xs="25" class="label mt-12">
+                                        <br>
+                                        <label><strong>Shoe Size</strong><span class="red_color">*</span></label>
+                                    </div>
+                                    <div fxFlex="100" fxFlex.gt-xs="70" class="minheight ml-8 mt-28">
+
+                                        <mat-form-field appearance="outline" class="full-width">
+                                            <input class="f24" matInput name="Shoe Size" placeholder="Shoe Size"
+                                                formControlName="shoeSize" value="">
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-tab>
+                    <mat-tab label="Salary Info">
+                        <div fxLayout="row wrap" class="row mt-16">
+                            <div fxFlex="100" fxFlex.gt-xs="50" class="">
+                                <div fxLayout="row wrap" class="row">
+                                    <div fxFlex="100" fxFlex.gt-xs="20" class="label">
+                                        <br>
+                                        <label><strong>Account No</strong><span class="red_color">*</span></label>
+
+                                    </div>
+                                    <div fxFlex="100" fxFlex.gt-xs="76" class="minheight ml-8 mt-28">
+
+                                        <mat-form-field appearance="outline" class="full-width">
+                                            <input class="f24" matInput name="Account No" placeholder="Account No"
+                                                formControlName="accountNumber" value="">
+                                        </mat-form-field>
+                                    </div>
+                                    <div fxFlex="100" fxFlex.gt-xs="20" class="label">
+                                        <br>
+                                        <label><strong>IFSC Code</strong><span class="red_color">*</span></label>
+
+                                    </div>
+                                    <div fxFlex="100" fxFlex.gt-xs="76" class="minheight ml-8 mt-28">
+
+                                        <mat-form-field appearance="outline" class="full-width">
+                                            <input class="f24" matInput name="IFSC Code" placeholder="IFSC Code"
+                                                formControlName="ifscCode" value="">
+                                        </mat-form-field>
+                                    </div>
+                                    <div fxFlex="100" fxFlex.gt-xs="20" class="label">
+                                        <br>
+                                        <label><strong>EPF No</strong><span class="red_color">*</span></label>
+
+                                    </div>
+                                    <div fxFlex="100" fxFlex.gt-xs="76" class="minheight ml-8 mt-28">
+
+                                        <mat-form-field appearance="outline" class="full-width">
+                                            <input class="f24" matInput name="EPF No" placeholder="EPF No"
+                                                formControlName="epfNo" value="">
+                                        </mat-form-field>
+                                    </div>
+                                    <div fxFlex="100" fxFlex.gt-xs="20" class="label">
+                                        <br>
+                                        <label><strong>ESI No</strong><span class="red_color">*</span></label>
+
+                                    </div>
+                                    <div fxFlex="100" fxFlex.gt-xs="76" class="minheight ml-8 mt-28">
+
+                                        <mat-form-field appearance="outline" class="full-width">
+                                            <input class="f24" matInput name="ESI No" placeholder="ESI No"
+                                                formControlName="esiNo" value="">
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                            <div fxFlex="100" fxFlex.gt-xs="50" class="">
+                                <div fxLayout="row wrap" class="row">
+                                    <div fxFlex="100" fxFlex.gt-xs="20" class="label">
+                                        <br>
+                                        <label><strong>Nominee Name</strong><span class="red_color">*</span></label>
+
+                                    </div>
+                                    <div fxFlex="100" fxFlex.gt-xs="76" class="minheight ml-8 mt-28">
+
+                                        <mat-form-field appearance="outline" class="full-width">
+                                            <input class="f24" matInput name="Nominee Name" placeholder="Nominee Name"
+                                                formControlName="nomineeName" value="">
+                                        </mat-form-field>
+                                    </div>
+
+                                    <div fxFlex="100" fxFlex.gt-xs="20" class="label">
+                                        <br>
+                                        <label><strong>Salary-Type</strong><span class="red_color">*</span></label>
+                                    </div>
+                                    <div fxFlex="100" fxFlex.gt-xs="76" class="">
+                                        <mat-form-field class="full-width" appearance="outline">
+                                            <mat-label>Salary-Type</mat-label>
+                                            <mat-select formControlName="salaryTypeId">
+                                                <mat-option *ngFor="let salary of salarytype"
+                                                    [value]="salary.salaryTypeId">
+                                                    {{salary.salaryType}}
+                                                </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                    <div fxFlex="100" fxFlex.gt-xs="20" class="label">
+                                        <br>
+                                        <label><strong>Salary</strong><span class="red_color">*</span></label>
+
+                                    </div>
+                                    <div fxFlex="100" fxFlex.gt-xs="76" class="minheight ml-8 mt-28">
+
+                                        <mat-form-field appearance="outline" class="full-width">
+                                            <input class="f24" matInput name="Salary" placeholder="Salary"
+                                                formControlName="actualSalary" value="">
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-tab>
+                </mat-tab-group>
+
+            </form>
+        </mat-card-content>
+
+        <div class="create_btn">
+            <button mat-raised-button (click)="save(employeeForm.value)" color="primary"
+                class="btn-primary-bg">Save</button>
+            <button mat-raised-button color="primary" class="btn-primary-bg mr-12" (click)=" discard()">Close</button>
+        </div>
+    </mat-card>
+</div>

@@ -1,0 +1,488 @@
+<div fxLayout="row wrap" class="mt-16">
+    <div fxFlex="100" fxFlex.gt-xs="100">
+        <div fxFlex="100" fxFlex.gt-xs="95" class="mt-0 mb-4">
+        </div>
+        <div fxFlex="100" fxFlex.gt-xs="5" class="mt-0 mb-4">
+            <button mat-stroked-button class="mt-8 ml-12" color="primary" printTitle="PETAL AUTOMATIONS"
+                printSectionId="print-section" [useExistingCss]="true" ngxPrint> Print</button>
+        </div>
+    </div>
+</div>
+<div class="" id="print-section">
+    <mat-card class="p-0">
+        <mat-card-title class="">
+            <div class="card-title-text">General Attendance</div>
+            <mat-divider></mat-divider>
+        </mat-card-title>
+
+        <mat-card-content>
+            <form [formGroup]="basicForm">
+                <div fxLayout="row wrap" class="mt-16">
+                    <div fxFlex="100" fxFlex.gt-xs="100">
+                        <div fxFlex="100" fxFlex.gt-xs="100" class="mt-0 mb-4">
+                            <mat-radio-group class="ml-15" aria-label="Select an option" name="report"
+                                (change)="typeChange()" formControlName="type">
+
+                                <mat-radio-button class="mr-40" value="Daily">
+                                    Daily
+                                </mat-radio-button>
+                                <mat-radio-button class="mr-40" value="Monthly">
+                                    Monthly
+                                </mat-radio-button>
+                                <mat-radio-button value="Individual">Individual
+                                </mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                    </div>
+                </div>
+                <div class="daily-block" *ngIf="control.type.value == 'Daily'">
+                    <div fxLayout="row wrap" class="mt-8">
+                        <div fxFlex="100" fxFlex.gt-xs="20" class="mr-12">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Date<span class="red_color">*</span></mat-label>
+                                <input matInput formControlName="inp_date" (dateChange)="dateChange()"
+                                    [matDatepicker]="picker2" (focus)="picker2.open()" (click)="picker2.open()">
+                                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                                <mat-datepicker #picker2></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+                        <div fxFlex="100" fxFlex.gt-xs="8" class="mt-8 ml-12">
+                            <button (click)="getDailyAtten()" mat-raised-button color="primary"
+                                class="btn-primary-bg">Search</button>
+                        </div>
+                    </div>
+                    <div class="border-top"></div>
+                    <br>
+                    <div id="print-section" class="table_container" *ngIf="dataSource.data.length!= 0">
+                        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 emp-tabel">
+                            <ng-container matColumnDef="employeeName">
+                                <th mat-header-cell *matHeaderCellDef class="text-center">Employeename</th>
+                                <td class="text-center" mat-cell *matCellDef="let element">
+                                    {{element.employeeName}}
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="employeeId">
+                                <th mat-header-cell *matHeaderCellDef class="text-center"> Employee Code </th>
+                                <td class="text-center" mat-cell *matCellDef="let element">
+                                    {{element.employeeId}}
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="date">
+                                <th mat-header-cell *matHeaderCellDef class="text-center">Date</th>
+                                <td class="text-center" mat-cell *matCellDef="let element">
+                                    {{element.date}}
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="type">
+                                <th mat-header-cell *matHeaderCellDef class="text-center">
+                                    Type
+                                </th>
+                                <td mat-cell *matCellDef="let element" class="text-center">
+                                    {{element.type}}
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="checkIn">
+                                <th mat-header-cell *matHeaderCellDef class="text-center">
+                                    CheckIn</th>
+                                <td mat-cell *matCellDef="let element" class="text-center">
+                                    {{element.checkIn}}
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="checkOut">
+                                <th mat-header-cell *matHeaderCellDef class="text-center">
+                                    CheckOut</th>
+                                <td mat-cell *matCellDef="let element" class="text-center">
+                                    {{element.checkOut}}
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="workingHourNormal">
+                                <th mat-header-cell *matHeaderCellDef class="text-center">
+                                    Working-Hour-Normal
+                                </th>
+                                <td mat-cell *matCellDef="let element" class="text-center">
+                                    {{element.workingHourNormal}}
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="workingHourReal">
+                                <th mat-header-cell *matHeaderCellDef class="text-center">
+                                    Working-Hour-Real </th>
+                                <td mat-cell *matCellDef="let element" class="text-center">
+                                    {{element.workingHourReal}}
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="lateTime">
+                                <th mat-header-cell *matHeaderCellDef class="text-center">
+                                    Late-Time</th>
+                                <td mat-cell *matCellDef="let element" class="text-center">
+                                    {{element.lateTime}} </td>
+                            </ng-container>
+                            <ng-container matColumnDef="lateMin">
+                                <th mat-header-cell *matHeaderCellDef class="text-center">
+                                    Late-Min</th>
+                                <td mat-cell *matCellDef="let element" class="text-center">
+                                    {{element.lateMin}}
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="leaveearlyTime">
+                                <th mat-header-cell *matHeaderCellDef class="text-center">
+                                    Leave-Early-Time</th>
+                                <td mat-cell *matCellDef="let element" class="text-center">
+                                    {{element.leaveearlyTime}}
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="leaveEarlyMin">
+                                <th mat-header-cell *matHeaderCellDef class="text-center">
+                                    LeaveEarly-Min</th>
+                                <td mat-cell *matCellDef="let element" class="text-center">
+                                    {{element.leaveEarlyMin}}
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="graceMinNormal">
+                                <th mat-header-cell *matHeaderCellDef class="text-center">
+                                    Grace-Min-Normal </th>
+                                <td mat-cell *matCellDef="let element" class="text-center">
+                                    {{element.graceMinNormal}}
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="graceMinReal">
+                                <th mat-header-cell *matHeaderCellDef class="text-center">
+                                    Grace-Min-Real</th>
+                                <td mat-cell *matCellDef="let element" class="text-center">
+                                    {{element.graceMinReal}}
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="attendanceDaysNormal">
+                                <th mat-header-cell *matHeaderCellDef class="text-center">
+                                    AttendanceDays-Normal</th>
+                                <td mat-cell *matCellDef="let element" class="text-center">
+                                    {{element.attendanceDaysNormal}}
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="attendanceDaysReal">
+                                <th mat-header-cell *matHeaderCellDef class="text-center">
+                                    AttendanceDays-Real
+                                </th>
+                                <td mat-cell *matCellDef="let element" class="text-center">
+                                    {{element.attendanceDaysReal}}
+                                </td>
+                            </ng-container>
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                        </table>
+                    </div>
+                    <ng-container *ngIf="dataSource.data.length === 0  ">
+                        <p class="text-center"> <b>No Data Found...</b> </p>
+                    </ng-container>
+                </div>
+                <div class="daily-block" *ngIf="control.type.value == 'Monthly'">
+                    <div fxLayout="row wrap" class="">
+                        <div fxFlex="100" fxFlex.gt-xs="20" class="mt-16 mr-12">
+                            <mat-form-field appearance="outline">
+                                <mat-label>From Date<span class="red_color">*</span></mat-label>
+                                <input matInput formControlName="start_date" (dateChange)="dateChange()"
+                                    [matDatepicker]="picker2" (focus)="picker2.open()" (click)="picker2.open()">
+                                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                                <mat-datepicker #picker2></mat-datepicker>
+                            </mat-form-field>
+
+                        </div>
+                        <div fxFlex="100" fxFlex.gt-xs="20" class="mt-16 mr-12">
+
+                            <mat-form-field appearance="outline">
+                                <mat-label>To Date<span class="red_color">*</span></mat-label>
+                                <input matInput formControlName="end_date" [min]="control.start_date?.value"
+                                    [matDatepicker]="picker3" (focus)="picker3.open()" (click)="picker3.open()">
+                                <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+                                <mat-datepicker #picker3></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+                        <div fxFlex="100" fxFlex.gt-xs="13" class="mt-8 ml-12">
+                            <button (click)="getMonthlyAtten()" mat-raised-button color="primary"
+                                class="btn-primary-bg">Search</button>
+                        </div>
+                    </div>
+                    <div class="border-top"></div>
+                    <br>
+                    <div class="table_container" *ngIf="dataSource.data.length != 0 ">
+                        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 emp-tabel">
+                            <ng-container matColumnDef="employeeName">
+                                <th mat-header-cell *matHeaderCellDef class="text-center">Employeename</th>
+                                <td class="text-center" mat-cell *matCellDef="let element">
+                                    {{element.employeeName}}
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="employeeId">
+                                <th mat-header-cell *matHeaderCellDef class="text-center"> Employee Code </th>
+                                <td class="text-center" mat-cell *matCellDef="let element">
+                                    {{element.employeeId}}
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="date">
+                                <th mat-header-cell *matHeaderCellDef class="text-center">Date</th>
+                                <td class="text-center" mat-cell *matCellDef="let element">
+                                    {{element.date}}
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="type">
+                                <th mat-header-cell *matHeaderCellDef class="text-center">
+                                    Type
+                                </th>
+                                <td class="text-center" mat-cell *matCellDef="let element">
+                                    {{element.type}}
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="checkIn">
+                                <th mat-header-cell *matHeaderCellDef class="text-center">
+                                    CheckIn</th>
+                                <td mat-cell *matCellDef="let element" class="text-center">
+                                    {{element.checkIn}}
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="checkOut">
+                                <th mat-header-cell *matHeaderCellDef class="text-center">
+                                    CheckOut</th>
+                                <td mat-cell *matCellDef="let element" class="text-center">
+                                    {{element.checkOut}}
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="workingHourNormal">
+                                <th mat-header-cell *matHeaderCellDef class="text-center">
+                                    Working-Hour-Normal
+                                </th>
+                                <td mat-cell *matCellDef="let element" class="text-center">
+                                    {{element.workingHourNormal}}
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="workingHourReal">
+                                <th mat-header-cell *matHeaderCellDef class="text-center">
+                                    Working-Hour-Real </th>
+                                <td mat-cell *matCellDef="let element" class="text-center">
+                                    {{element.workingHourReal}}
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="lateTime">
+                                <th mat-header-cell *matHeaderCellDef class="text-center">
+                                    Late-Time</th>
+                                <td mat-cell *matCellDef="let element" class="text-center">
+                                    {{element.lateTime}} </td>
+                            </ng-container>
+                            <ng-container matColumnDef="lateMin">
+                                <th mat-header-cell *matHeaderCellDef class="text-center">
+                                    Late-Min</th>
+                                <td mat-cell *matCellDef="let element" class="text-center">
+                                    {{element.lateMin}}
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="leaveearlyTime">
+                                <th mat-header-cell *matHeaderCellDef class="text-center">
+                                    Leave-Early-Time</th>
+                                <td mat-cell *matCellDef="let element" class="text-center">
+                                    {{element.leaveearlyTime}}
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="leaveEarlyMin">
+                                <th mat-header-cell *matHeaderCellDef class="text-center">
+                                    LeaveEarly-Min</th>
+                                <td mat-cell *matCellDef="let element" class="text-center">
+                                    {{element.leaveEarlyMin}}
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="graceMinNormal">
+                                <th mat-header-cell *matHeaderCellDef class="text-center">
+                                    Grace-Min-Normal </th>
+                                <td mat-cell *matCellDef="let element" class="text-center">
+                                    {{element.graceMinNormal}}
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="graceMinReal">
+                                <th mat-header-cell *matHeaderCellDef class="text-center">
+                                    Grace-Min-Real</th>
+                                <td mat-cell *matCellDef="let element" class="text-center">
+                                    {{element.graceMinReal}}
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="attendanceDaysNormal">
+                                <th mat-header-cell *matHeaderCellDef class="text-center">
+                                    AttendanceDays-Normal</th>
+                                <td mat-cell *matCellDef="let element" class="text-center">
+                                    {{element.attendanceDaysNormal}}
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="attendanceDaysReal">
+                                <th mat-header-cell class="text-center" *matHeaderCellDef class="text-center">
+                                    AttendanceDays-Real
+                                </th>
+                                <td mat-cell *matCellDef="let element" class="text-center">
+                                    {{element.attendanceDaysReal}}
+                                </td>
+                            </ng-container>
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                        </table>
+                    </div>
+                    <ng-container *ngIf="dataSource.data.length === 0  ">
+                        <p class="text-center"> <b>No Data Found...</b> </p>
+                    </ng-container>
+                </div>
+                <div class="individual-block mt-12" *ngIf="control.type.value == 'Individual'">
+                    <div fxLayout="row wrap" class="">
+                        <div fxFlex="100" fxFlex.gt-xs="15" class="mt-16 mr-12">
+                            <mat-form-field appearance="outline" class="full-width">
+                                <mat-label>Employee Code<span class="red_color">*</span></mat-label>
+                                <input class="" matInput name="employeeId" formControlName="employeeId" placeholder=""
+                                    value="">
+                            </mat-form-field>
+                        </div>
+                        <div fxFlex="100" fxFlex.gt-xs="15" class="mt-16 mr-12">
+                            <mat-form-field appearance="outline">
+                                <mat-label>From Date<span class="red_color">*</span></mat-label>
+                                <input matInput formControlName="startDate" (dateChange)="dateChange()"
+                                    [matDatepicker]="picker2" (focus)="picker2.open()" (click)="picker2.open()">
+                                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                                <mat-datepicker #picker2></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+                        <div fxFlex="100" fxFlex.gt-xs="15" class="mt-16 mr-12">
+                            <mat-form-field appearance="outline">
+                                <mat-label>To Date<span class="red_color">*</span></mat-label>
+                                <input matInput formControlName="endDate" [min]="control.fromDate?.value"
+                                    [matDatepicker]="picker3" (focus)="picker3.open()" (click)="picker3.open()">
+                                <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+                                <mat-datepicker #picker3></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+                        <div fxFlex="100" fxFlex.gt-xs="7" class="mt-12 ml-4">
+                            <button (click)="getIndividulAtten()" mat-raised-button color="primary"
+                                class="btn-primary-bg">Search</button>
+                        </div>
+
+                    </div>
+                    <div class="border-top"></div>
+                    <br>
+                    <div fxLayout="row wrap" class="mt-8" *ngIf="dataSource.data.length != 0">
+                        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 emp-tabel">
+                            <ng-container matColumnDef="employeeName">
+                                <th mat-header-cell *matHeaderCellDef class="text-center">Employeename</th>
+                                <td class="text-center" mat-cell *matCellDef="let element">
+                                    {{element.employeeName}}
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="employeeId">
+                                <th mat-header-cell *matHeaderCellDef class="text-center"> Employee Code </th>
+                                <td class="text-center" mat-cell *matCellDef="let element">
+                                    {{element.employeeId}}
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="date">
+                                <th mat-header-cell *matHeaderCellDef class="text-center">Date</th>
+                                <td class="text-center" mat-cell *matCellDef="let element">
+                                    {{element.date}}
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="type">
+                                <th mat-header-cell *matHeaderCellDef class="text-center">
+                                    Type
+                                </th>
+                                <td class="text-center" mat-cell *matCellDef="let element">
+                                    {{element.type}}
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="checkIn">
+                                <th mat-header-cell *matHeaderCellDef class="text-center">
+                                    CheckIn</th>
+                                <td mat-cell *matCellDef="let element" class="text-center">
+                                    {{element.checkIn}}
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="checkOut">
+                                <th mat-header-cell *matHeaderCellDef class="text-center">
+                                    CheckOut</th>
+                                <td mat-cell *matCellDef="let element" class="text-center">
+                                    {{element.checkOut}}
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="workingHourNormal">
+                                <th mat-header-cell *matHeaderCellDef class="text-center">
+                                    Working-Hour-Normal
+                                </th>
+                                <td mat-cell *matCellDef="let element" class="text-center">
+                                    {{element.workingHourNormal}}
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="workingHourReal">
+                                <th mat-header-cell *matHeaderCellDef class="text-center">
+                                    Working-Hour-Real </th>
+                                <td mat-cell *matCellDef="let element" class="text-center">
+                                    {{element.workingHourReal}}
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="lateTime">
+                                <th mat-header-cell *matHeaderCellDef class="text-center">
+                                    Late-Time</th>
+                                <td mat-cell *matCellDef="let element" class="text-center">
+                                    {{element.lateTime}} </td>
+                            </ng-container>
+                            <ng-container matColumnDef="lateMin">
+                                <th mat-header-cell *matHeaderCellDef class="text-center">
+                                    Late-Min</th>
+                                <td mat-cell *matCellDef="let element" class="text-center">
+                                    {{element.lateMin}}
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="leaveearlyTime">
+                                <th mat-header-cell *matHeaderCellDef class="text-center">
+                                    Leave-Early-Time</th>
+                                <td mat-cell *matCellDef="let element" class="text-center">
+                                    {{element.leaveearlyTime}}
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="leaveEarlyMin">
+                                <th mat-header-cell *matHeaderCellDef class="text-center">
+                                    LeaveEarly-Min</th>
+                                <td mat-cell *matCellDef="let element" class="text-center">
+                                    {{element.leaveEarlyMin}}
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="graceMinNormal">
+                                <th mat-header-cell *matHeaderCellDef class="text-center">
+                                    Grace-Min-Normal </th>
+                                <td mat-cell *matCellDef="let element" class="text-center">
+                                    {{element.graceMinNormal}}
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="graceMinReal">
+                                <th mat-header-cell *matHeaderCellDef class="text-center">
+                                    Grace-Min-Real</th>
+                                <td mat-cell *matCellDef="let element" class="text-center">
+                                    {{element.graceMinReal}}
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="attendanceDaysNormal">
+                                <th mat-header-cell *matHeaderCellDef class="text-center">
+                                    AttendanceDays-Normal</th>
+                                <td mat-cell *matCellDef="let element" class="text-center">
+                                    {{element.attendanceDaysNormal}}
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="attendanceDaysReal">
+                                <th mat-header-cell class="text-center" *matHeaderCellDef>
+                                    AttendanceDays-Real
+                                </th>
+                                <td mat-cell *matCellDef="let element" class="text-center">
+                                    {{element.attendanceDaysReal}}
+                                </td>
+                            </ng-container>
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                        </table>
+                    </div>
+                    <ng-container *ngIf="dataSource.data.length === 0  ">
+                        <p class="text-center"> <b>No Data Found...</b> </p>
+                    </ng-container>
+
+
+                </div>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>
