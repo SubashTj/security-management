@@ -8,7 +8,7 @@ export const environment = {
   locationTrackingUrl: "https://employee-tracking.petalpurple.in/locationtracking/",
   infrastructureUrl: "https://employee-tracking.petalpurple.in/infrastructure/",
   //  apiUrl:"http://192.168.1.17:8080/employee/",
-  apiUrl: "http://192.168.1.6:8016/paramount/",
+  apiUrl: "http://192.168.1.30:8016/paramount/",
   // apiUrl: "https://phs.petalyellow.com:8016/paramount/",
   mqttConfig: {
     hostname: "device.petalpurple.com",
