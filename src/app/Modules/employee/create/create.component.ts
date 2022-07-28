@@ -95,9 +95,10 @@ export class CreateComponent implements OnInit {
       epfNo: new FormControl(""),
       accountNumber: new FormControl(""),
       salaryTypeId: new FormControl(""),
-      actualSalary: new FormControl(""),
-      // esiSalary: new FormControl(""),
-      // epfSalary: new FormControl(""),
+      salary: new FormControl(""),
+      esiSalary: new FormControl(""),
+      epfSalary: new FormControl(""),
+      invoiceSalary: new FormControl(""),
       ifscCode: new FormControl(""),
       bloodGroupId: new FormControl(""),
       shiftId: new FormControl(""),
@@ -153,9 +154,10 @@ export class CreateComponent implements OnInit {
     formData.append('nomineeName', this.employeeForm.value.nomineeName);
     formData.append('accountNumber', this.employeeForm.value.accountNumber);
     formData.append('salaryTypeId', this.employeeForm.value.salaryTypeId);
-    formData.append('actualSalary', this.employeeForm.value.actualSalary);
-    // formData.append('esiSalary', this.employeeForm.value.esiSalary);
-    // formData.append('epfSalary', this.employeeForm.value.epfSalary);
+    formData.append('salary', this.employeeForm.value.salary);
+    formData.append('esiSalary', this.employeeForm.value.esiSalary);
+    formData.append('epfSalary', this.employeeForm.value.epfSalary);
+    formData.append('invoiceSalary', this.employeeForm.value.invoiceSalary);
     formData.append('ifscCode', this.employeeForm.value.ifscCode);
     if (this.employees.image) {
       formData.append('userImage', this.employees.image);

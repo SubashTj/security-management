@@ -103,9 +103,10 @@ export class UpdateEmployeeComponent implements OnInit {
       epfNo: new FormControl(""),
       accountNumber: new FormControl(""),
       salaryTypeId: new FormControl(""),
-      actualSalary: new FormControl(""),
-      // esiSalary: new FormControl(""),
-      // epfSalary: new FormControl(""),
+      salary: new FormControl(""),
+      esiSalary: new FormControl(""),
+      epfSalary: new FormControl(""),
+      invoiceSalary: new FormControl(""),
       ifscCode: new FormControl(""),
       bloodGroupId: new FormControl(""),
       nationalityId: new FormControl(""),
@@ -160,9 +161,10 @@ export class UpdateEmployeeComponent implements OnInit {
     formData.append('nomineeName', this.employeeForm.value.nomineeName);
     formData.append('accountNumber', this.employeeForm.value.accountNumber);
     formData.append('salaryTypeId', this.employeeForm.value.salaryTypeId);
-    formData.append('actualSalary', this.employeeForm.value.actualSalary);
-    // formData.append('esiSalary', this.employeeForm.value.esiSalary);
-    // formData.append('epfSalary', this.employeeForm.value.epfSalary);
+    formData.append('salary', this.employeeForm.value.salary);
+    formData.append('esiSalary', this.employeeForm.value.esiSalary);
+    formData.append('epfSalary', this.employeeForm.value.epfSalary);
+    formData.append('invoiceSalary', this.employeeForm.value.invoiceSalary);
     formData.append('ifscCode', this.employeeForm.value.ifscCode);
     if (this.employees.image) {
       formData.append('userImage', this.employees.image);
@@ -339,7 +341,6 @@ export class UpdateEmployeeComponent implements OnInit {
       accountNumber: item.accountNumber,
       ifscCode: item.ifscCode,
       salaryTypeId: item.salaryTypeId,
-      actualSalary: item.actualSalary,
       experienceYear: item.experienceYear,
       experienceMonth: item.experienceMonth,
       employeeType: item.employeeType,
@@ -356,8 +357,10 @@ export class UpdateEmployeeComponent implements OnInit {
       stateId: item.stateId,
       cityId: item.cityId,
       zipcode: item.zipcode,
-      // esiSalary:item.esiSalary,
-      // epfSalary:item.epfSalary,
+      salary: item.salary,
+      esiSalary: item.esiSalary,
+      epfSalary: item.epfSalary,
+      invoiceSalary: item.invoiceSalary,
       shirtSize: item.shirtSize,
       pantSize: item.pantSize,
       shoeSize: item.shoeSize

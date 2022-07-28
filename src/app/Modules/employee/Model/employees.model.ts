@@ -40,7 +40,8 @@ export class Employees {
   public accountNumber: string = '';
   public ifscCode: string = '';
   public salaryTypeId: string = '';
-  public actualSalary: string = '';
+  public salary: string = '';
+  public invoiceSalary: string = '';
   public esiSalary: string = '';
   public epfSalary: string = '';
   public personalMobile: string = '';
